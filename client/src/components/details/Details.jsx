@@ -1,4 +1,18 @@
+import { useEffect } from "react";
+import projectService from "../../services/projectService";
+
 export default function Details() {
+
+    // Just a test
+
+    useEffect(() => {
+            projectService.getAll()
+            .then(result => {
+                console.log(result);
+                
+            })
+    }, [])
+
     return (
         <div className="content-container">
             <main>
