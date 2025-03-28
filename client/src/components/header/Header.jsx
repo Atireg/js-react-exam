@@ -4,7 +4,7 @@ export default function Details() {
     return (
         <header className="site-header">
             <h1>
-                knippershelbig ReUse
+                <Link to="/">knippershelbig ReUse </Link>
             </h1>
             <nav className="navigation">
                 <ul>
@@ -22,6 +22,9 @@ export default function Details() {
                     </li>
                     <li>
                         <Link to="/login">Login</Link>
+                    </li>
+                    <li>
+                        <Link to="/logout">Logout</Link>
                     </li>
                     <li>
                         <Link to="/register">Register</Link>
