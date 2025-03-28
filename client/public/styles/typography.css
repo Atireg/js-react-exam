@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+html {
+    font-size: clamp(12px, 12px + 0.2vw, 18px);
+    font-family: Raleway, sans-serif;
+}
+
+body, input, button, select, textarea, table {
+    font: inherit;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    color: rgb(192, 255, 252);
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
