@@ -21,7 +21,7 @@
         }
     }
 
-    .littleGeri {
+    /* .littleGeri {
         display: block;
         background: #4d0033;
         min-width: 2em;
@@ -33,7 +33,7 @@
     .littleGeri:hover {
         scale: 3;
         transition: scale 0.3s ease-in-out;
-    }
+    } */
 }
 
 
@@ -49,7 +49,7 @@
 main {
     flex: 0 0 70%;
 }
-
+    
 aside {
     display: flex;
     flex-direction: column;

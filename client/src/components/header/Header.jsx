@@ -1,17 +1,33 @@
+import { Link } from "react-router"
+
 export default function Details() {
     return (
         <header className="site-header">
-            <h1>knippershelbig</h1>
+            <h1>
+                knippershelbig ReUse
+            </h1>
             <nav className="navigation">
                 <ul>
                     <li>
-                        <a className="littleGeri" href="#"></a>
+                        <Link to="/projects">ReUse Projects</Link>
                     </li>
                     <li>
-                        <a href="#">3D Playground</a>
+                        <Link to="/projects/create">Add Project</Link>
                     </li>
                     <li>
-                        <a href="#">About</a>
+                        <Link to="/projects/edit">Edit Project</Link>
+                    </li>
+                    <li>
+                        <Link to="/materials">ReUse Materials</Link>
+                    </li>
+                    <li>
+                        <Link to="/login">Login</Link>
+                    </li>
+                    <li>
+                        <Link to="/register">Register</Link>
+                    </li>
+                    <li>
+                        <Link to="/about">About</Link>
                     </li>
                 </ul>
             </nav>
