@@ -1,6 +1,6 @@
 export default function Home(){
     return(
-        <div className="welcome-msg">
+        <div className="form-container">
             {/* <h1>Welcome to knippershelbig ReUse! We're thrilled to introduce our sustainability project, where we explore the potential of harvesting materials from demolished buildings and repurposing them to create new, innovative structures.</h1> */}
             <h1>Willkommen bei knippershelbig ReUse! </h1>
 

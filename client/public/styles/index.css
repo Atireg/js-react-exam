@@ -27,9 +27,9 @@
     }
 }
 
-/* HOME PAGE*/
+/*GENERAL CONTAINER TO CENTER FORMS/MESSAGES*/
 
-.welcome-msg {
+.form-container {
     display: flex;
     justify-content: center;
     align-items: center;

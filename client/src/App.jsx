@@ -5,6 +5,7 @@ import Details from './components/details/Details'
 import Footer from './components/footer/Footer'
 import Home from './components/home/Home'
 import Login from './components/login/Login'
+import ProjectAdd from './components/project-add/ProjectAdd'
 import './App.css'
 
 function App() {
@@ -16,7 +17,9 @@ function App() {
 				<Route path='/' element={<Home />}/>
 				<Route path='/login' element={<Login />}/>
 				<Route path='/projects' element={<Details />}/>
-				//TO DOs: Add all routes
+				<Route path='/projects/add' element={<ProjectAdd />}/>
+			
+				{/* //TO DOs: Add all routes */}
 			</Routes>
 
 			<Footer />

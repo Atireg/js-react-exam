@@ -12,13 +12,13 @@ export default function Details() {
                         <Link to="/projects">ReUse Projects</Link>
                     </li>
                     <li>
-                        <Link to="/projects/create">Add Project</Link>
+                        <Link to="/projects/add">Add Project</Link>
                     </li>
                     <li>
                         <Link to="/projects/edit">Edit Project</Link>
                     </li>
                     <li>
-                        <Link to="/materials">ReUse Materials</Link>
+                        <Link to="/materials">Harvest Materials</Link>
                     </li>
                     <li>
                         <Link to="/login">Login</Link>
