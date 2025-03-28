@@ -2,7 +2,7 @@ import { Link } from "react-router"
 
 export default function Login() {
     return (
-        <div className="form-container">
+        <div className="centered-container">
             <h2>Login</h2>
             <form action="dashboard.html" method="POST">
                 <div className="input-group">

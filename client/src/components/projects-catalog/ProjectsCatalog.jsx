@@ -1,31 +1,26 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import projectService from "../../services/projectService";
 
-export default function Details() {
+export default function ProjectsCatalog() {
 
-    // Just a test
+    const [projects, setProjects] = useState([]);
 
     useEffect(() => {
             projectService.getAll()
             .then(result => {
-                console.log(result);
+                setProjects(result);
                 
-            })
+            })    
+            
     }, [])
+
+    console.log(projects);
 
     return (
         <div className="centered-container">
             <main>
+                <h1>We have collected building elements from the following projects: </h1>
                 <ul className="gallery">
-                    <li className="hero">
-                        <a href="#">
-                            <figure>
-                                <img src="/images/rock-print/hero.jpg" alt="" />
-                                <figcaption>&copy; Image by ...</figcaption>
-                            </figure>
-                        </a>
-                    </li>
-
                     <li className="gallery-img">
                         <a href="#">
                             <figure>
@@ -86,30 +81,6 @@ export default function Details() {
                     <button>Close</button>
                 </dialog>
             </main>
-
-            <aside>
-                <section className="threeDcontent">
-                    <h2>3D content here</h2>
-                </section>
-                <section className="description">
-                    <h2>Rock Print Pavilion</h2>
-                    <h3>Winterthur 2018</h3>
-                    <h5>role: research and project lead</h5>
-                    <h5>venue: Hello Robot Exhibition, Kunst Museum Winterthur</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi illo fugit praesentium iure deleniti
-                        porro iste laboriosam odit numquam esse atque, voluptatibus maxime deserunt aut assumenda distinctio
-                        perferendis totam ex!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi illo fugit praesentium iure deleniti
-                        porro iste laboriosam odit numquam esse atque, voluptatibus maxime deserunt aut assumenda distinctio
-                        perferendis totam ex!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi illo fugit praesentium iure deleniti
-                        porro iste laboriosam odit numquam esse atque, voluptatibus maxime deserunt aut assumenda distinctio
-                        perferendis totam ex!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi illo fugit praesentium iure deleniti
-                        porro iste laboriosam odit numquam esse atque, voluptatibus maxime deserunt aut assumenda distinctio
-                        perferendis totam ex!</p>
-                </section>
-            </aside>
         </div>
     )
 }

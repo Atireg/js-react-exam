@@ -29,7 +29,7 @@
 
 /*GENERAL CONTAINER TO CENTER FORMS/MESSAGES*/
 
-.form-container {
+.centered-container {
     display: flex;
     justify-content: center;
     align-items: center;

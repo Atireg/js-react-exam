@@ -1,16 +1,14 @@
-{
-    "f907c703-aef7-438b-920e-1b7d78f4d161": {
-        "name": "Kittler-Schule",
-        "construction": "1950",
-        "demolition": "2023",
-        "description": "XXX",
-        "_id": "f907c703-aef7-438b-920e-1b7d78f4d161"
-    },
-    "36d1d8e0-b5ba-40be-860b-e5d82a421afe": {
-        "name": "Test",
-        "construction": "2000",
-        "demolition": "2050",
-        "description": "sss",
-        "_id": "36d1d8e0-b5ba-40be-860b-e5d82a421afe"
-    }
+"f907c703-aef7-438b-920e-1b7d78f4d161": {
+    "name": "Kittler-Schule",
+    "construction": "1950",
+    "demolition": "2023",
+    "description": "XXX",
+    "_id": "f907c703-aef7-438b-920e-1b7d78f4d161"
+},
+"36d1d8e0-b5ba-40be-860b-e5d82a421afe": {
+    "name": "Test",
+    "construction": "2000",
+    "demolition": "2050",
+    "description": "sss",
+    "_id": "36d1d8e0-b5ba-40be-860b-e5d82a421afe"
 }

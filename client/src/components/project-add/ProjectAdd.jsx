@@ -1,5 +1,4 @@
 import { useNavigate  } from 'react-router';
-
 import projectService from '../../services/projectService';
 
 export default function ProjectAdd() {
@@ -12,6 +11,8 @@ export default function ProjectAdd() {
         await projectService.add(projectData);
 
         //TODO try-catch
+
+        navigate('/projects')
         
     };
 
