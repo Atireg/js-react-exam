@@ -3,7 +3,9 @@ import { Link, useNavigate, useParams } from "react-router";
 import projectService from "../../services/projectService";
 import ReuseElementsInventory from "../reuse-elements-inventory/ReuseElementsInventory";
 
-export default function ProjectDetails() {
+export default function ProjectDetails({
+    user,
+}) {
 
     const navigate = useNavigate();
 
@@ -50,7 +52,6 @@ export default function ProjectDetails() {
                     <section className="buttons">
                         <Link to={`/projects/${projectId}/edit`} className="button">
                             <button
-                                // onClick={}
                                 className="button"
                             >
                                 Edit Project Details
@@ -66,7 +67,7 @@ export default function ProjectDetails() {
                 </aside>
             </div>
 
-            <ReuseElementsInventory />
+            <ReuseElementsInventory user={user}/>
 
         </section>
     )

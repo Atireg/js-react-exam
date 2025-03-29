@@ -30,7 +30,7 @@ function App() {
 				<Route path='/projects' element={<ProjectsCatalog />}/>
 				<Route path='/projects/add' element={<ProjectAdd />}/>
 				<Route path='/projects/:projectId/edit' element={<ProjectEdit />}/>
-				<Route path='/projects/:projectId/details' element={<ProjectDetails />}/>
+				<Route path='/projects/:projectId/details' element={<ProjectDetails user={user} />}/>
 
 				<Route path='/login' element={<Login onLogin={userLoginHandler}/>}/>
 			</Routes>
