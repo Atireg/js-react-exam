@@ -1,14 +1,38 @@
-"f907c703-aef7-438b-920e-1b7d78f4d161": {
-    "name": "Kittler-Schule",
-    "construction": "1950",
-    "demolition": "2023",
-    "description": "XXX",
-    "_id": "f907c703-aef7-438b-920e-1b7d78f4d161"
-},
-"36d1d8e0-b5ba-40be-860b-e5d82a421afe": {
-    "name": "Test",
-    "construction": "2000",
-    "demolition": "2050",
-    "description": "sss",
-    "_id": "36d1d8e0-b5ba-40be-860b-e5d82a421afe"
+{
+    "f907c703-aef7-438b-920e-1b7d78f4d161": {
+        "name": "Kittler-Schule",
+        "construction": "1950",
+        "demolition": "2023",
+        "location": "Sofia",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi illo fugit praesentium iure deleniti porro iste laboriosam odit numquam esse atque, voluptatibus maxime deserunt aut assumenda distinctio perferendis totam ex!",
+        "imageUrl": "https://images.unsplash.com/photo-1701844279504-e3a974aaafb5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "_id": "f907c703-aef7-438b-920e-1b7d78f4d161"
+    },
+    "36d1d8e0-b5ba-40be-860b-e5d82a421afe": {
+        "name": "Rathaus Somethingen",
+        "construction": "2026",
+        "demolition": "2150",
+        "location": "Stuttgart",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi illo fugit praesentium iure deleniti porro iste laboriosam odit numquam esse atque, voluptatibus maxime deserunt aut assumenda distinctio perferendis totam ex!",
+        "imageUrl": "https://images.unsplash.com/photo-1598079528260-b4dc3c7ab22b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZGVtb3VsaXNoZWQlMjBidWlsZGluZ2R8ZW58MHx8MHx8fDA%3D",
+        "_id": "36d1d8e0-b5ba-40be-860b-e5d82a421afe"
+    },
+    "36d1d8e0-b5ba-40be-860b-82a421afee5d": {
+        "name": "Office Building",
+        "construction": "2030",
+        "demolition": "2150",
+        "location": "Rome",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi illo fugit praesentium iure deleniti porro iste laboriosam odit numquam esse atque, voluptatibus maxime deserunt aut assumenda distinctio perferendis totam ex!",
+        "imageUrl": "https://plus.unsplash.com/premium_photo-1716301338629-64889bcc1676?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGRlbW91bGlzaGVkJTIwYnVpbGRpbmdkfGVufDB8fDB8fHww",
+        "_id": "36d1d8e0-b5ba-40be-860b-82a421afee5d"
+    },
+    "36d1d8e0-b5ba-40be-860b-e5d821a2a4fe": {
+        "name": "School XX",
+        "construction": "2000",
+        "demolition": "2050",
+        "location": "Buenos Aires",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi illo fugit praesentium iure deleniti porro iste laboriosam odit numquam esse atque, voluptatibus maxime deserunt aut assumenda distinctio perferendis totam ex!",
+        "imageUrl": "https://images.unsplash.com/photo-1725181267729-a21904428425?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZGVtb3VsaXNoZWQlMjBidWlsZGluZ2R8ZW58MHx8MHx8fDA%3D",
+        "_id": "36d1d8e0-b5ba-40be-860b-e5d821a2a4fe"
+    }
 }

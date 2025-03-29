@@ -18,6 +18,12 @@ export default function Details() {
                         <Link to="/projects/edit">Edit Project</Link>
                     </li>
                     <li>
+                        <Link to="">Add building element</Link>
+                    </li>
+                    <li>
+                        <Link to="">Edit building element</Link>
+                    </li>
+                    <li>
                         <Link to="/materials">Harvest Materials</Link>
                     </li>
                     <li>

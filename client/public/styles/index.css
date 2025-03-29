@@ -71,7 +71,7 @@ aside {
     &::after,
     li.gallery-img {
         /* THIS CAN BE DIFFERENT AND COMING AS AN INPUT */
-        flex: 1 1 400px;
+        flex: 1 1 300px;
         display: block;
     }
     

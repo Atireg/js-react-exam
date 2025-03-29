@@ -9,6 +9,10 @@ export default {
         return projects;
     },
 
+    getOne(projectId){
+        return request.get(`${baseUrl}/${projectId}`)
+    },
+
     add(projectData) {
         return request.post(baseUrl, projectData)
     }
