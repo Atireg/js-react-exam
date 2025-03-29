@@ -11,18 +11,6 @@ export default function Details() {
                     <li>
                         <Link to="/projects">ReUse Projects</Link>
                     </li>
-                    {/* <li>
-                        <Link to="/projects/add">Add Project</Link>
-                    </li> */}
-                    {/* <li>
-                        <Link to="/projects/edit">Edit Project</Link>
-                    </li> */}
-                    <li>
-                        <Link to="">Add building element</Link>
-                    </li>
-                    <li>
-                        <Link to="">Edit building element</Link>
-                    </li>
                     <li>
                         <Link to="/materials">Harvest Materials</Link>
                     </li>

@@ -26,7 +26,7 @@ export default function ProjectEdit() {
 
     return (
         <div className="centered-container">
-            <h2>Edit Project</h2>
+            <h2>Edit Project Details</h2>
             <form id="add" action={formAction}>
                 <div className="input-group">
                     <label htmlFor="name">Project Name</label>

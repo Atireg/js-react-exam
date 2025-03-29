@@ -13,7 +13,6 @@ export default function ProjectsCatalogItem({
             <figure>
                 <Link to={`/projects/${_id}/details`} className="details">
                     <img src={imageUrl} alt="" />
-                    <figcaption>&copy; Image by ...</figcaption>
                 </Link>
             </figure>
             <p>{name} ({location})</p>

@@ -1,4 +1,4 @@
-/* HEADER SECTION */
+/* HEADER */
 
 .site-header {
     margin: 0.5em 1em;
@@ -40,7 +40,7 @@
     flex-direction: column;
 }
 
-/* SITE DETAILS SECTION */
+/* PROJECT DETAILS */
 
 .content-container {
     max-width: 100dvw;
@@ -70,7 +70,6 @@ aside {
 
     &::after,
     li.gallery-img {
-        /* THIS CAN BE DIFFERENT AND COMING AS AN INPUT */
         flex: 1 1 300px;
         display: block;
     }
@@ -96,7 +95,6 @@ aside {
     
     a {
         display: block;
-        /* THIS CAN BE DIFFERENT AND COMING AS AN INPUT */
         aspect-ratio: 16/9;
         overflow: hidden;
         position: relative;
@@ -111,51 +109,6 @@ aside {
         z-index: -1;
     }
 
-}
-
-.shader-line {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 0.5em;
-}
-
-.shader-line.top {
-    top: 0;
-}
-
-.shader-line.bottom {
-    bottom: 0;
-}
-
-.gallery li.hero {
-    position: relative;
-}
-
-
-.gallery figcaption {
-    position: absolute;
-    bottom: 0.5em;
-    right: 0.8em;
-    font-style: italic;
-    color: #000000;
-    font-size: 0.8rem;
-}
-
-section.threeDcontent {
-    flex: 0 1 auto;
-    aspect-ratio: 1/1;
-    border: 2px dotted #000000;
-    color: #000000;
-    cursor: pointer
-}
-
-section.threeDcontent {
-    animation: rulerPulse 2s infinite alternate ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 2em;
 }
 
 section.description {
@@ -174,13 +127,31 @@ section.description p {
     margin-bottom: 1em;
 }
 
-::-webkit-scrollbar {
-    width: 0.5em;
+/* REUSE INVENTORY SECTION */
+
+.reuse-elements-inventory {
+    gap: 2em;
+    margin: 2em 1em
 }
 
-::-webkit-scrollbar-thumb {
-    background: #E4481F;
-    border-radius: 0.6em;
+.inventory-table-container {
+    margin-bottom: 2em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
 }
 
 /* FOOTER SECTION */

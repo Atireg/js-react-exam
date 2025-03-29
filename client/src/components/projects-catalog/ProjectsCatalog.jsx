@@ -19,8 +19,10 @@ export default function ProjectsCatalog() {
     return (
         <div className="centered-container">
             <main>
+                <section>
+                    <h2>We have collected building elements from the following projects: </h2>
+                </section>
 
-                <h2>We have collected building elements from the following projects: </h2>
                 <ul className="gallery">
                     {projects.map(project => <ProjectsCatalogItem key={project._id} {...project} />)}
                 </ul>
