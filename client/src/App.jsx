@@ -7,6 +7,7 @@ import Home from './components/home/Home'
 import Login from './components/login/Login'
 import ProjectAdd from './components/project-add/ProjectAdd'
 import ProjectsCatalog from './components/projects-catalog/ProjectsCatalog'
+import ProjectEdit from './components/project-edit/ProjectEdit'
 import './App.css'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
 				<Route path='/projects' element={<ProjectsCatalog />}/>
 				<Route path='/projects/add' element={<ProjectAdd />}/>
 				<Route path='/projects/:projectId/details' element={<ProjectDetails />}/>
+				<Route path='/projects/:projectId/edit' element={<ProjectEdit />}/>
 			</Routes>
 
 			<Footer />

@@ -11,12 +11,12 @@ export default function Details() {
                     <li>
                         <Link to="/projects">ReUse Projects</Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/projects/add">Add Project</Link>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                         <Link to="/projects/edit">Edit Project</Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="">Add building element</Link>
                     </li>

@@ -16,10 +16,8 @@ export default function ProjectsCatalogItem({
                     <figcaption>&copy; Image by ...</figcaption>
                 </Link>
             </figure>
-            <p>{name}</p>
-            <p>built: {construction}</p>
-            <p>demolished: {demolition}</p>
-            <p>located: {location}</p>
+            <p>{name} ({location})</p>
+            <p>{construction} - {demolition}</p>
         </li>
     )
 }

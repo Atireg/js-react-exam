@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import projectService from "../../services/projectService";
 
 export default function ProjectDetails() {
+
+    const navigate = useNavigate();
 
     const [project, setProject] = useState({});
 
@@ -18,8 +20,17 @@ export default function ProjectDetails() {
         })();
     }, [projectId])
 
-    console.log(project);
+    const projectDeleteClickHandler = async () => {
+        const hasConfirm = confirm(`Are you sure you want to delete ${project.name}?`);
 
+        if(!hasConfirm){
+            return;
+        }
+
+        await projectService.delete(projectId);
+
+        navigate('/projects')
+    };
 
     return (
         <div className="content-container">
@@ -30,7 +41,6 @@ export default function ProjectDetails() {
                 </figure>
 
             </main>
-
             <aside>
                 {/* <section className="threeDcontent">
                     <h2>3D content here</h2>
@@ -41,6 +51,22 @@ export default function ProjectDetails() {
                     <h5>built: {project.construction}</h5>
                     <h5>demolished: {project.demolition}</h5>
                     <p>{project.description}</p>
+                </section>
+                <section className="buttons">
+                    <Link to={`/projects/${projectId}/edit`} className="button">
+                        <button
+                            // onClick={}
+                            className="button"
+                        >
+                            Edit
+                        </button>
+                    </Link>
+                    <button
+                        onClick={projectDeleteClickHandler}
+                        className="button"
+                    >
+                        Delete
+                    </button>
                 </section>
             </aside>
         </div>
