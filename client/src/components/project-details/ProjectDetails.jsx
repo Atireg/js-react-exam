@@ -35,13 +35,16 @@ export default function ProjectDetails({
         navigate('/projects')
     };
 
+    const elementsAddHandler = (newElement) => {
+        setElements(state => [...state, newElement])
+    }
+
     return (
         <section>
             <div className="content-container">
                 <main>
                     <figure className="hero">
                         <img src={project.imageUrl} alt="" />
-                        {/* <figcaption>&copy; Image by ...</figcaption> */}
                     </figure>
                 </main>
                 <aside>
@@ -70,7 +73,7 @@ export default function ProjectDetails({
                 </aside>
             </div>
 
-            <ReuseElementsInventory user={user} projectId={projectId} elements={elements}/>
+            <ReuseElementsInventory user={user} projectId={projectId} elements={elements} onAddElement={elementsAddHandler}/>
 
         </section>
     )
