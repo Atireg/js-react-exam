@@ -1,10 +1,21 @@
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 
-export default function Login() {
+export default function Login({
+    onLogin,
+}) {
+    const navigate = useNavigate();
+
+    const loginAction = (formData) => {
+        const email = formData.get('email');
+        onLogin(email);
+
+        navigate('/projects')
+        
+    }
     return (
         <div className="centered-container">
             <h2>Login</h2>
-            <form action="dashboard.html" method="POST">
+            <form action={loginAction}>
                 <div className="input-group">
                     <label htmlFor="email">Email</label>
                     <input type="email" id="email" name="email" required />
@@ -14,7 +25,7 @@ export default function Login() {
                     <input type="password" id="password" name="password" required />
                 </div>
                 <button type="submit">Login</button>
-                <p className="register-link">Don't have an account? <Link to="register.html">Register</Link></p>
+                <p className="register-link">Don't have an account? <Link to="/register">Register</Link></p>
             </form>
         </div>
     )

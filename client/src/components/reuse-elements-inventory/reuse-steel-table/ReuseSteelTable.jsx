@@ -55,6 +55,13 @@ export default function ReuseSteelTable() {
                     </tr>
                 </tbody>
             </table>
+
+            <button
+                // onClick={}
+                className="button"
+            >
+                Add Element
+            </button>
         </div>
     )
 }

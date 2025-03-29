@@ -14,6 +14,7 @@ export default function ReuseElementsInventory() {
             <section className="structural-steel">
                 <h3>Structural Steel: </h3>
                 <ReuseSteelTable />
+                
             </section>
 
             <section className="glass">
