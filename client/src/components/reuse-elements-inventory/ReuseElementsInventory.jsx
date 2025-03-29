@@ -2,6 +2,8 @@ import ReuseSteelTable from "./reuse-steel-table/ReuseSteelTable";
 
 export default function ReuseElementsInventory({
     user,
+    projectId,
+    elements
 }) {
     return (
         <section className="reuse-elements-inventory">
@@ -15,7 +17,7 @@ export default function ReuseElementsInventory({
 
             <section className="structural-steel">
                 <h3>Structural Steel: </h3>
-                <ReuseSteelTable user={user}/>
+                <ReuseSteelTable user={user} projectId={projectId} elements={elements}/>
 
             </section>
 

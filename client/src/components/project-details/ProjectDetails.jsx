@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import projectService from "../../services/projectService";
 import ReuseElementsInventory from "../reuse-elements-inventory/ReuseElementsInventory";
+import elementsService from "../../services/elementsService";
 
 export default function ProjectDetails({
     user,
@@ -10,14 +11,16 @@ export default function ProjectDetails({
     const navigate = useNavigate();
 
     const [project, setProject] = useState({});
+    const [elements, setElements] = useState([]);
 
     const { projectId } = useParams();
 
     useEffect(() => {
-        (async () => {
-            const result = await projectService.getOne(projectId);
-            setProject(result);
-        })();
+        projectService.getOne(projectId)
+            .then(setProject);
+
+        elementsService.getAll(projectId)
+            .then(setElements);
     }, [projectId])
 
     const projectDeleteClickHandler = async () => {
@@ -67,7 +70,7 @@ export default function ProjectDetails({
                 </aside>
             </div>
 
-            <ReuseElementsInventory user={user}/>
+            <ReuseElementsInventory user={user} projectId={projectId} elements={elements}/>
 
         </section>
     )
