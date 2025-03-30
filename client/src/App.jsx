@@ -15,14 +15,11 @@ function App() {
 
 	//TODO Change this later
 
-	const [user, setUser] = useState('');
+	const [authData, setAuthData] = useState({});
 
-	const userLoginHandler = (authData) => {
-		setUser(authData.email);
-
-		console.log(authData);
-		
-	}
+	const userLoginHandler = (resultData) => {
+		setAuthData(resultData);		
+	};
 
 	return (
 		<>
@@ -33,7 +30,7 @@ function App() {
 				<Route path='/projects' element={<ProjectsCatalog />}/>
 				<Route path='/projects/add' element={<ProjectAdd />}/>
 				<Route path='/projects/:projectId/edit' element={<ProjectEdit />}/>
-				<Route path='/projects/:projectId/details' element={<ProjectDetails user={user} />}/>
+				<Route path='/projects/:projectId/details' element={<ProjectDetails user={authData.email} />}/>
 
 				<Route path='/login' element={<Login onLogin={userLoginHandler}/>}/>
 			</Routes>
