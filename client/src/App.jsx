@@ -17,8 +17,11 @@ function App() {
 
 	const [user, setUser] = useState('');
 
-	const userLoginHandler = (user) => {
-		setUser(user);
+	const userLoginHandler = (authData) => {
+		setUser(authData.email);
+
+		console.log(authData);
+		
 	}
 
 	return (
