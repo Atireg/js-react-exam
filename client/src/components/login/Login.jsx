@@ -1,3 +1,4 @@
+import { useActionState } from "react";
 import { Link, useNavigate } from "react-router"
 
 export default function Login({
@@ -5,13 +6,18 @@ export default function Login({
 }) {
     const navigate = useNavigate();
 
-    const loginAction = (formData) => {
-        const email = formData.get('email');
-        onLogin(email);
-
-        navigate('/projects')
+    const loginHandler = (previousState, formData) => {
+        const values = Object.fromEntries(formData);
         
+        onLogin(values.email);
+
+        navigate('/projects');
+
+        return values;
     }
+
+    const [ values, loginAction, isPending ] = useActionState(loginHandler, { email: '', password: '' });
+
     return (
         <div className="centered-container">
             <h2>Login</h2>
@@ -24,7 +30,7 @@ export default function Login({
                     <label htmlFor="password">Password</label>
                     <input type="password" id="password" name="password" required />
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit" disabled={isPending}>Login</button>
                 <p className="register-link">Don't have an account? <Link to="/register">Register</Link></p>
             </form>
         </div>

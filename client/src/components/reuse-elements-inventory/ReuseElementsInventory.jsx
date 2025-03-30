@@ -101,8 +101,15 @@ export default function ReuseElementsInventory({
                     </table>
                 </div>
 
-                {/* THIS CAN BE ONE COMPONENT */}
-                {user
+                
+            </section>
+
+            <section className="glass">
+                <h3>Glass:</h3>
+            </section>
+
+            {/* THIS CAN BE ONE COMPONENT */}
+            {user
                     ?
                     <div>
                         <form action={addNewElementAction}>
@@ -156,11 +163,6 @@ export default function ReuseElementsInventory({
                     </Link>
                 }
 
-            </section>
-
-            <section className="glass">
-                <h3>Glass:</h3>
-            </section>
         </section>
     )
 }
