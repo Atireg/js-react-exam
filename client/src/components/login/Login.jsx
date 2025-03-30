@@ -5,7 +5,7 @@ import { UserContext } from "../../contexts/UserContext";
 
 export default function Login() {
     const navigate = useNavigate();
-    const { userLoginHandler}  = useContext(UserContext);
+    const { userLoginHandler }  = useContext(UserContext);
     const { login } = useLogin();
 
     const loginHandler = async (_, formData) => {

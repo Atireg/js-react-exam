@@ -4,12 +4,13 @@ import { Routes, Route } from 'react-router';
 import { UserContext } from './contexts/UserContext';
 
 import Header from './components/header/Header';
-import ProjectDetails from './components/project-details/ProjectDetails';
 import Footer from './components/footer/Footer';
 import Home from './components/home/Home';
 import Login from './components/login/Login';
-import ProjectAdd from './components/project-add/ProjectAdd';
+import Register from './components/register/Register';
 import ProjectsCatalog from './components/projects-catalog/ProjectsCatalog';
+import ProjectDetails from './components/project-details/ProjectDetails';
+import ProjectAdd from './components/project-add/ProjectAdd';
 import ProjectEdit from './components/project-edit/ProjectEdit';
 
 import './App.css';
@@ -34,6 +35,7 @@ function App() {
 				<Route path='/projects/:projectId/details' element={<ProjectDetails />}/>
 
 				<Route path='/login' element={<Login />}/>
+				<Route path='/register' element={<Register />}/>
 			</Routes>
 
 			<Footer />
