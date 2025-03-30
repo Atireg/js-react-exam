@@ -1,15 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import projectService from "../../services/projectService";
 import ReuseElementsInventory from "../reuse-elements-inventory/ReuseElementsInventory";
 import elementsService from "../../services/elementsService";
+import { UserContext } from "../../contexts/UserContext";
 
-export default function ProjectDetails({
-    user,
-}) {
-
+export default function ProjectDetails() {
     const navigate = useNavigate();
-
+    const { email } = useContext(UserContext)
     const [project, setProject] = useState({});
     const [elements, setElements] = useState([]);
 
@@ -73,7 +71,7 @@ export default function ProjectDetails({
                 </aside>
             </div>
 
-            <ReuseElementsInventory user={user} projectId={projectId} elements={elements} onAddElement={elementsAddHandler}/>
+            <ReuseElementsInventory user={ email } projectId={projectId} elements={elements} onAddElement={elementsAddHandler}/>
 
         </section>
     )
