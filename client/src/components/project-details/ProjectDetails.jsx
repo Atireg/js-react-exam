@@ -4,19 +4,17 @@ import projectService from "../../services/projectService";
 import ReuseElementsInventory from "../reuse-elements-inventory/ReuseElementsInventory";
 import elementsService from "../../services/elementsService";
 import { UserContext } from "../../contexts/UserContext";
+import { useGetOneProject } from "../../api/projectsApi";
 
 export default function ProjectDetails() {
     const navigate = useNavigate();
     const { email } = useContext(UserContext)
-    const [project, setProject] = useState({});
     const [elements, setElements] = useState([]);
-
     const { projectId } = useParams();
 
-    useEffect(() => {
-        projectService.getOne(projectId)
-            .then(setProject);
+    const { project } = useGetOneProject(projectId);
 
+    useEffect(() => {
         elementsService.getAll(projectId)
             .then(setElements);
     }, [projectId])

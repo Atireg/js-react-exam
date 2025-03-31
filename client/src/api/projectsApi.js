@@ -18,6 +18,20 @@ export const useGetAllProjects = () => {
     }
 }
 
+export const useGetOneProject = (projectId) => {
+    const [ project, setProject ] = useState({});
+
+    useEffect(() => {
+        request.get(`${baseUrl}/${projectId}`)
+            .then(setProject)
+    }, []);
+
+    return {
+        project,
+    }
+
+}
+
 // THIS IS A "ON EVENT" HOOK
 export const useAddProject = () => {
     const { accessToken } = useContext(UserContext);

@@ -65,8 +65,7 @@ export default function ReuseElementsInventory({
             <section className="structural-steel">
                 <h3>Structural Steel: </h3>
                 
-                //TODO take this out and solve with Context
-                {/* THIS CAN BE ONE COMPONENT */}
+                {/* //TODO take this out and solve with Context */}
                 <div className="inventory-table-container">
                     <table>
                         <thead>
@@ -109,8 +108,7 @@ export default function ReuseElementsInventory({
                 <h3>Glass:</h3>
             </section>
             
-            //TODO take this out and solve with Context
-            {/* THIS CAN BE ONE COMPONENT */}
+            {/* //TODO take this out and solve with Context */}
             {user
                     ?
                     <div>
