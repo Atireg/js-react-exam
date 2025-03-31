@@ -9,32 +9,34 @@ export default function Register(){
     const { userLoginHandler }  = useContext(UserContext);
     
     const registerHandler = async (formData) => {
-        console.log(Object.fromEntries(formData));
-        
-        const { email, password } = Object.fromEntries(formData);
-
-        const confirmPassword = formData.get('confirm-password');
-
-        if (password !== confirmPassword){
+        const values = Object.fromEntries(formData);
+ 
+        if (values.password !== values.confirmPassword){
             //TODO Add error handling logic
+            console.log('password and confirm-password dont match!');
             return;
         }
 
-        const authData = await register(email, password);
+        const authData = await register(values.email, values.password);
 
+        //TODO Add error handling logic --> if the user already exists
+        // console.log(authData);
+        
         userLoginHandler(authData);
 
         navigate('/');
 
+        //TODO Check the server --> do not return the password
+
+        // return values;
     }
 
-    //TODO Add this:
-
-    // const [ _, registerAction, isPending ] = useActionState(registerHandler, { email: '', password: '' });
+    // const [ _, registerAction, isPending ] = useActionState(registerHandler, { email: '', password: '', confirmPassword: '' });
 
     return (
         <div className="centered-container">
             <h2>Register</h2>
+            {/* <form action={registerAction}> */}
             <form action={registerHandler}>
                 <div className="input-group">
                     <label htmlFor="email">Email:</label>
@@ -45,9 +47,10 @@ export default function Register(){
                     <input type="password" id="password" name="password" required />
                 </div>
                 <div className="input-group">
-                    <label htmlFor="co-password">Confirm Password:</label>
-                    <input type="password" id="confirm-password" name="confirm-password" required />
+                    <label htmlFor="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required />
                 </div>
+                {/* <button type="submit" disabled={isPending}>Register</button> */}
                 <button type="submit">Register</button>
                 <p className="register-link">Already have an account? <Link to="/login">Login</Link></p>
             </form>

@@ -7,6 +7,7 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Home from './components/home/Home';
 import Login from './components/login/Login';
+import Logout from './components/logout/Logout';
 import Register from './components/register/Register';
 import ProjectsCatalog from './components/projects-catalog/ProjectsCatalog';
 import ProjectDetails from './components/project-details/ProjectDetails';
@@ -26,7 +27,7 @@ function App() {
 		<UserContext.Provider value={{...authData, userLoginHandler}}>
 		<>
 			<Header />
-
+			
 			<Routes>
 				<Route path='/' element={<Home />}/>
 				<Route path='/projects' element={<ProjectsCatalog />}/>
@@ -36,6 +37,7 @@ function App() {
 
 				<Route path='/login' element={<Login />}/>
 				<Route path='/register' element={<Register />}/>
+				<Route path='/logout' element={<Logout />}/>
 			</Routes>
 
 			<Footer />

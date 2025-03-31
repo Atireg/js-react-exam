@@ -17,6 +17,8 @@ export default function Login() {
 
         navigate('/projects');
 
+        //TODO Check the server --> do not return the password
+
         return values;
     }
 
