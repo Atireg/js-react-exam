@@ -7,7 +7,7 @@ const baseUrl = 'http://localhost:3030/users'
 
 // THIS IS A "ON EVENT" HOOK
 export const useLogin = () => {
-    const abortRef = useRef(new AbortController());
+    const abortRef = useRef(new AbortController()); // using useRef bcs it does not rerender
 
     const login = (email, password) => 
         request.post(
@@ -49,17 +49,27 @@ export const useRegister = () => {
     }
 };
 
-// THIS IS A "ON EVENT" HOOK
+// THIS IS !!!NOT!!! "ON EVENT" HOOK
 export const useLogout = () => {
-    const { accessToken } = useContext(UserContext);
+    const { accessToken, userLogoutHandler } = useContext(UserContext);
     
-    const options = {
-        headers: {
-            'X-Authorization': accessToken,
+    useEffect(() => {
+        if (!accessToken){
+            return;
         }
-    }
-    
-    const logout = () => request.get(`${baseUrl}/logout`, null,  options);
 
-    return logout;  
+        const options = {
+            headers: {
+                'X-Authorization': accessToken,
+            }
+        }
+
+       request.get(`${baseUrl}/logout`, null,  options)
+            .then(userLogoutHandler());
+
+    }, [accessToken, userLogoutHandler]);
+
+    return {
+        isLoggedOut: !!accessToken,
+    }
 }

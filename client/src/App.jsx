@@ -23,11 +23,15 @@ function App() {
 		setAuthData(resultData);		
 	};
 
+	const userLogoutHandler = () => {
+		setAuthData({});		
+	};
+
 	return (
-		<UserContext.Provider value={{...authData, userLoginHandler}}>
+		<UserContext.Provider value={{ ...authData, userLoginHandler, userLogoutHandler }}>
 		<>
 			<Header />
-			
+
 			<Routes>
 				<Route path='/' element={<Home />}/>
 				<Route path='/projects' element={<ProjectsCatalog />}/>

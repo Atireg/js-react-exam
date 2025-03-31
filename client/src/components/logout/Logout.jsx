@@ -1,5 +1,10 @@
+import { Navigate } from "react-router";
+import { useLogout } from "../../api/authApi"
+
 export default function Logout(){
-    return (
-        <h1>Logout</h1>
-    )
+    const { isLoggedOut } = useLogout();
+
+    return isLoggedOut
+        ? <Navigate to="/"/>
+        : null; //TODO change to spinner
 }
