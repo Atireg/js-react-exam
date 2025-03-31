@@ -1,6 +1,10 @@
+import { useContext } from "react"
 import { Link } from "react-router"
+import { UserContext } from "../../contexts/UserContext"
 
-export default function Details() {
+export default function Header() {
+    const { email } = useContext(UserContext);
+
     return (
         <header className="site-header">
             <h1>
@@ -14,15 +18,27 @@ export default function Details() {
                     <li>
                         <Link to="/materials">Harvest Materials</Link>
                     </li>
-                    <li>
-                        <Link to="/login">Login</Link>
-                    </li>
-                    <li>
-                        <Link to="/logout">Logout</Link>
-                    </li>
-                    <li>
-                        <Link to="/register">Register</Link>
-                    </li>
+                    {email ?
+                        (
+                            <div id="user">
+                                <li>
+                                    <Link to="/logout">Logout { email }</Link>
+                                    
+                                </li>
+                            </div>
+                        )
+                        :
+                        (
+                            <div id="guest">
+                                <li>
+                                    <Link to="/login">Login</Link>
+                                </li>
+                                <li>
+                                    <Link to="/register">Register</Link>
+                                </li>
+                            </div>
+                        )
+                    }
                     <li>
                         <Link to="/about">About</Link>
                     </li>
