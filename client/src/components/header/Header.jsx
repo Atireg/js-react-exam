@@ -23,7 +23,6 @@ export default function Header() {
                             <div id="user">
                                 <li>
                                     <Link to="/logout">Logout { email }</Link>
-                                    
                                 </li>
                             </div>
                         )

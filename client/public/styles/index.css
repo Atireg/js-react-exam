@@ -12,6 +12,10 @@
     color: #E4481F;
 }
 
+.navigation ul div {
+    display: flex;
+}
+
 .navigation ul {
     display: flex;
     align-items: center;

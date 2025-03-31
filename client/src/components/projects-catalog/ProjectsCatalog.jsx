@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import projectService from "../../services/projectService";
 import ProjectsCatalogItem from "./project-catalog-item/ProjectsCatalogItem";
 import { Link } from "react-router";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function ProjectsCatalog() {
+
+    const { email } = useContext(UserContext);
 
     const [projects, setProjects] = useState([]);
 
@@ -31,6 +34,7 @@ export default function ProjectsCatalog() {
 
                 {/* TODO Only if logged */}
 
+                {email &&
                 <Link to={'/projects/add'} className="button">
                     <button
                         // onClick={}
@@ -38,7 +42,7 @@ export default function ProjectsCatalog() {
                     >
                         Add new project
                     </button>
-                </Link>
+                </Link>}
             </main>
         </div>
     )

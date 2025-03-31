@@ -1,14 +1,16 @@
 import { useNavigate  } from 'react-router';
-import projectService from '../../services/projectService';
+import { useAddProject } from '../../api/projectsApi';
 
 export default function ProjectAdd() {
     const navigate = useNavigate();
+
+    const { add: addProject } = useAddProject();
 
     const submitAction = async (formData) => {
 
         const projectData = Object.fromEntries(formData);
 
-        await projectService.add(projectData);
+        await addProject(projectData);
 
         //TODO try-catch
 
