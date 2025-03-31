@@ -1,27 +1,21 @@
-import { useEffect, useState } from "react";
+
 import { useNavigate, useParams } from "react-router"
-import projectService from "../../services/projectService";
+import { useEditProject, useGetOneProject } from "../../api/projectsApi";
 
 export default function ProjectEdit() {
     const navigate = useNavigate();
     const { projectId } = useParams();
-    const [project, setProject] = useState({})
-
-    useEffect(() => {
-        projectService.getOne(projectId)
-            .then(setProject);
-    }, [projectId])
+    const { project } = useGetOneProject(projectId);
+    const { edit } = useEditProject();
 
     const formAction = async (formData) => {
-
         const projectData = Object.fromEntries(formData);
 
-        await projectService.edit(projectId, projectData);
+        await edit(projectId, projectData);
 
         //TODO try-catch
 
         navigate(`/projects/${projectId}/details`)
-
     };
 
     return (

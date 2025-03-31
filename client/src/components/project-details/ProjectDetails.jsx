@@ -1,18 +1,18 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
-import projectService from "../../services/projectService";
 import ReuseElementsInventory from "../reuse-elements-inventory/ReuseElementsInventory";
 import elementsService from "../../services/elementsService";
 import { UserContext } from "../../contexts/UserContext";
-import { useGetOneProject } from "../../api/projectsApi";
+import { useDeleteGame, useGetOneProject } from "../../api/projectsApi";
+import useAuth from "../../hooks/useAuth";
 
 export default function ProjectDetails() {
     const navigate = useNavigate();
-    const { email } = useContext(UserContext)
-    const [elements, setElements] = useState([]);
+    const { email } = useAuth();
+    const [ elements, setElements ] = useState([]);
     const { projectId } = useParams();
-
     const { project } = useGetOneProject(projectId);
+    const { remove } = useDeleteGame();
 
     useEffect(() => {
         elementsService.getAll(projectId)
@@ -26,7 +26,7 @@ export default function ProjectDetails() {
             return;
         }
 
-        await projectService.delete(projectId);
+        await remove(projectId);
 
         navigate('/projects')
     };

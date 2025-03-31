@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import request from "../utils/request";
-import { UserContext } from "../contexts/UserContext";
+import useAuth from "../hooks/useAuth";
 
 const baseUrl = 'http://localhost:3030/data/projects'
 
@@ -24,7 +24,7 @@ export const useGetOneProject = (projectId) => {
     useEffect(() => {
         request.get(`${baseUrl}/${projectId}`)
             .then(setProject)
-    }, []);
+    }, [projectId]);
 
     return {
         project,
@@ -34,18 +34,36 @@ export const useGetOneProject = (projectId) => {
 
 // THIS IS A "ON EVENT" HOOK
 export const useAddProject = () => {
-    const { accessToken } = useContext(UserContext);
-
-    const options = {
-        headers: {
-            'X-Authorization': accessToken,
-        }
-    }
+    const { request } = useAuth();
 
     const add = (projectData) => 
-        request.post(baseUrl, projectData, options);
+        request.post(baseUrl, projectData);
 
     return {
         add,
+    }
+}
+
+// THIS IS A "ON EVENT" HOOK
+export const useEditProject = () => {
+    const { request } = useAuth();
+
+    const edit = (projectId, projectData) =>
+        request.put(`${baseUrl}/${projectId}`, {...projectData, _id: projectId});
+
+    return {
+        edit
+    }
+}
+// THIS IS A "ON EVENT" HOOK
+export const useDeleteGame = () => {
+    const { request } = useAuth();
+
+    const remove = (projectId) => {
+        request.delete(`${baseUrl}/${projectId}`);
+    }
+
+    return {
+        remove,
     }
 }
