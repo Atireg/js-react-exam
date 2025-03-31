@@ -1,23 +1,12 @@
-import { useContext, useEffect, useState } from "react";
-import projectService from "../../services/projectService";
+import { useContext} from "react";
 import ProjectsCatalogItem from "./project-catalog-item/ProjectsCatalogItem";
 import { Link } from "react-router";
 import { UserContext } from "../../contexts/UserContext";
+import { useGetAllProjects } from "../../api/projectsApi";
 
 export default function ProjectsCatalog() {
-
     const { email } = useContext(UserContext);
-
-    const [projects, setProjects] = useState([]);
-
-    useEffect(() => {
-        projectService.getAll()
-            .then(result => {
-                setProjects(result);
-
-            })
-
-    }, [])
+    const { projects } = useGetAllProjects();
 
     return (
         <div className="centered-container">
