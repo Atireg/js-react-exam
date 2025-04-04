@@ -3,15 +3,18 @@ import ReuseElementsInventory from "../reuse-elements-inventory/ReuseElementsInv
 import { useDeleteGame, useGetOneProject } from "../../api/projectsApi";
 import useAuth from "../../hooks/useAuth";
 import { useAddElement, useGetAllElements } from "../../api/elementsApi";
+import { useOptimistic } from "react";
+import { v4 as uuid } from 'uuid'
 
 export default function ProjectDetails() {
     const navigate = useNavigate();
-    const { email, _id: userId } = useAuth();
+    const { email, userId } = useAuth();
     const { projectId } = useParams();
     const { project } = useGetOneProject(projectId);
     const { remove } = useDeleteGame();
-    const { elements, setElements } = useGetAllElements(projectId);
     const { add } = useAddElement();
+    const { elements, setElements } = useGetAllElements(projectId);
+    const [ optimisticElements, setOptimisticElements ] = useOptimistic(elements, (state, newComment) => [...state, newComment]);
 
     const projectDeleteClickHandler = async () => {
         const hasConfirm = confirm(`Are you sure you want to delete ${project.name}?`);
@@ -25,10 +28,24 @@ export default function ProjectDetails() {
     };
 
     const elementsAddHandler = async (element) => {
-        //TODO add try/catch
-        const newElement = await add(projectId, element);
+        // OPTIMISTIC UPDATE
+        const newOptimisticElement = {
+            _id: uuid(),
+            _ownerId: userId,
+            projectId,
+            element,
+            pending: true,
+        };
 
-        setElements(state => [...state, newElement]);
+        // setOptimisticElements((optimisticState) => [...optimisticState, newOptimisticElement]);
+        setOptimisticElements(newOptimisticElement);
+
+        // SERVER UPDATE
+        //TODO add try/catch
+        const newElementServer = await add(projectId, element);
+
+        // ACTUAL UPDATE
+        setElements(state => [...state, newElementServer]);
     }
 
     //TODO Check if this is working properly.
@@ -69,7 +86,7 @@ export default function ProjectDetails() {
                 </aside>
             </div>
 
-            <ReuseElementsInventory user={email} projectId={projectId} elements={elements} onAddElement={elementsAddHandler} />
+            <ReuseElementsInventory user={email} projectId={projectId} elements={optimisticElements} onAddElement={elementsAddHandler} />
 
         </section>
     )

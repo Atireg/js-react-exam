@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import * as XLSX from "xlsx"
+import styles from './ElementsShow.module.css'
 // import { useState } from "react";
 
 export default function ReuseElementsInventory({
@@ -76,14 +77,14 @@ export default function ReuseElementsInventory({
                                 <th>Length Axis</th>
                                 <th>Location</th>
                                 <th>Comment</th>
-                                <th>Created by</th>
+                                <th>Added by</th>
                             </tr>
                         </thead>
                         <tbody>
                             {elements.length > 0
                                 ?
                                 elements.map(element => (
-                                    <tr key={element._id}>
+                                    <tr key={element._id} className={`element ${element.pending ? styles['element-pending'] : ''}`.trim()}>
                                         <td>{element.element.material}</td>
                                         <td>{element.element.elementType}</td>
                                         <td>{element.element.profile}</td>
@@ -121,7 +122,7 @@ export default function ReuseElementsInventory({
                                     <option value="">Select material</option>
                                     <option value="Structural Timber">Structural Timber</option>
                                     <option value="Structural Steel">Structural Steel</option>
-                                    <option value="Structural Glass">Structural Glass</option>
+                                    <option value="Glass">Glass</option>
                                 </select>
                             </div>
                             <div className="input-group">
