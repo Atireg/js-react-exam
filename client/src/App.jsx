@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router';
 
 import UserProvider from './providers/UserProvider';
+import AuthGuard from './guards/AuthGuard';
 
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
@@ -24,13 +25,14 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Home />}/>
 				<Route path='/projects' element={<ProjectsCatalog />}/>
-				<Route path='/projects/add' element={<ProjectAdd />}/>
-				<Route path='/projects/:projectId/edit' element={<ProjectEdit />}/>
+				<Route element={<AuthGuard />}>
+					<Route path='/projects/add' element={<ProjectAdd />} />
+					<Route path='/projects/:projectId/edit' element={<ProjectEdit />}/>
+					<Route path='/logout' element={<Logout />}/>
+				</Route>
 				<Route path='/projects/:projectId/details' element={<ProjectDetails />}/>
-
 				<Route path='/login' element={<Login />}/>
 				<Route path='/register' element={<Register />}/>
-				<Route path='/logout' element={<Logout />}/>
 			</Routes>
 
 			<Footer />
