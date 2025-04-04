@@ -14,7 +14,7 @@ export default function ProjectDetails() {
     const { remove } = useDeleteGame();
     const { add } = useAddElement();
     const { elements, addElement } = useGetAllElements(projectId);
-    const [ optimisticElements, setOptimisticElements ] = useOptimistic(elements, (state, newComment) => [...state, newComment]);
+    const [ optimisticElements, setOptimisticElements ] = useOptimistic(elements, (state, newElement) => [...state, newElement]);
 
     console.log(elements);
     
@@ -30,8 +30,11 @@ export default function ProjectDetails() {
         navigate('/projects')
     };
 
-    const elementsAddHandler = async (element) => {
-        // OPTIMISTIC UPDATE
+
+    const elementsAddHandler = async (formData) => {
+
+        const element = Object.fromEntries(formData);
+
         const newOptimisticElement = {
             _id: uuid(),
             _ownerId: userId,
@@ -42,7 +45,8 @@ export default function ProjectDetails() {
                 email,
             }
         };
-
+        
+        // OPTIMISTIC UPDATE
         setOptimisticElements(newOptimisticElement);
 
 

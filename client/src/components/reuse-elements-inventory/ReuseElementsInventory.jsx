@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import * as XLSX from "xlsx"
-import styles from './ReuseElementsInventory.module.css'
+// import styles from './ReuseElementsInventory.module.css'
 // import { useState } from "react";
 
 export default function ReuseElementsInventory({
@@ -8,16 +8,7 @@ export default function ReuseElementsInventory({
     elements,
     onAddElement
 }) {
-    console.log(elements);
-    
-    // const [jsonData, setJsonData] = useState(null);
-
-    const addNewElementAction = async (formData) => {
-        const element = Object.fromEntries(formData);
-
-        onAddElement(element);
-    }
-
+ 
     // const handleFileUpload = (event) => {
     //     const file = event.target.files[0];
 
@@ -84,7 +75,7 @@ export default function ReuseElementsInventory({
                             {elements.length > 0
                                 ?
                                 elements.map(element => (
-                                    <tr key={element._id} className={`element ${element.pending ? styles['element-pending'] : ''}`.trim()}>
+                                    <tr key={element._id} className="element" style={{color: element.pending ? 'lightgray' : ''}}>
                                         <td>{element.element.material}</td>
                                         <td>{element.element.elementType}</td>
                                         <td>{element.element.profile}</td>
@@ -116,7 +107,7 @@ export default function ReuseElementsInventory({
             {user
                     ?
                     <div>
-                        <form action={addNewElementAction}>
+                        <form action={onAddElement}>
                             <div className="input-group">
                                 <select id="material" name="material" required>
                                     <option value="">Select material</option>
