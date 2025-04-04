@@ -10,7 +10,7 @@ export default function ProjectDetails() {
     const { projectId } = useParams();
     const { project } = useGetOneProject(projectId);
     const { remove } = useDeleteGame();
-    const { elements } = useGetAllElements(projectId);
+    const { elements, setElements } = useGetAllElements(projectId);
     const { add } = useAddElement();
 
     const projectDeleteClickHandler = async () => {
@@ -25,8 +25,10 @@ export default function ProjectDetails() {
     };
 
     const elementsAddHandler = async (element) => {
+        //TODO add try/catch
+        const newElement = await add(projectId, element);
 
-        await add(projectId, element)
+        setElements(state => [...state, newElement]);
     }
 
     //TODO Check if this is working properly.

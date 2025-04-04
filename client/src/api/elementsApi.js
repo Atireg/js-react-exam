@@ -21,7 +21,8 @@ export const useGetAllElements = (projectId) => {
     }, [projectId]) //TODO Fix !!!
 
     return {
-        elements
+        elements,
+        setElements
     }
 
 }
