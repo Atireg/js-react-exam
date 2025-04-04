@@ -2,21 +2,18 @@ import { Link, useNavigate, useParams } from "react-router";
 import ReuseElementsInventory from "../reuse-elements-inventory/ReuseElementsInventory";
 import { useDeleteGame, useGetOneProject } from "../../api/projectsApi";
 import useAuth from "../../hooks/useAuth";
-// import { useGetAllElements } from "../../api/elementsApi";
+import { useGetAllElements } from "../../api/elementsApi";
 
 export default function ProjectDetails() {
     const navigate = useNavigate();
     // const { email, _id: userId } = useAuth();
     const { email } = useAuth();
 
-    // console.log(email);
-    
-
     const { projectId } = useParams();
     
     const { project } = useGetOneProject(projectId);
     const { remove } = useDeleteGame();
-    // const { elements } = useGetAllElements(projectId);
+    const { elements } = useGetAllElements(projectId);
 
     const projectDeleteClickHandler = async () => {
         const hasConfirm = confirm(`Are you sure you want to delete ${project.name}?`);
@@ -29,9 +26,9 @@ export default function ProjectDetails() {
         navigate('/projects')
     };
 
-    // const elementsAddHandler = (newElement) => {
-    //     // setElements(state => [...state, newElement])
-    // }
+    const elementsAddHandler = () => {
+        // setElements(state => [...state, newElement])
+    }
 
     //TODO Check if this is working properly.
     // const isOwner = userId === project._ownerId;
@@ -71,7 +68,7 @@ export default function ProjectDetails() {
                 </aside>
             </div>
 
-            {/* <ReuseElementsInventory user={email} projectId={projectId} elements={elements} onAddElement={elementsAddHandler} /> */}
+            <ReuseElementsInventory user={email} projectId={projectId} elements={elements} onAddElement={elementsAddHandler} />
 
         </section>
     )

@@ -14,16 +14,30 @@ export const useGetAllElements = (projectId) => {
         const searchParams = new URLSearchParams({
             where: `projectId="${projectId}"`
         });
-
-        console.log(`${baseUrl}?${searchParams.toString()}`);
     
         request.get(`${baseUrl}?${searchParams.toString()}`)
             .then(setElements)
 
-    }, [projectId])
+    }, [projectId]) //TODO Fix !!!
 
     return {
         elements
     }
 
+}
+
+export const useAddElement = () => {
+    const { request } = useAuth();
+
+    const add = (projectId, element) => {
+        const elementData = {
+            projectId,
+            element
+        }
+        return request.post(baseUrl, elementData);
+    }
+
+    return {
+        add,
+    }
 }

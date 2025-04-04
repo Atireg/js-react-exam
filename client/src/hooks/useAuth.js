@@ -6,19 +6,19 @@ export default function useAuth() {
     const authData = useContext(UserContext);
 
     const requestWrapper = (method, url, data, options = {}) => {
-        const authOption = {
+        const authOptions = {
             ...options,
             headers: {
                 'X-Authorization': authData.accessToken,
                 ...options.headers
             }
+        };
 
-        }
-        request.baseRequest(method, url, data, authData.accessToken ? authOption : options)
-    }
+        return request.baseRequest(method, url, data, authData.accessToken ? authOptions : options);
+    };
 
     return {
-        authData,
+        ...authData,
         userId: authData._id,
         isAuthenticated: !!authData.accessToken,
         request: {
@@ -28,4 +28,4 @@ export default function useAuth() {
             delete: requestWrapper.bind(null, 'DELETE'),
         }
     }
-}
+};

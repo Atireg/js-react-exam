@@ -1676,77 +1676,7 @@
                 }
             }
         },
-
-        projects: [
-            {
-                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
-                name: "New Project 1",
-                construction: "1702",
-                demolition: "2003",
-                location: "www",
-                imageUrl: "https://images.unsplash.com/photo-1701844279504-e3a974aaafb5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                description: "ddd",
-                _createdOn: 1743747612039,
-                _id: "c81eae26-ea28-440a-b768-077ce4c9da96"
-            },
-            {
-                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
-                name: "New Project 2",
-                construction: "1703",
-                demolition: "2004",
-                location: "sss",
-                imageUrl: "https://images.unsplash.com/photo-1534237710431-e2fc698436d0?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                description: "dddd",
-                _createdOn: 1743747639290,
-                _id: "79c07cfb-6ea1-4809-bc74-dc9bb2b7340c"
-            }
-        ],
-
-        elements: [
-            {
-                user: "admin@abv.bg",
-                projectId: "79c07cfb-6ea1-4809-bc74-dc9bb2b7340c",
-                elementData: {
-                    material: "Structural Timber",
-                    location: "South Wall",
-                    elementType: "Sparren",
-                    profile: "IPE 200",
-                    count: "3",
-                    lengthAxis: "3",
-                    comment: "xxx"
-                },
-                _id: "e36fc7e6-2e42-459a-a4ed-1705ccc41970"
-            },
-            {
-                user: "admin@abv.bg",
-                projectId: "79c07cfb-6ea1-4809-bc74-dc9bb2b7340c",
-                elementData: {
-                    material: "Structural Timber",
-                    location: "www",
-                    elementType: "eee",
-                    profile: "rrr",
-                    count: "4",
-                    lengthAxis: "4",
-                    comment: "fff"
-                },
-                _id: "07f2adb5-9dcb-423b-8001-dd6b646e5ab3"
-            },
-            {
-                user: "admin@abv.bg",
-                projectId: "79c07cfb-6ea1-4809-bc74-dc9bb2b7340c",
-                elementData: {
-                    material: "Structural Timber",
-                    location: "aa",
-                    elementType: "Sparren",
-                    profile: "IPE 200",
-                    count: "4",
-                    lengthAxis: "4",
-                    comment: "eee"
-                },
-                _id: "d020e4a2-665b-422b-bb17-549c2606ce86"
-            }
-        ]
-
+        
     };
     var settings = {
         identity: identity,

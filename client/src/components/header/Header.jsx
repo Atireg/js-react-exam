@@ -2,7 +2,8 @@ import { Link } from "react-router"
 import useAuth from "../../hooks/useAuth"
 
 export default function Header() {
-    const { authData, isAuthenticated } = useAuth();
+    // const { authData, isAuthenticated } = useAuth();
+    const { isAuthenticated } = useAuth();
 
     return (
         <header className="site-header">
@@ -21,7 +22,7 @@ export default function Header() {
                         (
                             <div id="user">
                                 <li>
-                                    <Link to="/logout">Logout { authData.email }</Link>
+                                    <Link to="/logout">Logout </Link>
                                 </li>
                             </div>
                         )

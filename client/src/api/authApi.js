@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect } from "react";
 import request from "../utils/request";
 import { UserContext } from "../contexts/UserContext";
 
@@ -8,20 +8,20 @@ const baseUrl = 'http://localhost:3030/users'
 
 // THIS IS A "ON EVENT" HOOK
 export const useLogin = () => {
-    const abortRef = useRef(new AbortController()); // using useRef bcs it does not rerender
+    // const abortRef = useRef(new AbortController()); // using useRef bcs it does not rerender
 
     const login = (email, password) => 
         request.post(
             `${baseUrl}/login`,
             { email, password },
-            { signal: abortRef.current.signal }
+            // { signal: abortRef.current.signal }
         );
 
-    useEffect(() => {
-        const abortController = abortRef.current;
+    // useEffect(() => {
+    //     const abortController = abortRef.current;
 
-        return () => abortController.abort();
-    }, []);
+    //     return () => abortController.abort();
+    // }, []);
 
     return {
         login,
@@ -30,20 +30,20 @@ export const useLogin = () => {
 
 // THIS IS A "ON EVENT" HOOK
 export const useRegister = () => {
-    const abortRef = useRef(new AbortController());
+    // const abortRef = useRef(new AbortController());
 
     const  register = (email, password) =>
         request.post(
         `${baseUrl}/register`,
         { email, password },
-        { signal: abortRef.current.signal }
+        // { signal: abortRef.current.signal }
     );
 
-    useEffect(() => {
-        const abortController = abortRef.current;
+    // useEffect(() => {
+    //     const abortController = abortRef.current;
 
-        return () => abortController.abort();
-    }, []);
+    //     return () => abortController.abort();
+    // }, []);
 
     return {
         register,
