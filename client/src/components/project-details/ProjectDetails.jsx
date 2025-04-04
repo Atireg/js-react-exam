@@ -13,7 +13,7 @@ export default function ProjectDetails() {
     const { project } = useGetOneProject(projectId);
     const { remove } = useDeleteGame();
     const { add } = useAddElement();
-    const { elements, setElements } = useGetAllElements(projectId);
+    const { elements, addElement } = useGetAllElements(projectId);
     const [ optimisticElements, setOptimisticElements ] = useOptimistic(elements, (state, newComment) => [...state, newComment]);
 
     const projectDeleteClickHandler = async () => {
@@ -37,15 +37,15 @@ export default function ProjectDetails() {
             pending: true,
         };
 
-        // setOptimisticElements((optimisticState) => [...optimisticState, newOptimisticElement]);
         setOptimisticElements(newOptimisticElement);
+
 
         // SERVER UPDATE
         //TODO add try/catch
         const newElementServer = await add(projectId, element);
 
         // ACTUAL UPDATE
-        setElements(state => [...state, newElementServer]);
+        addElement(newElementServer);
     }
 
     //TODO Check if this is working properly.

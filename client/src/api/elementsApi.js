@@ -1,14 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 import useAuth from "../hooks/useAuth";
 
 const baseUrl = 'http://localhost:3030/data/elements';
 
+function elementsReducer(state, action) {
+    switch (action.type) {
+        case 'GET_ALL':
+            return action.payload;
+        case 'ADD_COMMENT':
+            return [...state, action.payload]
+        default:
+            return state;
+    }
+}
+
 // THIS IS A "ON MOUNT" HOOK
 export const useGetAllElements = (projectId) => {
     const { request } = useAuth();
-    const [ elements, setElements ] = useState([]);
-
-    // console.log(request);
+    // const [ elements, setElements ] = useState([]);
+    const [ elements, dispatch ] = useReducer(elementsReducer, [])
 
     useEffect(() => {
         const searchParams = new URLSearchParams({
@@ -16,17 +26,18 @@ export const useGetAllElements = (projectId) => {
         });
     
         request.get(`${baseUrl}?${searchParams.toString()}`)
-            .then(setElements)
+            .then(result => dispatch({type:'GET_ALL', payload: result}))
 
     }, [projectId]) //TODO Fix !!!
 
     return {
         elements,
-        setElements
+        addElement: (commentData) => dispatch({type: 'ADD_COMMENT', payload: commentData})
     }
 
 }
 
+// THIS IS A "ON EVENT" HOOK
 export const useAddElement = () => {
     const { request } = useAuth();
 
