@@ -15,6 +15,7 @@ import ProjectAdd from './components/project-add/ProjectAdd';
 import ProjectEdit from './components/project-edit/ProjectEdit';
 
 import './App.css';
+import GuestGuard from './guards/GuestGuard';
 
 function App() {
 	return (
@@ -25,16 +26,18 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Home />}/>
 				<Route path='/projects' element={<ProjectsCatalog />}/>
+				<Route path='/projects/:projectId/details' element={<ProjectDetails />}/>
 				<Route element={<AuthGuard />}>
 					<Route path='/projects/add' element={<ProjectAdd />} />
 					<Route path='/projects/:projectId/edit' element={<ProjectEdit />}/>
 					<Route path='/logout' element={<Logout />}/>
 				</Route>
-				<Route path='/projects/:projectId/details' element={<ProjectDetails />}/>
-				<Route path='/login' element={<Login />}/>
-				<Route path='/register' element={<Register />}/>
+				<Route element={<GuestGuard />}>
+					<Route path='/login' element={<Login />}/>
+					<Route path='/register' element={<Register />}/>
+				</Route>
 			</Routes>
-
+			
 			<Footer />
 		</>
 		</UserProvider>

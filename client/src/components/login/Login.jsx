@@ -15,7 +15,9 @@ export default function Login() {
         
         userLoginHandler(authData);
 
-        navigate('/projects');
+        // navigate('/projects');
+
+        navigate(-1);
 
         //TODO Check the server --> do not return the password
 
