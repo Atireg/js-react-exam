@@ -2,18 +2,16 @@ import { Link, useNavigate, useParams } from "react-router";
 import ReuseElementsInventory from "../reuse-elements-inventory/ReuseElementsInventory";
 import { useDeleteGame, useGetOneProject } from "../../api/projectsApi";
 import useAuth from "../../hooks/useAuth";
-import { useGetAllElements } from "../../api/elementsApi";
+import { useAddElement, useGetAllElements } from "../../api/elementsApi";
 
 export default function ProjectDetails() {
     const navigate = useNavigate();
-    // const { email, _id: userId } = useAuth();
-    const { email } = useAuth();
-
+    const { email, _id: userId } = useAuth();
     const { projectId } = useParams();
-    
     const { project } = useGetOneProject(projectId);
     const { remove } = useDeleteGame();
     const { elements } = useGetAllElements(projectId);
+    const { add } = useAddElement();
 
     const projectDeleteClickHandler = async () => {
         const hasConfirm = confirm(`Are you sure you want to delete ${project.name}?`);
@@ -26,12 +24,13 @@ export default function ProjectDetails() {
         navigate('/projects')
     };
 
-    const elementsAddHandler = () => {
-        // setElements(state => [...state, newElement])
+    const elementsAddHandler = async (element) => {
+
+        await add(projectId, element)
     }
 
     //TODO Check if this is working properly.
-    // const isOwner = userId === project._ownerId;
+    const isOwner = userId === project._ownerId;
 
     return (
         <section>
@@ -50,7 +49,7 @@ export default function ProjectDetails() {
                         <p>{project.description}</p>
                     </section>
 
-                    {/* {isOwner && */}
+                    {isOwner &&
                         <section className="buttons">
                             <Link to={`/projects/${projectId}/edit`} className="button">
                                 <button
@@ -64,7 +63,7 @@ export default function ProjectDetails() {
                                 Delete Project
                             </button>
                         </section>
-                    {/* } */}
+                     }
                 </aside>
             </div>
 

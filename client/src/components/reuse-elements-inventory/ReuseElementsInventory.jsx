@@ -1,56 +1,55 @@
 import { Link } from "react-router";
-import elementsService from "../../services/elementsService";
 import * as XLSX from "xlsx"
-import { useState } from "react";
+// import { useState } from "react";
 
 export default function ReuseElementsInventory({
     user,
-    projectId,
     elements,
     onAddElement
 }) {
-    const [jsonData, setJsonData] = useState(null);
+    console.log(elements);
+    
+    // const [jsonData, setJsonData] = useState(null);
 
     const addNewElementAction = async (formData) => {
-        const elementData = Object.fromEntries(formData);
-        const addedElement = await elementsService.add(user, projectId, elementData);
+        const element = Object.fromEntries(formData);
 
-        onAddElement(addedElement);
+        onAddElement(element);
     }
 
-    const handleFileUpload = (event) => {
-        const file = event.target.files[0];
+    // const handleFileUpload = (event) => {
+    //     const file = event.target.files[0];
 
-        if (file) {
-            const reader = new FileReader();
+    //     if (file) {
+    //         const reader = new FileReader();
 
-            reader.onload = (e) => {
-                const data = new Uint8Array(e.target.result);
-                const workbook = XLSX.read(data, { type: "array" });
+    //         reader.onload = (e) => {
+    //             const data = new Uint8Array(e.target.result);
+    //             const workbook = XLSX.read(data, { type: "array" });
 
-                const sheetName = workbook.SheetNames[0]; // Get first sheet
-                const sheet = workbook.Sheets[sheetName];
+    //             const sheetName = workbook.SheetNames[0]; // Get first sheet
+    //             const sheet = workbook.Sheets[sheetName];
 
-                let jsonOutput = XLSX.utils.sheet_to_json(sheet, { header: 1 }); // Read as an array of rows
+    //             let jsonOutput = XLSX.utils.sheet_to_json(sheet, { header: 1 }); // Read as an array of rows
 
-                // Extract column headers (first row)
-                const headers = jsonOutput[0];
+    //             // Extract column headers (first row)
+    //             const headers = jsonOutput[0];
 
-                // Convert rows into JSON objects
-                const formattedData = jsonOutput.slice(1).map((row) => {
-                    let rowObject = { _id: crypto.randomUUID() }; // Unique ID for each row
-                    headers.forEach((header, index) => {
-                        rowObject[header] = row[index] || ""; // Assign values, handling empty cells
-                    });
-                    return rowObject;
-                });
+    //             // Convert rows into JSON objects
+    //             const formattedData = jsonOutput.slice(1).map((row) => {
+    //                 let rowObject = { _id: crypto.randomUUID() }; // Unique ID for each row
+    //                 headers.forEach((header, index) => {
+    //                     rowObject[header] = row[index] || ""; // Assign values, handling empty cells
+    //                 });
+    //                 return rowObject;
+    //             });
 
-                setJsonData(formattedData);
-            };
+    //             setJsonData(formattedData);
+    //         };
 
-            reader.readAsArrayBuffer(file);
-        }
-    };
+    //         reader.readAsArrayBuffer(file);
+    //     }
+    // };
 
     return (
         <section className="reuse-elements-inventory">
@@ -58,24 +57,26 @@ export default function ReuseElementsInventory({
                 <h2>Harvested Building Elements</h2>
             </section>
 
-            <section className="structural-timber">
+            {/* <section className="structural-timber">
                 <h3>Structural Timber:</h3>
             </section>
 
             <section className="structural-steel">
-                <h3>Structural Steel: </h3>
+                <h3>Structural Steel: </h3> */}
                 
                 {/* //TODO take this out and solve with Context */}
                 <div className="inventory-table-container">
                     <table>
                         <thead>
                             <tr>
-                                <th>Location</th>
+                                <th>Material</th>
                                 <th>Element Type</th>
                                 <th>Profile</th>
                                 <th>Count</th>
                                 <th>Length Axis</th>
+                                <th>Location</th>
                                 <th>Comment</th>
+                                <th>Created by</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -83,12 +84,14 @@ export default function ReuseElementsInventory({
                                 ?
                                 elements.map(element => (
                                     <tr key={element._id}>
-                                        <td>{element.elementData.location}</td>
-                                        <td>{element.elementData.elementType}</td>
-                                        <td>{element.elementData.profile}</td>
-                                        <td>{element.elementData.count}</td>
-                                        <td>{element.elementData.lengthAxis}</td>
-                                        <td>{element.elementData.comment}</td>
+                                        <td>{element.element.material}</td>
+                                        <td>{element.element.elementType}</td>
+                                        <td>{element.element.profile}</td>
+                                        <td>{element.element.count}</td>
+                                        <td>{element.element.lengthAxis}</td>
+                                        <td>{element.element.location}</td>
+                                        <td>{element.element.comment}</td>
+                                        <td>{element._ownerId}</td>
                                     </tr>
                                 ))
                                 :
@@ -102,11 +105,11 @@ export default function ReuseElementsInventory({
                 </div>
 
                 
-            </section>
+            {/* </section> */}
 
-            <section className="glass">
+            {/* <section className="glass">
                 <h3>Glass:</h3>
-            </section>
+            </section> */}
             
             {/* //TODO take this out and solve with Context */}
             {user
@@ -148,14 +151,14 @@ export default function ReuseElementsInventory({
 
                             <button className="button" type="submit">Add Element</button>
                         </form>
-                        <p>or</p>
+                        {/* <p>or</p>
                         <p>Upload an Excel file</p>
                         <input type="file" accept=".xlsx, .xls, .csv" onChange={handleFileUpload} />
                         {jsonData && (
                             <pre style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
                                 {JSON.stringify(jsonData, null, 2)}
                             </pre>
-                        )}
+                        )} */}
                     </div>
                     :
                     <Link to="/login">
