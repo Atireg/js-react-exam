@@ -16,6 +16,9 @@ export default function ProjectDetails() {
     const { elements, addElement } = useGetAllElements(projectId);
     const [ optimisticElements, setOptimisticElements ] = useOptimistic(elements, (state, newComment) => [...state, newComment]);
 
+    console.log(elements);
+    
+
     const projectDeleteClickHandler = async () => {
         const hasConfirm = confirm(`Are you sure you want to delete ${project.name}?`);
 
@@ -35,6 +38,9 @@ export default function ProjectDetails() {
             projectId,
             element,
             pending: true,
+            author: {
+                email,
+            }
         };
 
         setOptimisticElements(newOptimisticElement);
@@ -45,7 +51,7 @@ export default function ProjectDetails() {
         const newElementServer = await add(projectId, element);
 
         // ACTUAL UPDATE
-        addElement(newElementServer);
+        addElement({...newElementServer, author: { email }});
     }
 
     //TODO Check if this is working properly.

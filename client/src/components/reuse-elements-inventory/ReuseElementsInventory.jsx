@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import * as XLSX from "xlsx"
-import styles from './ElementsShow.module.css'
+import styles from './ReuseElementsInventory.module.css'
 // import { useState } from "react";
 
 export default function ReuseElementsInventory({
@@ -92,7 +92,7 @@ export default function ReuseElementsInventory({
                                         <td>{element.element.lengthAxis}</td>
                                         <td>{element.element.location}</td>
                                         <td>{element.element.comment}</td>
-                                        <td>{element._ownerId}</td>
+                                        <td>{element.author.email}</td>
                                     </tr>
                                 ))
                                 :

@@ -22,7 +22,8 @@ export const useGetAllElements = (projectId) => {
 
     useEffect(() => {
         const searchParams = new URLSearchParams({
-            where: `projectId="${projectId}"`
+            where: `projectId="${projectId}"`,
+            load: `author=_ownerId:users` // using relations
         });
     
         request.get(`${baseUrl}?${searchParams.toString()}`)
