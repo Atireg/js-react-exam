@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { Routes, Route } from 'react-router';
-
 import { UserContext } from './contexts/UserContext';
 
 import Header from './components/header/Header';
@@ -13,11 +11,15 @@ import ProjectsCatalog from './components/projects-catalog/ProjectsCatalog';
 import ProjectDetails from './components/project-details/ProjectDetails';
 import ProjectAdd from './components/project-add/ProjectAdd';
 import ProjectEdit from './components/project-edit/ProjectEdit';
+import usePersistedState from './hooks/usePersistedState';
 
 import './App.css';
 
 function App() {
-	const [authData, setAuthData] = useState({});
+	const [ authData, setAuthData ] = usePersistedState('auth', {});
+
+	console.log(authData);
+	
 
 	const userLoginHandler = (resultData) => {
 		setAuthData(resultData);		

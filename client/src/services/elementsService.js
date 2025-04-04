@@ -2,6 +2,8 @@ import request from "../utils/request";
 
 const baseUrl = 'http://localhost:3030/jsonstore/elements';
 
+//TODO replace this entire logic with hooks
+
 export default {
     async getAll(projectId) {
         const elements = await request.get(baseUrl);

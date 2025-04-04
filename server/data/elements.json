@@ -1,6 +1,6 @@
-{
-    "e36fc7e6-2e42-459a-a4ed-1705ccc41970": {
-        "user": "geri@abv.bg",
+[
+    {
+        "user": "admin@abv.bg",
         "projectId": "36d1d8e0-b5ba-40be-860b-e5d82a421afe",
         "elementData": {
             "material": "Structural Timber",
@@ -13,7 +13,7 @@
         },
         "_id": "e36fc7e6-2e42-459a-a4ed-1705ccc41970"
     },
-    "07f2adb5-9dcb-423b-8001-dd6b646e5ab3": {
+    {
         "user": "geri@abv.bg",
         "projectId": "36d1d8e0-b5ba-40be-860b-e5d82a421afe",
         "elementData": {
@@ -27,8 +27,8 @@
         },
         "_id": "07f2adb5-9dcb-423b-8001-dd6b646e5ab3"
     },
-    "d020e4a2-665b-422b-bb17-549c2606ce86": {
-        "user": "geri@abv.bg",
+    {
+        "user": "admin@abv.bg",
         "projectId": "f907c703-aef7-438b-920e-1b7d78f4d161",
         "elementData": {
             "material": "Structural Timber",
@@ -41,4 +41,4 @@
         },
         "_id": "d020e4a2-665b-422b-bb17-549c2606ce86"
     }
-}
+]

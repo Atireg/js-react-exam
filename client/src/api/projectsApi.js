@@ -16,8 +16,32 @@ export const useGetAllProjects = () => {
     return {
         projects,
     }
+};
+
+// THIS IS A "ON MOUNT" HOOK
+
+export const useLatestProjects = () => {
+    const [ latestProjects, setLatestsProjects ] = useState([]);
+
+    const PAGE_SIZE = 3;
+    
+    useEffect(() => {
+        const searchParams = new URLSearchParams({
+            sortBy: '_createdOn desc',
+            pageSize: PAGE_SIZE,
+            select: '_id,name,construction,demolition'
+        })
+
+        request.get(`${baseUrl}?${searchParams.toString()}`) //TODO Error handling for code: 400 (undefined)
+            .then(setLatestsProjects)
+    }, [])
+
+    return {
+        latestProjects,
+    }
 }
 
+// THIS IS A "ON EVENT" HOOK
 export const useGetOneProject = (projectId) => {
     const [ project, setProject ] = useState({});
 
@@ -30,7 +54,7 @@ export const useGetOneProject = (projectId) => {
         project,
     }
 
-}
+};
 
 // THIS IS A "ON EVENT" HOOK
 export const useAddProject = () => {
@@ -42,7 +66,7 @@ export const useAddProject = () => {
     return {
         add,
     }
-}
+};
 
 // THIS IS A "ON EVENT" HOOK
 export const useEditProject = () => {
@@ -54,7 +78,8 @@ export const useEditProject = () => {
     return {
         edit
     }
-}
+};
+
 // THIS IS A "ON EVENT" HOOK
 export const useDeleteGame = () => {
     const { request } = useAuth();
@@ -66,4 +91,5 @@ export const useDeleteGame = () => {
     return {
         remove,
     }
-}
+};
+
