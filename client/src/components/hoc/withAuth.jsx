@@ -1,0 +1,12 @@
+import useAuth from "../../hooks/useAuth"
+
+export default function withAuth(Component){
+    const WrapperComponent = (props) => {
+        const authContext = useAuth();
+
+        console.log(Component);
+        
+        return <Component {...props} auth={authContext} />
+    }
+    return WrapperComponent;
+}

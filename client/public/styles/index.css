@@ -108,7 +108,7 @@ button:disabled {
 main {
     flex: 0 0 60%;
 }
-    
+
 aside {
     display: flex;
     flex-direction: column;

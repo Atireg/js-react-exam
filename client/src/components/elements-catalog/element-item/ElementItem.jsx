@@ -1,8 +1,9 @@
 import { Component } from 'react'
-import request from '../../../utils/request';
+// import request from '../../../utils/request';
+import withAuth from '../../hoc/withAuth';
 
 const elementsUrl = 'http://localhost:3030/data/elements'
-export default class ElementItem extends Component {
+class ElementItem extends Component {
     constructor(props) {
         super(props)
 
@@ -10,7 +11,8 @@ export default class ElementItem extends Component {
     }
 
     async addToMyListHandler(){
-        await request.get(`${elementsUrl}/${this.props.id}`);
+        // await request.get(`${elementsUrl}/${this.props.id}`);
+        await this.props.auth.request.get(`${elementsUrl}/${this.props.id}`);
 
         this.props.onSend(this.props.id)
     }
@@ -26,3 +28,7 @@ export default class ElementItem extends Component {
         )
     }
 }
+
+const ElementItemWithAuth = withAuth(ElementItem);
+
+export default ElementItemWithAuth

@@ -24,6 +24,10 @@ export default class ElementsList extends Component {
     }
 
     render() {
+        // if(Math.random() < 0.5){
+        //     throw new Error('Rendering bug!')
+        // }
+
         return (
             <ul className='elements-catalog'>
                 {this.state.elements.map(element =>
