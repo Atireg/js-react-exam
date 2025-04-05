@@ -8,7 +8,7 @@ export default function ReuseElementsInventory({
     elements,
     onAddElement
 }) {
- 
+
     // const handleFileUpload = (event) => {
     //     const file = event.target.files[0];
 
@@ -49,114 +49,181 @@ export default function ReuseElementsInventory({
                 <h2>Harvested Building Elements</h2>
             </section>
 
-            {/* <section className="structural-timber">
-                <h3>Structural Timber:</h3>
-            </section>
-
-            <section className="structural-steel">
-                <h3>Structural Steel: </h3> */}
-                
-                {/* //TODO take this out and solve with Context */}
-                <div className="inventory-table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Material</th>
-                                <th>Element Type</th>
-                                <th>Profile</th>
-                                <th>Count</th>
-                                <th>Length Axis</th>
-                                <th>Location</th>
-                                <th>Comment</th>
-                                <th>Added by</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {elements.length > 0
-                                ?
-                                elements.map(element => (
-                                    <tr key={element._id} className="element" style={{color: element.pending ? 'lightgray' : ''}}>
-                                        <td>{element.element.material}</td>
-                                        <td>{element.element.elementType}</td>
-                                        <td>{element.element.profile}</td>
-                                        <td>{element.element.count}</td>
-                                        <td>{element.element.lengthAxis}</td>
-                                        <td>{element.element.location}</td>
-                                        <td>{element.element.comment}</td>
-                                        <td>{element.author.email}</td>
-                                    </tr>
-                                ))
-                                :
-                                <tr>
-                                    <td>No data recorded</td>
+            <div className="inventory-table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tragend</th>
+                            <th>Material</th>
+                            <th>Funktion</th>
+                            <th>Menge</th>
+                            <th>Werkstoff</th>
+                            <th>Materialgüte</th>
+                            <th>Länge (m)</th>
+                            <th>Profil</th>
+                            <th>Zustand</th>
+                            <th>Verbindung</th>
+                            <th>Baujahr</th>
+                            <th>Kommentar</th>
+                            <th>Hinzugefügt von</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {elements?.length > 0 ? (
+                            elements.map(element => (
+                                <tr key={element._id} className="element" style={{ color: element.pending ? 'lightgray' : '' }}>
+                                    <td>{element.element.loadBearing ? 'Ja' : 'Nein'}</td>
+                                    <td>{element.element.material}</td>
+                                    <td>{element.element.function}</td>
+                                    <td>{element.element.quantity}</td>
+                                    <td>{element.element.specification}</td>
+                                    <td>{element.element.quality}</td>
+                                    <td>{element.element.length}</td>
+                                    <td>{element.element.profileType}</td>
+                                    <td>{element.element.condition}</td>
+                                    <td>{element.element.connectionType}</td>
+                                    <td>{element.element.manufacturingYear}</td>
+                                    <td>{element.element.comment}</td>
+                                    <td>{element.author.email}</td>
                                 </tr>
-                            }
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="13">No data available</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
 
-                        </tbody>
-                    </table>
+            {user
+                ?
+                <div>
+                    <form action={onAddElement}>
+                        <div className="input-group">
+                            <label htmlFor="loadBearing">Tragend</label>
+                            <select id="loadBearing" name="loadBearing" required>
+                                <option value="">Bitte wählen</option>
+                                <option value="Ja">Ja</option>
+                                <option value="Nein">Nein</option>
+                            </select>
+                        </div>
+
+                        <div className="input-group">
+                            <label htmlFor="material">Material</label>
+                            <select id="material" name="material" required>
+                                <option value="">Bitte wählen</option>
+                                <option value="Holz">Holz</option>
+                                <option value="Stahl">Stahl</option>
+                                <option value="Stahlbeton">Stahlbeton</option>
+                                <option value="Glas">Glas</option>
+                                <option value="Anderes">Anderes</option>
+                            </select>
+                        </div>
+
+                        <div className="input-group">
+                            <label htmlFor="function">Funktion</label>
+                            <select id="function" name="function" required>
+                                <option value="">Bitte wählen</option>
+                                <option value="Stütze">Stütze</option>
+                                <option value="Träger">Träger</option>
+                                <option value="X">Keine Angabe</option>
+                            </select>
+                        </div>
+
+                        <div className="input-group">
+                            <label htmlFor="quantity">Menge</label>
+                            <input type="number" id="quantity" name="quantity" min="1" required />
+                        </div>
+
+                        <div className="input-group">
+                            <label htmlFor="specification">Werkstoff</label>
+                            <select id="specification" name="specification" required>
+                                <option value="">Bitte wählen</option>
+                                <option value="Fertigteil">Fertigteil</option>
+                                <option value="Halbfertigteil">Halbfertigteil</option>
+                                <option value="KVH">KVH</option>
+                                <option value="BSH">BSH</option>
+                                <option value="BSP">BSP</option>
+                                <option value="X">Keine Angabe</option>
+                            </select>
+                        </div>
+
+                        <div className="input-group">
+                            <label htmlFor="quality">Materialgüte</label>
+                            <select id="quality" name="quality" required>
+                                <option value="">Bitte wählen</option>
+                                <option value="C24">C24</option>
+                                <option value="GL24h">GL24h</option>
+                                <option value="C16">C16</option>
+                                <option value="S235">S235</option>
+                                <option value="S335">S335</option>
+                                <option value="X">Keine Angabe</option>
+                            </select>
+                        </div>
+
+                        <div className="input-group">
+                            <label htmlFor="length">Länge (m)</label>
+                            <input type="number" id="length" name="length" step="0.5" min="0.5" required />
+                        </div>
+
+                        <div className="input-group">
+                            <label htmlFor="profileType">Profil</label>
+                            <select id="profileType" name="profileType" required>
+                                <option value="">Bitte wählen</option>
+                                <option value="IPE100">IPE100</option>
+                                <option value="Rundprofil">Rundprofil</option>
+                                <option value="Rechteckprofil">Rechteckprofil</option>
+                                <option value="Walzprofil">Walzprofil</option>
+                                <option value="X">Keine Angabe</option>
+                            </select>
+                        </div>
+
+                        <div className="input-group">
+                            <label htmlFor="condition">Zustand</label>
+                            <select id="condition" name="condition" required>
+                                <option value="">Bitte wählen</option>
+                                <option value="Ausreichend">Ausreichend</option>
+                                <option value="Gut">Gut</option>
+                                <option value="Sehr Gut">Sehr Gut</option>
+                                <option value="X">Keine Angabe</option>
+                            </select>
+                        </div>
+                        
+                        <div className="input-group">
+                            <label htmlFor="connectionType">Verbindung</label>
+                            <select id="connectionType" name="connectionType" required>
+                                <option value="">Bitte wählen</option>
+                                <option value="Geschweißt">Geschweißt</option>
+                                <option value="Geschraubt ">Geschraubt </option>
+                                <option value="GeGossen">Gegossen</option>
+                                <option value="Eingehängt">Eingehängt</option>
+                                <option value="Vernagelt">Vernagelt</option>
+                                <option value="Verkeilt">Verkeilt</option>
+                                <option value="X">Keine Angabe</option>
+                            </select>
+                        </div>
+
+                        <div className="input-group">
+                            <label htmlFor="manufacturingYear">Baujahr</label>
+                            <input type="number" id="manufacturingYear" min="1920" name="manufacturingYear" />
+                        </div>
+
+
+                        <div className="input-group">
+                            <label htmlFor="comment">Kommentar</label>
+                            <textarea id="comment" name="comment" />
+                        </div>
+
+                        <button className="button" type="submit">Add Component</button>
+                    </form>
                 </div>
 
-                
-            {/* </section> */}
-
-            {/* <section className="glass">
-                <h3>Glass:</h3>
-            </section> */}
-            
-            {/* //TODO take this out and solve with Context */}
-            {user
-                    ?
-                    <div>
-                        <form action={onAddElement}>
-                            <div className="input-group">
-                                <select id="material" name="material" required>
-                                    <option value="">Select material</option>
-                                    <option value="Structural Timber">Structural Timber</option>
-                                    <option value="Structural Steel">Structural Steel</option>
-                                    <option value="Glass">Glass</option>
-                                </select>
-                            </div>
-                            <div className="input-group">
-                                <label htmlFor="location">Location</label>
-                                <input type="text" id="location" name="location" required />
-                            </div>
-                            <div className="input-group">
-                                <label htmlFor="elementType">Element Type</label>
-                                <input type="text" id="elementType" name="elementType" required />
-                            </div>
-                            <div className="input-group">
-                                <label htmlFor="profile">Profile</label>
-                                <input type="text" id="profile" name="profile" required />
-                            </div>
-                            <div className="input-group">
-                                <label htmlFor="count">Count</label>
-                                <input type="number" id="count" name="count" required />
-                            </div>
-                            <div className="input-group">
-                                <label htmlFor="lengthAxis">Length Axis</label>
-                                <input type="number" id="lengthAxis" name="lengthAxis" required />
-                            </div>
-                            <div className="input-group">
-                                <label htmlFor="comment">Comment</label>
-                                <textarea type="text" id="comment" name="comment" required />
-                            </div>
-
-                            <button className="button" type="submit">Add Element</button>
-                        </form>
-                        {/* <p>or</p>
-                        <p>Upload an Excel file</p>
-                        <input type="file" accept=".xlsx, .xls, .csv" onChange={handleFileUpload} />
-                        {jsonData && (
-                            <pre style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
-                                {JSON.stringify(jsonData, null, 2)}
-                            </pre>
-                        )} */}
-                    </div>
-                    :
-                    <Link to="/login">
-                        <p>Login to add elements.</p>
-                    </Link>
-                }
+                :
+                <Link to="/login">
+                    <p>Login to add elements.</p>
+                </Link>
+            }
 
         </section>
     )

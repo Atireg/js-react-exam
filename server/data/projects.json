@@ -1,24 +1,14 @@
 [
     {
-        "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
-        "name": "New Project 1",
-        "construction": "1702",
-        "demolition": "2003",
-        "location": "www",
+        "name": "Kittler Schuler",
+        "construction": "1950",
+        "demolition": "2027",
+        "location": "Stuttgart",
         "imageUrl": "https://images.unsplash.com/photo-1701844279504-e3a974aaafb5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "description": "ddd",
-        "_createdOn": 1743747612039,
-        "_id": "c81eae26-ea28-440a-b768-077ce4c9da96"
-    },
-    {
-        "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
-        "name": "New Project 2",
-        "construction": "1703",
-        "demolition": "2004",
-        "location": "sss",
-        "imageUrl": "https://images.unsplash.com/photo-1534237710431-e2fc698436d0?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "description": "dddd",
-        "_createdOn": 1743747639290,
-        "_id": "79c07cfb-6ea1-4809-bc74-dc9bb2b7340c"
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum soluta nam magnam beatae. Velit nulla itaque odit rerum quo in pariatur doloremque assumenda quae sit ratione voluptatibus rem non animi iste ipsa, sint deserunt incidunt, magnam eos fugiat tempore iusto! Ullam deserunt magni placeat, odit, odio dicta quidem sapiente ipsam ab, neque nemo facilis nesciunt. Sequi reiciendis suscipit esse maiores culpa repellat. Accusantium, pariatur itaque! Cupiditate, atque repellat nesciunt, beatae, doloremque animi reprehenderit soluta exercitationem officia officiis dignissimos non quidem at cumque alias reiciendis quaerat enim harum voluptatem ab tenetur magni. Optio iste nulla quam voluptates laboriosam veniam pariatur? ",
+        "_id": "df917370-5f9d-4e59-b045-727c3c4f659b",
+        "_createdOn": 1743857002141,
+        "_ownerId": "160796e9-76f7-45fd-91c2-ef0e50f26057",
+        "_updatedOn": 1743857026282
     }
 ]

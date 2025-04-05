@@ -19,7 +19,6 @@ export default function Register(){
         const authData = await register(values.email, values.password);
 
         //TODO Add error handling logic --> if the user already exists
-        // console.log(authData);
         
         userLoginHandler(authData);
 

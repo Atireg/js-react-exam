@@ -9,8 +9,6 @@ export default function ProjectsCatalogItem({
     imageUrl
 }) {
 
-    // console.log(_id);
-
     return (
         <li className="gallery-img">
             <figure>

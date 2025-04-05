@@ -1,44 +1,62 @@
 [
     {
-        "user": "admin@abv.bg",
-        "projectId": "36d1d8e0-b5ba-40be-860b-e5d82a421afe",
-        "elementData": {
-            "material": "Structural Timber",
-            "location": "South Wall",
-            "elementType": "Sparren",
-            "profile": "IPE 200",
-            "count": "3",
-            "lengthAxis": "3",
+        "_ownerId": "160796e9-76f7-45fd-91c2-ef0e50f26057",
+        "projectId": "df917370-5f9d-4e59-b045-727c3c4f659b",
+        "element": {
+            "loadBearing": "true",
+            "material": "Holz",
+            "function": "Stütze",
+            "quantity": "6",
+            "specification": "KVH",
+            "quality": "C24",
+            "length": "0.5",
+            "profileType": "Rechteckprofil",
+            "condition": "Sehr Gut",
+            "connectionType": "Vernagelt",
+            "manufacturingYear": "1924",
+            "comment": "ssss"
+        },
+        "_createdOn": 1743857193205,
+        "_id": "500b3e76-30aa-4bc5-b460-3b7018cd0041"
+    },
+    {
+        "_ownerId": "160796e9-76f7-45fd-91c2-ef0e50f26057",
+        "projectId": "df917370-5f9d-4e59-b045-727c3c4f659b",
+        "element": {
+            "loadBearing": "true",
+            "material": "Stahl",
+            "function": "Stahl",
+            "quantity": "6",
+            "specification": "Fertigteil",
+            "quality": "S235",
+            "length": "1.5",
+            "profileType": "Rundprofil",
+            "condition": "Ausreichend",
+            "connectionType": "Geschweißt",
+            "manufacturingYear": "1950",
+            "comment": "xxxx"
+        },
+        "_createdOn": 1743857236565,
+        "_id": "ad3190ca-a217-4373-bafa-521dd2ac8d56"
+    },
+    {
+        "_ownerId": "160796e9-76f7-45fd-91c2-ef0e50f26057",
+        "projectId": "df917370-5f9d-4e59-b045-727c3c4f659b",
+        "element": {
+            "loadBearing": "false",
+            "material": "Glas",
+            "function": "X",
+            "quantity": "5",
+            "specification": "X",
+            "quality": "X",
+            "length": "2.5",
+            "profileType": "X",
+            "condition": "Gut",
+            "connectionType": "X",
+            "manufacturingYear": "1950",
             "comment": "xxx"
         },
-        "_id": "e36fc7e6-2e42-459a-a4ed-1705ccc41970"
-    },
-    {
-        "user": "geri@abv.bg",
-        "projectId": "36d1d8e0-b5ba-40be-860b-e5d82a421afe",
-        "elementData": {
-            "material": "Structural Timber",
-            "location": "www",
-            "elementType": "eee",
-            "profile": "rrr",
-            "count": "4",
-            "lengthAxis": "4",
-            "comment": "fff"
-        },
-        "_id": "07f2adb5-9dcb-423b-8001-dd6b646e5ab3"
-    },
-    {
-        "user": "admin@abv.bg",
-        "projectId": "f907c703-aef7-438b-920e-1b7d78f4d161",
-        "elementData": {
-            "material": "Structural Timber",
-            "location": "aa",
-            "elementType": "Sparren",
-            "profile": "IPE 200",
-            "count": "4",
-            "lengthAxis": "4",
-            "comment": "eee"
-        },
-        "_id": "d020e4a2-665b-422b-bb17-549c2606ce86"
+        "_createdOn": 1743857881275,
+        "_id": "cf9845ef-55dc-4704-b8a5-32e153d46fad"
     }
 ]

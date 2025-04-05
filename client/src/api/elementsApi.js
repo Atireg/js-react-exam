@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import useAuth from "../hooks/useAuth";
 
 const baseUrl = 'http://localhost:3030/data/elements';
@@ -35,22 +35,42 @@ export const useGetAllElements = (projectId) => {
         elements,
         addElement: (commentData) => dispatch({type: 'ADD_COMMENT', payload: commentData})
     }
-
 }
 
 // THIS IS A "ON EVENT" HOOK
 export const useAddElement = () => {
     const { request } = useAuth();
 
-    const add = (projectId, element) => {
+    const add = (projectId, material, element) => {
+
         const elementData = {
             projectId,
+            material,
             element
         }
+
         return request.post(baseUrl, elementData);
     }
 
     return {
         add,
+    }
+}
+
+export const useSearchElements = (searchParam) => {
+    const { request } = useAuth();
+    const [ elements, setElements ] = useState([]);
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams({
+            where: `material="${searchParam}"`,
+        });
+    
+        request.get(`${baseUrl}?${searchParams.toString()}`)
+            .then(setElements)
+    }, [searchParam])
+
+    return {
+        elements,
     }
 }

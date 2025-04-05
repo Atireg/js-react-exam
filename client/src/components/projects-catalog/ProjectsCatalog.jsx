@@ -8,9 +8,6 @@ export default function ProjectsCatalog() {
     const { email } = useContext(UserContext);
     const { projects } = useGetAllProjects();
 
-    // console.log(projects);
-    
-
     return (
         <div className="centered-container">
             <main>

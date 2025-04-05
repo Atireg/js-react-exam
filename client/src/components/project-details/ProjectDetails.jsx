@@ -16,9 +16,6 @@ export default function ProjectDetails() {
     const { elements, addElement } = useGetAllElements(projectId);
     const [ optimisticElements, setOptimisticElements ] = useOptimistic(elements, (state, newElement) => [...state, newElement]);
 
-    console.log(elements);
-    
-
     const projectDeleteClickHandler = async () => {
         const hasConfirm = confirm(`Are you sure you want to delete ${project.name}?`);
 
@@ -34,11 +31,12 @@ export default function ProjectDetails() {
     const elementsAddHandler = async (formData) => {
 
         const element = Object.fromEntries(formData);
-
+      
         const newOptimisticElement = {
             _id: uuid(),
             _ownerId: userId,
             projectId,
+            material: element.material,
             element,
             pending: true,
             author: {
@@ -52,7 +50,7 @@ export default function ProjectDetails() {
 
         // SERVER UPDATE
         //TODO add try/catch
-        const newElementServer = await add(projectId, element);
+        const newElementServer = await add(projectId, element.material, element);
 
         // ACTUAL UPDATE
         addElement({...newElementServer, author: { email }});

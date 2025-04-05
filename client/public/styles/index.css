@@ -53,7 +53,8 @@ form {
     padding: 1em;
     border: 1px solid #ccc;
     background: white;
-    margin: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
  
 .input-group {
