@@ -13,6 +13,7 @@ import ProjectsCatalog from './components/projects-catalog/ProjectsCatalog';
 import ProjectDetails from './components/project-details/ProjectDetails';
 import ProjectAdd from './components/project-add/ProjectAdd';
 import ProjectEdit from './components/project-edit/ProjectEdit';
+import ElementsCatalog from './components/elements-catalog/ElementsCatalog';
 
 import './App.css';
 import GuestGuard from './guards/GuestGuard';
@@ -36,6 +37,7 @@ function App() {
 					<Route path='/login' element={<Login />}/>
 					<Route path='/register' element={<Register />}/>
 				</Route>
+				<Route path='/elements' element={<ElementsCatalog />}/>
 			</Routes>
 			
 			<Footer />
