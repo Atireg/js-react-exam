@@ -21,6 +21,9 @@ export default function Header() {
                         (
                             <div id="user">
                                 <li>
+                                    <Link to="/basket">My ReUse Basket </Link>
+                                </li>
+                                <li>
                                     <Link to="/logout">Logout </Link>
                                     {email}
                                 </li>

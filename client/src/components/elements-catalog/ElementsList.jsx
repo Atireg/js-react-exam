@@ -11,10 +11,16 @@ export default class ElementsList extends Component {
             elements: [],
         }
     }
+
     async componentDidMount() {
         const elements = await request.get(elementsUrl);
 
         this.setState({ elements })
+    }
+
+    sendToBasket(elementId){
+        console.log('Send to basket!', elementId);
+        
     }
 
     render() {
@@ -25,6 +31,7 @@ export default class ElementsList extends Component {
                         key={element._id}
                         id={element._id}
                         content={element.element.material}
+                        onSend={this.sendToBasket}
                     />
                 )}
             </ul>
