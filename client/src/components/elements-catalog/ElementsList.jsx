@@ -5,22 +5,28 @@ import ElementItem from './element-item/ElementItem';
 const elementsUrl = 'http://localhost:3030/data/elements'
 
 export default class ElementsList extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             elements: [],
         }
     }
-    async componentDidMount(){
+    async componentDidMount() {
         const elements = await request.get(elementsUrl);
 
-        this.setState({ elements } )
+        this.setState({ elements })
     }
 
-    render(){
+    render() {
         return (
-            <ul>
-                {this.state.elements.map(element => <ElementItem key={element._id} content={element.element.material}/>)}
+            <ul className='elements-catalog'>
+                {this.state.elements.map(element =>
+                    <ElementItem
+                        key={element._id}
+                        id={element._id}
+                        content={element.element.material}
+                    />
+                )}
             </ul>
         )
     }

@@ -225,6 +225,17 @@ th {
     }
 }
 
+/* ELEMENTS CATALOG SECTION */
+
+.elements-catalog {
+    display: flex;
+    gap: 2em;
+}
+
+.elements-item {
+    text-decoration: none;
+}
+
 /* RESPONSIVE SECTION */
 
 @media(max-width: 800px) {
