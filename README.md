@@ -12,8 +12,6 @@ TO DOs:
 
 [ ] Make the search result work (show on a panel using functional component and conditional rendering).
 
-[ ] Make the add element form component.
-
 [ ] Make the upload form an Excel sheet possible.
 
 [ ] Add all element properties.
