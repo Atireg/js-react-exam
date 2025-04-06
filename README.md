@@ -4,9 +4,9 @@ JS REACT @ SoftUni
 
 TO DOs:
 
-[ ] Make the search view with functional components.
+[x] Make the search view with functional components.
 
-[ ] Add the search input.
+[x] Add the search input.
 
 [ ] Add a couple of more search params.
 
@@ -14,18 +14,18 @@ TO DOs:
 
 [ ] Make the add element form component.
 
-[ ] Make file upload modal.
+[ ] Make the upload form an Excel sheet possible.
 
 [ ] Add all element properties.
 
 [ ] Add an edit functionality for the elements.
 
-[ ] Add elements to the socket.
+[ ] Add elements to the basket.
 
-[ ] Make the counter a part of the socket.
+[ ] Make the counter a part of the basket.
 
 [ ] Add the element download function to get a 3D model or OBJ.
 
-[ ] Make the upload form an Excel sheet possible.
+[ ] Add pdf generator function.
 
 [ ] Fix the design.
