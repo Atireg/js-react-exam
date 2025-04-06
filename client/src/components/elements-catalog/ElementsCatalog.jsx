@@ -9,16 +9,13 @@ export default function ElementsCatalog() {
         <section className="centered-container">
             <h2>Hello{email ? `, ${email}` : ''}! Harvest your ReUse elements here!</h2>
             <div className="elements-categories">
-                <section>
-                    <h3>Holz</h3>
+                <section className='elements-category'>
                     <ElementsCategory filterParam="Holz" />    
                 </section>
-                <section>
-                    <h3>Stahl</h3>
+                <section className='elements-category'>
                     <ElementsCategory filterParam="Stahl" />    
                 </section>
-                <section>
-                    <h3>Glas</h3>
+                <section className='elements-category'>
                     <ElementsCategory filterParam="Glas" />    
                 </section>
             </div>

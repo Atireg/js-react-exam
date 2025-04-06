@@ -10,11 +10,13 @@ export default function ElementsCategory(
 
     return (
         <ul>
-            {elements.map(element =>
+            <h3>{filterParam}</h3>
+            {elements.map(item =>
                 <ElementItem
-                    key={element._id}
-                    id={element._id}
-                    content={element.element.material}
+                    key={item._id}
+                    id={item._id}
+                    profileType={item.element.profileType}
+                    projectId={item.projectId}
                     // onSend={this.sendToBasket}
                 />
             )}

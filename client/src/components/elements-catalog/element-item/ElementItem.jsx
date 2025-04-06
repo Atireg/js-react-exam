@@ -1,8 +1,22 @@
-export default function ElementItem() {
+import idSlicer from "../../../utils/idSlicer";
+
+export default function ElementItem(
+    {
+        id,
+        profileType,
+        projectId
+    }
+) {
+    // async addToMyBasketHandler (){
+    //     await 
+    // }
+
     return (
-        <li>
-            <ul className='elements-item'>
-                <li>Element</li>
+        <li className='elements-item'>
+            <ul>
+                <li>Element #{idSlicer(id)}</li>
+                <li>Profil: {profileType}</li>
+                <li>{projectId}</li>
                 <li><button>Grab!</button></li>
             </ul>
         </li>
