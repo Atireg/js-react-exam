@@ -1,5 +1,6 @@
 import { useEffect, useReducer } from "react";
 import useAuth from "../hooks/useAuth";
+import { UserContext } from "../contexts/UserContext";
 
 const baseUrl = 'http://localhost:3030/data/elements';
 
@@ -44,14 +45,14 @@ export const useElements = ({ projectId, filterParam, filterValue } = {}) => {
 // THIS IS A "ON EVENT" HOOK
 export const useAddElement = () => {
     const { request } = useAuth();
-
+    
     const add = (projectId, material, profileType, element) => {
 
         const elementData = {
             projectId,
             material,
             profileType,
-            element
+            element,
         }
 
         return request.post(baseUrl, elementData);
@@ -61,3 +62,6 @@ export const useAddElement = () => {
         add,
     }
 }
+
+
+

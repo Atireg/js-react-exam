@@ -7,6 +7,10 @@ export default function SearchItems({
     //TODO add a spinner
     const { elements } = useElements({ filterParam: "profileType", filterValue: selected });
 
+    const getElementIdHandler = (id) => {
+        console.log(id);
+    }
+  
     return (
         <div className="elements-table">
             <h3>Results</h3>
@@ -27,7 +31,6 @@ export default function SearchItems({
                         <th>Baujahr</th>
                         <th>Kommentar</th>
                         <th></th>
-                        {/* <th>Hinzugefügt von</th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -47,8 +50,7 @@ export default function SearchItems({
                                 <td>{item.element.connectionType}</td>
                                 <td>{item.element.manufacturingYear}</td>
                                 <td>{item.element.comment}</td>
-                                <td><button className="grab-button">Grab!</button></td>
-                                {/* <td>{item.author.email}</td> */}
+                                <td><button onClick={() => getElementIdHandler(item._id)} className="grab-button">Grab!</button></td>
                             </tr>
                         ))
                     ) : (

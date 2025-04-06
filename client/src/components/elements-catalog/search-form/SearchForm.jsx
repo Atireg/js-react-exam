@@ -21,7 +21,7 @@ export default function SearchForm() {
     return (
         <div >
             <form className="search-form" onSubmit={onSubmitHandler}>
-                <label>Profil</label>
+                <label className="search-param">Profil</label>
                 <div className="search-group" >
                     <div>
                         <label className="choice">

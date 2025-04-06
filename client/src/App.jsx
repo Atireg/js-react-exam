@@ -17,6 +17,7 @@ import ElementsCatalog from './components/elements-catalog/ElementsCatalog';
 
 import './App.css';
 import GuestGuard from './guards/GuestGuard';
+import Basket from './components/basket/Basket';
 
 function App() {
 	return (
@@ -30,6 +31,7 @@ function App() {
 				<Route element={<AuthGuard />}>
 					<Route path='/projects/add' element={<ProjectAdd />} />
 					<Route path='/projects/:projectId/edit' element={<ProjectEdit />}/>
+					<Route path='/basket' element={<Basket />}/>
 					<Route path='/logout' element={<Logout />}/>
 				</Route>
 				<Route element={<GuestGuard />}>
