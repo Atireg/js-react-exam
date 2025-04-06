@@ -278,6 +278,10 @@ th {
     border: none;
 }
 
+.search-param {
+    align-self: left;
+}
+
 .search-group {
     display: flex;
     gap: 0.8em;

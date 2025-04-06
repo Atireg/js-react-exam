@@ -26,10 +26,8 @@ export default function ElementItem(
         </li>
     )
 }
-////CLASS COMPONENTS
-// import { Component } from 'react'
-// // import request from '../../../utils/request';
-// import withAuth from '../../hoc/withAuth';
+
+
 
 // const elementsUrl = 'http://localhost:3030/data/elements'
 // class ElementItem extends Component {
