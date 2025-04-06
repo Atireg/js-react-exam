@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 import * as XLSX from "xlsx"
-// import styles from './ReuseElementsInventory.module.css'
-// import { useState } from "react";
+import idSlicer from "../../utils/idSlicer";
 
 export default function ReuseElementsInventory({
     user,
@@ -53,6 +52,7 @@ export default function ReuseElementsInventory({
                 <table>
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Tragend</th>
                             <th>Material</th>
                             <th>Funktion</th>
@@ -70,21 +70,22 @@ export default function ReuseElementsInventory({
                     </thead>
                     <tbody>
                         {elements?.length > 0 ? (
-                            elements.map(element => (
-                                <tr key={element._id} className="element" style={{ color: element.pending ? 'lightgray' : '' }}>
-                                    <td>{element.element.loadBearing ? 'Ja' : 'Nein'}</td>
-                                    <td>{element.element.material}</td>
-                                    <td>{element.element.function}</td>
-                                    <td>{element.element.quantity}</td>
-                                    <td>{element.element.specification}</td>
-                                    <td>{element.element.quality}</td>
-                                    <td>{element.element.length}</td>
-                                    <td>{element.element.profileType}</td>
-                                    <td>{element.element.condition}</td>
-                                    <td>{element.element.connectionType}</td>
-                                    <td>{element.element.manufacturingYear}</td>
-                                    <td>{element.element.comment}</td>
-                                    <td>{element.author.email}</td>
+                            elements.map(item => (
+                                <tr key={item._id} className="element" style={{ color: item.pending ? 'lightgray' : '' }}>
+                                    <td>#{idSlicer(item._id)}</td>
+                                    <td>{item.element.loadBearing ? 'Ja' : 'Nein'}</td>
+                                    <td>{item.element.material}</td>
+                                    <td>{item.element.function}</td>
+                                    <td>{item.element.quantity}</td>
+                                    <td>{item.element.specification}</td>
+                                    <td>{item.element.quality}</td>
+                                    <td>{item.element.length}</td>
+                                    <td>{item.element.profileType}</td>
+                                    <td>{item.element.condition}</td>
+                                    <td>{item.element.connectionType}</td>
+                                    <td>{item.element.manufacturingYear}</td>
+                                    <td>{item.element.comment}</td>
+                                    <td>{item.author.email}</td>
                                 </tr>
                             ))
                         ) : (
@@ -219,7 +220,6 @@ export default function ReuseElementsInventory({
                         <button className="button" type="submit">Add Component</button>
                     </form>
                 </div>
-
                 :
                 <Link to="/login">
                     <p>Login to add elements.</p>
