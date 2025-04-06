@@ -27,7 +27,6 @@ export default function ProjectDetails() {
         navigate('/projects')
     };
 
-
     const elementsAddHandler = async (formData) => {
 
         const element = Object.fromEntries(formData);
@@ -47,7 +46,6 @@ export default function ProjectDetails() {
         
         // OPTIMISTIC UPDATE
         setOptimisticElements(newOptimisticElement);
-
 
         // SERVER UPDATE
         //TODO add try/catch

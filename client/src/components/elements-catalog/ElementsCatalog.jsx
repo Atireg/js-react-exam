@@ -1,10 +1,13 @@
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import ElementsCategory from "./ElementsCategory";
-import FilterForm from "./filter-form/FilterForm";
+import SearchForm from "./search-form/SearchForm";
+import SearchItems from "./search-items/SearchItems";
 
 export default function ElementsCatalog() {
     const { email } = useContext(UserContext);
+
+
 
     return (
         <section className="centered-container">
@@ -14,7 +17,8 @@ export default function ElementsCatalog() {
                 <ElementsCategory filterParam="material" filterValue="Stahl" />
                 <ElementsCategory filterParam="material" filterValue="Glas" />
             </div>
-            <FilterForm />
+            <SearchForm />
+            
         </section>
     )
 }
