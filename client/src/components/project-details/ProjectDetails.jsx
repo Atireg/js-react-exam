@@ -37,6 +37,7 @@ export default function ProjectDetails() {
             _ownerId: userId,
             projectId,
             material: element.material,
+            profileType: element.profileType,
             element,
             pending: true,
             author: {
@@ -50,7 +51,7 @@ export default function ProjectDetails() {
 
         // SERVER UPDATE
         //TODO add try/catch
-        const newElementServer = await add(projectId, element.material, element);
+        const newElementServer = await add(projectId, element.material, element.profileType, element);
 
         // ACTUAL UPDATE
         addElement({...newElementServer, author: { email }});

@@ -8,6 +8,9 @@ export default function ReuseElementsInventory({
     onAddElement
 }) {
 
+    // console.log(elements);
+    
+
     // const handleFileUpload = (event) => {
     //     const file = event.target.files[0];
 

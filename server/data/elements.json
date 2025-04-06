@@ -3,6 +3,7 @@
         "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
         "projectId": "0",
         "material": "Stahl",
+        "profileType": "IPE100",
         "element": {
             "loadBearing": "Ja",
             "material": "Stahl",
@@ -24,6 +25,7 @@
         "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
         "projectId": "0",
         "material": "Glas",
+        "profileType": "X",
         "element": {
             "loadBearing": "Nein",
             "material": "Glas",
@@ -45,6 +47,7 @@
         "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
         "projectId": "0",
         "material": "Holz",
+        "profileType": "IPE100",
         "element": {
             "loadBearing": "Ja",
             "material": "Holz",

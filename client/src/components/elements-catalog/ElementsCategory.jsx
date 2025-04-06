@@ -8,6 +8,7 @@ export default function ElementsCategory(
     }
 ) {
     const { elements } = useElements( { filterParam, filterValue });
+     
     return (
         <section className='elements-category'>
             <h3>{filterValue}</h3>
@@ -16,7 +17,7 @@ export default function ElementsCategory(
                     <ElementItem
                         key={item._id}
                         id={item._id}
-                        profileType={item.element.profileType}
+                        profileType={item.profileType}
                         projectId={item.projectId}
                         length={item.element.length}
                     // onSend={this.sendToBasket}

@@ -23,6 +23,7 @@ export const useElements = ({ projectId, filterParam, filterValue } = {}) => {
 
         if (filterParam) {
             searchParams.set('where', `${filterParam}="${filterValue}"`);
+            
         } else if (projectId){
             searchParams.set('where', `projectId="${projectId}"`);
             searchParams.set('load', `author=_ownerId:users`);
@@ -44,11 +45,12 @@ export const useElements = ({ projectId, filterParam, filterValue } = {}) => {
 export const useAddElement = () => {
     const { request } = useAuth();
 
-    const add = (projectId, material, element) => {
+    const add = (projectId, material, profileType, element) => {
 
         const elementData = {
             projectId,
             material,
+            profileType,
             element
         }
 
