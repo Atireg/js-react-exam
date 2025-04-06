@@ -73,7 +73,7 @@ export default function ReuseElementsInventory({
                             elements.map(item => (
                                 <tr key={item._id} className="element" style={{ color: item.pending ? 'lightgray' : '' }}>
                                     <td>#{idSlicer(item._id)}</td>
-                                    <td>{item.element.loadBearing ? 'Ja' : 'Nein'}</td>
+                                    <td>{item.element.loadBearing}</td>
                                     <td>{item.element.material}</td>
                                     <td>{item.element.function}</td>
                                     <td>{item.element.quantity}</td>

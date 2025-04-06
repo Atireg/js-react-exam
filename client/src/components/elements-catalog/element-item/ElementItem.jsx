@@ -1,24 +1,28 @@
+import { useGetOneProject } from "../../../api/projectsApi";
 import idSlicer from "../../../utils/idSlicer";
 
 export default function ElementItem(
     {
         id,
         profileType,
-        projectId
+        projectId,
+        length,
     }
 ) {
-    // async addToMyBasketHandler (){
+
+    // async addToMyBasketHandler(){
     //     await 
     // }
 
+    const { project } = useGetOneProject(projectId);
+
     return (
         <li className='elements-item'>
-            <ul>
-                <li>Element #{idSlicer(id)}</li>
-                <li>Profil: {profileType}</li>
-                <li>{projectId}</li>
-                <li><button>Grab!</button></li>
-            </ul>
+            <p>ElementId: #{idSlicer(id)}</p>
+            <p>Profil: {profileType}</p>
+            <p>Project: {project.name}</p>
+            <p>Length: {length}</p>
+            <button>Grab!</button>
         </li>
     )
 }

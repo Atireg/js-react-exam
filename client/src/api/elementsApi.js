@@ -14,7 +14,7 @@ function elementsReducer(state, action) {
     }
 }
 
-export const useElements = ({ projectId, filterParam } = {}) => {
+export const useElements = ({ projectId, filterParam, filterValue } = {}) => {
     const { request } = useAuth();
     const [ elements, dispatch ] = useReducer(elementsReducer, []);
 
@@ -22,7 +22,7 @@ export const useElements = ({ projectId, filterParam } = {}) => {
         const searchParams = new URLSearchParams();
 
         if (filterParam) {
-            searchParams.set('where', `material="${filterParam}"`);
+            searchParams.set('where', `${filterParam}="${filterValue}"`);
         } else if (projectId){
             searchParams.set('where', `projectId="${projectId}"`);
             searchParams.set('load', `author=_ownerId:users`);
@@ -31,7 +31,7 @@ export const useElements = ({ projectId, filterParam } = {}) => {
         request.get(`${baseUrl}?${searchParams.toString()}`)
             .then(result => dispatch({ type: 'GET_ALL', payload: result }));
 
-    }, [projectId, filterParam]);
+    }, [projectId, filterParam, filterValue]);
 
     return {
         elements,

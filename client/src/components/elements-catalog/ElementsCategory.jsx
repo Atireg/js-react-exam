@@ -4,22 +4,25 @@ import ElementItem from "./element-item/ElementItem";
 export default function ElementsCategory(
     {
         filterParam,
+        filterValue
     }
 ) {
-    const { elements } = useElements({ filterParam: filterParam });
-
+    const { elements } = useElements( { filterParam, filterValue });
     return (
-        <ul>
-            <h3>{filterParam}</h3>
-            {elements.map(item =>
-                <ElementItem
-                    key={item._id}
-                    id={item._id}
-                    profileType={item.element.profileType}
-                    projectId={item.projectId}
+        <section className='elements-category'>
+            <h3>{filterValue}</h3>
+            <ul>
+                {elements.map(item =>
+                    <ElementItem
+                        key={item._id}
+                        id={item._id}
+                        profileType={item.element.profileType}
+                        projectId={item.projectId}
+                        length={item.element.length}
                     // onSend={this.sendToBasket}
-                />
-            )}
-        </ul>
+                    />
+                )}
+            </ul>
+        </section>
     )
 }
