@@ -23,7 +23,6 @@ function App() {
 		<UserProvider>
 		<>
 			<Header />
-
 			<Routes>
 				<Route path='/' element={<Home />}/>
 				<Route path='/projects' element={<ProjectsCatalog />}/>

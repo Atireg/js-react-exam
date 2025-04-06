@@ -6,11 +6,11 @@ export default function Home() {
 
     return (
         <div className="centered-container">
-            <h1>Welcome to knippershelbig ReUse!</h1>
-            <section>
+            <h1>Welcome to kh ReUse!</h1>
+            <section className="welcome-msg">
                 <h2>We're thrilled to introduce our sustainability project, where we explore the potential of harvesting materials from demolished buildings and repurposing them to create new, innovative structures.</h2>
             </section>
-            <h2>Our latest projects are:</h2>
+            <h2>Our latest projects are</h2>
 
             {latestProjects.map(project => (
                 <section key={project._id} className="latestProjects">

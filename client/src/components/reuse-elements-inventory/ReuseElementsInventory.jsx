@@ -46,7 +46,7 @@ export default function ReuseElementsInventory({
     // };
 
     return (
-        <section className="reuse-elements-inventory">
+        <section className="elements-table">
             <section>
                 <h2>Harvested Building Elements</h2>
             </section>

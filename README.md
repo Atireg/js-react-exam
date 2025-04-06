@@ -12,9 +12,9 @@ TO DOs:
 
 [x] Make the search result work (show on a panel using functional component and conditional rendering).
 
-[ ] Make the upload form an Excel sheet possible.
-
 [ ] Add an edit functionality for the elements.
+
+[ ] Make the upload form an Excel sheet possible.
 
 [ ] Add elements to the basket.
 

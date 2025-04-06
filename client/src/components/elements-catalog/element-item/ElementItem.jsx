@@ -18,11 +18,11 @@ export default function ElementItem(
 
     return (
         <li className='elements-item'>
-            <p>ElementId: #{idSlicer(id)}</p>
+            <p><strong>ElementId: #{idSlicer(id)}</strong></p>
             <p>Profil: {profileType}</p>
             <p>Project: {project.name}</p>
-            <p>Length: {length}</p>
-            <button>Grab!</button>
+            <p>Length: {length}m</p>
+            <button className="grab-button">Grab!</button>
         </li>
     )
 }

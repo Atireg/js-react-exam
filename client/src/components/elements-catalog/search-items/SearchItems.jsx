@@ -4,16 +4,13 @@ import idSlicer from "../../../utils/idSlicer";
 export default function SearchItems({
     selected,
 }) {
-
-    //TODO add optimistic state ?
+    //TODO add a spinner
     const { elements } = useElements({ filterParam: "profileType", filterValue: selected });
 
-    console.log(elements);
-
     return (
-        <div className="search-tems">
-            <h2>Your search items are:</h2>
-            <table>
+        <div className="elements-table">
+            <h3>Results</h3>
+            <table >
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -29,7 +26,8 @@ export default function SearchItems({
                         <th>Verbindung</th>
                         <th>Baujahr</th>
                         <th>Kommentar</th>
-                        <th>Hinzugefügt von</th>
+                        <th></th>
+                        {/* <th>Hinzugefügt von</th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -42,19 +40,20 @@ export default function SearchItems({
                                 <td>{item.element.function}</td>
                                 <td>{item.element.quantity}</td>
                                 <td>{item.element.specification}</td>
-                                <td>{item.element.quality}</td>
+                                <td >{item.element.quality}</td>
                                 <td>{item.element.length}</td>
-                                <td>{item.element.profileType}</td>
+                                <td className="table-highlight">{item.element.profileType}</td>
                                 <td>{item.element.condition}</td>
                                 <td>{item.element.connectionType}</td>
                                 <td>{item.element.manufacturingYear}</td>
                                 <td>{item.element.comment}</td>
-                                <td>{item.author.email}</td>
+                                <td><button className="grab-button">Grab!</button></td>
+                                {/* <td>{item.author.email}</td> */}
                             </tr>
                         ))
                     ) : (
                         <tr>
-                            <td colSpan="13">No data available</td>
+                            <td colSpan="12">No data available</td>
                         </tr>
                     )}
                 </tbody>

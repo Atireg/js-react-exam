@@ -7,7 +7,7 @@ export default function Header() {
     return (
         <header className="site-header">
             <h1>
-                <Link to="/">knippershelbig ReUse </Link>
+                <Link to="/">kh ReUse </Link>
             </h1>
             <nav className="navigation">
                 <ul>

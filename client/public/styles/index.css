@@ -31,7 +31,16 @@
     }
 }
 
+.welcome-msg {
+    width: 50dvw;
+    margin: 3em
+}
+
 /*GENERAL CONTAINER TO CENTER FORMS/MESSAGES*/
+
+.main-content {
+    margin: 2em;
+}
 
 .centered-container {
     display: flex;
@@ -76,8 +85,8 @@ input {
 }
  
 button {
-    width: 100%;
-    padding: 10px;
+    width: 200px;
+    padding: 1em;
     background-color: #e67154bb;
     color: white;
     border: none;
@@ -108,13 +117,13 @@ button:disabled {
 }
 
 main {
-    flex: 0 0 60%;
+    flex: 0 0 30%;
 }
 
 aside {
     display: flex;
     flex-direction: column;
-    flex: 0 1 40%;
+    flex: 0 1 70%;
     gap: 1em
 }
 
@@ -187,7 +196,7 @@ section.description p {
 
 /* REUSE INVENTORY SECTION */
 
-.reuse-elements-inventory {
+.elements-table {
     gap: 2em;
     margin: 2em 1em
 }
@@ -212,22 +221,22 @@ th {
     background-color: #f2f2f2;
 }
 
-/* FILTER ELEMENTS SECTION */
+/* CATEGORIES ELEMENTS SECTION */
 
 .elements-categories {
     display: flex;
     flex-wrap: wrap; 
     gap: 2em;
-    justify-content: center;
+    justify-content: space-between;
     z-index: 100;
-    padding: 2em;
+    /* padding: 2em; */
 }
 
 .elements-categories section {
     display: flex;
     background-color: #c2c2c263;
     padding: 2em;
-    flex: 0 0 500px;
+    flex: 0 0 28dvw;
     box-sizing: border-box; 
     margin: 1em;
 }
@@ -251,7 +260,7 @@ th {
 }
 
 .elements-category li {
-    padding: 0;
+    padding: 0.3em;
     margin: 0;
 }
 
@@ -264,13 +273,50 @@ th {
     box-sizing: border-box; 
 }
 
-.filter-form {
-    width: 600px;
+.search-form {
+    margin-left: 2em;
+    border: none;
 }
 
-.filter-group {
-    display: flex
+.search-group {
+    display: flex;
+    gap: 0.8em;
 }
+
+input[type="radio"] {
+    cursor: pointer;
+}
+
+.choice {
+    display: flex;
+    gap: 0.5em;
+}
+
+
+/* ELEMENTS CATALOG SECTION */
+
+.elements-catalog {
+    display: flex;
+    gap: 2em;
+}
+
+.elements-item {
+    flex: 1 1 150px;
+    text-decoration: none;
+    padding: 1em
+}
+
+.grab-button {
+    width: 100px;
+    padding: 0.2em;
+    background-color: #e98166cb;
+}
+
+.table-highlight {
+    background-color: #e671546c;
+    font-weight: bold;
+}
+
 
 /* FOOTER SECTION */
 
@@ -286,20 +332,6 @@ th {
         padding: 0;
     }
 }
-
-/* ELEMENTS CATALOG SECTION */
-
-.elements-catalog {
-    display: flex;
-    gap: 2em;
-}
-
-.elements-item {
-    flex: 1 1 200px;
-    text-decoration: none;
-    padding: 1em
-}
-
 /* RESPONSIVE SECTION */
 
 @media(max-width: 800px) {

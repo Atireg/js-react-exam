@@ -19,13 +19,12 @@ export default function SearchForm() {
     }
 
     return (
-        <div className="centered-container">
-            <form className="filter-form" onSubmit={onSubmitHandler}>
-                <h2>Search</h2>
-                <div className="filter-group">
-                    <label>Profile Type</label>
+        <div >
+            <form className="search-form" onSubmit={onSubmitHandler}>
+                <label>Profil</label>
+                <div className="search-group" >
                     <div>
-                        <label>
+                        <label className="choice">
                             <input
                                 type="radio"
                                 name="Rechteckprofil"
@@ -33,11 +32,11 @@ export default function SearchForm() {
                                 onChange={onChangeHandler}
                                 disabled={false}
                             />
-                            Rechteckprofil
+                            <p>Rechteckprofil</p>
                         </label>
                     </div>
                     <div>
-                        <label>
+                        <label className="choice">
                             <input
                                 type="radio"
                                 name="IPE100"
@@ -45,11 +44,11 @@ export default function SearchForm() {
                                 onChange={onChangeHandler}
                                 disabled={false}
                             />
-                            IPE100
+                            <p>IPE100</p>
                         </label>
                     </div>
                     <div>
-                        <label>
+                        <label className="choice">
                             <input
                                 type="radio"
                                 name="Rundprofil"

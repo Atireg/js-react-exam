@@ -59,7 +59,7 @@ export default function ProjectDetails() {
     const isOwner = userId === project._ownerId;
 
     return (
-        <section>
+        <section className="main-content">
             <div className="content-container">
                 <main>
                     <figure className="hero">
