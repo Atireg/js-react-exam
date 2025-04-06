@@ -1,62 +1,65 @@
 [
     {
-        "_ownerId": "160796e9-76f7-45fd-91c2-ef0e50f26057",
-        "projectId": "df917370-5f9d-4e59-b045-727c3c4f659b",
+        "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+        "projectId": "0",
+        "material": "Stahl",
         "element": {
-            "loadBearing": "true",
-            "material": "Holz",
+            "loadBearing": "Ja",
+            "material": "Stahl",
             "function": "Stütze",
-            "quantity": "6",
+            "quantity": "10",
+            "specification": "Fertigteil",
+            "quality": "S235",
+            "length": "2",
+            "profileType": "IPE100",
+            "condition": "Ausreichend",
+            "connectionType": "Geschweißt",
+            "manufacturingYear": "1924",
+            "comment": "dddd"
+        },
+        "_createdOn": 1743917412845,
+        "_id": "190f1f7f-8639-47bd-8af4-768e8051d7c6"
+    },
+    {
+        "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+        "projectId": "0",
+        "material": "Glas",
+        "element": {
+            "loadBearing": "Nein",
+            "material": "Glas",
+            "function": "X",
+            "quantity": "4",
+            "specification": "X",
+            "quality": "X",
+            "length": "2",
+            "profileType": "X",
+            "condition": "Ausreichend",
+            "connectionType": "X",
+            "manufacturingYear": "1950",
+            "comment": "dddd"
+        },
+        "_createdOn": 1743917442597,
+        "_id": "40dd35d5-0311-4014-aa0c-c0c3a7fca03e"
+    },
+    {
+        "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+        "projectId": "0",
+        "material": "Holz",
+        "element": {
+            "loadBearing": "Ja",
+            "material": "Holz",
+            "function": "Träger",
+            "quantity": "4",
             "specification": "KVH",
             "quality": "C24",
-            "length": "0.5",
+            "length": "3.5",
             "profileType": "Rechteckprofil",
             "condition": "Sehr Gut",
             "connectionType": "Vernagelt",
-            "manufacturingYear": "1924",
-            "comment": "ssss"
-        },
-        "_createdOn": 1743857193205,
-        "_id": "500b3e76-30aa-4bc5-b460-3b7018cd0041"
-    },
-    {
-        "_ownerId": "160796e9-76f7-45fd-91c2-ef0e50f26057",
-        "projectId": "df917370-5f9d-4e59-b045-727c3c4f659b",
-        "element": {
-            "loadBearing": "true",
-            "material": "Stahl",
-            "function": "Stahl",
-            "quantity": "6",
-            "specification": "Fertigteil",
-            "quality": "S235",
-            "length": "1.5",
-            "profileType": "Rundprofil",
-            "condition": "Ausreichend",
-            "connectionType": "Geschweißt",
             "manufacturingYear": "1950",
-            "comment": "xxxx"
+            "comment": "ddd"
         },
-        "_createdOn": 1743857236565,
-        "_id": "ad3190ca-a217-4373-bafa-521dd2ac8d56"
-    },
-    {
-        "_ownerId": "160796e9-76f7-45fd-91c2-ef0e50f26057",
-        "projectId": "df917370-5f9d-4e59-b045-727c3c4f659b",
-        "element": {
-            "loadBearing": "false",
-            "material": "Glas",
-            "function": "X",
-            "quantity": "5",
-            "specification": "X",
-            "quality": "X",
-            "length": "2.5",
-            "profileType": "X",
-            "condition": "Gut",
-            "connectionType": "X",
-            "manufacturingYear": "1950",
-            "comment": "xxx"
-        },
-        "_createdOn": 1743857881275,
-        "_id": "cf9845ef-55dc-4704-b8a5-32e153d46fad"
+        "_createdOn": 1743917475826,
+        "_id": "c296d55d-5c89-453b-8e4f-a1088f69ae3b"
     }
 ]

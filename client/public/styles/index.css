@@ -53,7 +53,7 @@ form {
     padding: 1em;
     border: 1px solid #ccc;
     background: white;
-    margin-top: 2em;
+    /* margin-top: 2em; */
     margin-bottom: 2em;
 }
  
@@ -209,6 +209,24 @@ th, td {
 
 th {
     background-color: #f2f2f2;
+}
+
+/* FILTER ELEMENTS SECTION */
+
+.elements-categories {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    section {
+        width: 30dvw;
+        aspect-ratio: 1/1;
+        background-color: #c2c2c263;
+        padding: 1em;
+        z-index: -10;
+    }
 }
 
 /* FOOTER SECTION */

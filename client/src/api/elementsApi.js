@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer } from "react";
 import useAuth from "../hooks/useAuth";
 
 const baseUrl = 'http://localhost:3030/data/elements';
@@ -14,28 +14,53 @@ function elementsReducer(state, action) {
     }
 }
 
-// THIS IS A "ON MOUNT" HOOK
-export const useGetAllElements = (projectId) => {
+export const useElements = ({ projectId, filterParam } = {}) => {
     const { request } = useAuth();
-    // const [ elements, setElements ] = useState([]);
-    const [ elements, dispatch ] = useReducer(elementsReducer, [])
+    const [ elements, dispatch ] = useReducer(elementsReducer, []);
 
     useEffect(() => {
-        const searchParams = new URLSearchParams({
-            where: `projectId="${projectId}"`,
-            load: `author=_ownerId:users` // using relations
-        });
-    
-        request.get(`${baseUrl}?${searchParams.toString()}`)
-            .then(result => dispatch({type:'GET_ALL', payload: result}))
+        const searchParams = new URLSearchParams();
 
-    }, [projectId]) //TODO Fix !!!
+        if (filterParam) {
+            searchParams.set('where', `material="${filterParam}"`);
+        } else if (projectId){
+            searchParams.set('where', `projectId="${projectId}"`);
+            searchParams.set('load', `author=_ownerId:users`);
+        }
+
+        request.get(`${baseUrl}?${searchParams.toString()}`)
+            .then(result => dispatch({ type: 'GET_ALL', payload: result }));
+
+    }, [projectId, filterParam]);
 
     return {
         elements,
-        addElement: (commentData) => dispatch({type: 'ADD_COMMENT', payload: commentData})
-    }
+        addElement: (elementData) =>
+            dispatch({ type: 'ADD_COMMENT', payload: elementData }),
+    };
 }
+
+// // THIS IS A "ON MOUNT" HOOK/
+// export const useGetAllElements = (projectId) => {
+//     const { request } = useAuth();
+//     const [ elements, dispatch ] = useReducer(elementsReducer, [])
+
+//     useEffect(() => {
+//         const searchParams = new URLSearchParams({
+//             where: `projectId="${projectId}"`,
+//             load: `author=_ownerId:users` // using relations
+//         });
+    
+//         request.get(`${baseUrl}?${searchParams.toString()}`)
+//             .then(result => dispatch({type:'GET_ALL', payload: result}))
+
+//     }, [projectId])
+
+//     return {
+//         elements,
+//         addElement: (commentData) => dispatch({type: 'ADD_COMMENT', payload: commentData})
+//     }
+// }
 
 // THIS IS A "ON EVENT" HOOK
 export const useAddElement = () => {
@@ -54,23 +79,5 @@ export const useAddElement = () => {
 
     return {
         add,
-    }
-}
-
-export const useSearchElements = (searchParam) => {
-    const { request } = useAuth();
-    const [ elements, setElements ] = useState([]);
-
-    useEffect(() => {
-        const searchParams = new URLSearchParams({
-            where: `material="${searchParam}"`,
-        });
-    
-        request.get(`${baseUrl}?${searchParams.toString()}`)
-            .then(setElements)
-    }, [searchParam])
-
-    return {
-        elements,
     }
 }

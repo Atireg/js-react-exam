@@ -99,6 +99,7 @@ export default function ReuseElementsInventory({
             {user
                 ?
                 <div>
+                    <h2>Add a new element</h2>
                     <form action={onAddElement}>
                         <div className="input-group">
                             <label htmlFor="loadBearing">Tragend</label>
@@ -189,7 +190,7 @@ export default function ReuseElementsInventory({
                                 <option value="X">Keine Angabe</option>
                             </select>
                         </div>
-                        
+
                         <div className="input-group">
                             <label htmlFor="connectionType">Verbindung</label>
                             <select id="connectionType" name="connectionType" required>

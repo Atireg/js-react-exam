@@ -1347,8 +1347,85 @@
         }
     };
     var seedData = {
-        projects: {},
-        elements: {}
+        projects: [
+            {
+                "name": "Kittler Schuler",
+                "construction": "1950",
+                "demolition": "2027",
+                "location": "Stuttgart",
+                "imageUrl": "https://images.unsplash.com/photo-1701844279504-e3a974aaafb5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum soluta nam magnam beatae. Velit nulla itaque odit rerum quo in pariatur doloremque assumenda quae sit ratione voluptatibus rem non animi iste ipsa, sint deserunt incidunt, magnam eos fugiat tempore iusto! Ullam deserunt magni placeat, odit, odio dicta quidem sapiente ipsam ab, neque nemo facilis nesciunt. Sequi reiciendis suscipit esse maiores culpa repellat. Accusantium, pariatur itaque! Cupiditate, atque repellat nesciunt, beatae, doloremque animi reprehenderit soluta exercitationem officia officiis dignissimos non quidem at cumque alias reiciendis quaerat enim harum voluptatem ab tenetur magni. Optio iste nulla quam voluptates laboriosam veniam pariatur? ",
+                "_id": "df917370-5f9d-4e59-b045-727c3c4f659b",
+                "_createdOn": 1743857002141,
+                "_ownerId": "160796e9-76f7-45fd-91c2-ef0e50f26057",
+                "_updatedOn": 1743857026282
+            }
+        ],
+        elements: [
+            {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "projectId": "0",
+                "material": "Stahl",
+                "element": {
+                    "loadBearing": "Ja",
+                    "material": "Stahl",
+                    "function": "Stütze",
+                    "quantity": "10",
+                    "specification": "Fertigteil",
+                    "quality": "S235",
+                    "length": "2",
+                    "profileType": "IPE100",
+                    "condition": "Ausreichend",
+                    "connectionType": "Geschweißt",
+                    "manufacturingYear": "1924",
+                    "comment": "dddd"
+                },
+                "_createdOn": 1743917412845,
+                "_id": "190f1f7f-8639-47bd-8af4-768e8051d7c6"
+            },
+            {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "projectId": "0",
+                "material": "Glas",
+                "element": {
+                    "loadBearing": "Nein",
+                    "material": "Glas",
+                    "function": "X",
+                    "quantity": "4",
+                    "specification": "X",
+                    "quality": "X",
+                    "length": "2",
+                    "profileType": "X",
+                    "condition": "Ausreichend",
+                    "connectionType": "X",
+                    "manufacturingYear": "1950",
+                    "comment": "dddd"
+                },
+                "_createdOn": 1743917442597,
+                "_id": "40dd35d5-0311-4014-aa0c-c0c3a7fca03e"
+            },
+            {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "projectId": "0",
+                "material": "Holz",
+                "element": {
+                    "loadBearing": "Ja",
+                    "material": "Holz",
+                    "function": "Träger",
+                    "quantity": "4",
+                    "specification": "KVH",
+                    "quality": "C24",
+                    "length": "3.5",
+                    "profileType": "Rechteckprofil",
+                    "condition": "Sehr Gut",
+                    "connectionType": "Vernagelt",
+                    "manufacturingYear": "1950",
+                    "comment": "ddd"
+                },
+                "_createdOn": 1743917475826,
+                "_id": "c296d55d-5c89-453b-8e4f-a1088f69ae3b"
+            }
+        ]
     };
     var rules$1 = {
         users: {

@@ -2,7 +2,7 @@ import { Link, useNavigate, useParams } from "react-router";
 import ReuseElementsInventory from "../reuse-elements-inventory/ReuseElementsInventory";
 import { useDeleteGame, useGetOneProject } from "../../api/projectsApi";
 import useAuth from "../../hooks/useAuth";
-import { useAddElement, useGetAllElements } from "../../api/elementsApi";
+import { useAddElement, useElements } from "../../api/elementsApi";
 import { useOptimistic } from "react";
 import { v4 as uuid } from 'uuid'
 
@@ -13,7 +13,7 @@ export default function ProjectDetails() {
     const { project } = useGetOneProject(projectId);
     const { remove } = useDeleteGame();
     const { add } = useAddElement();
-    const { elements, addElement } = useGetAllElements(projectId);
+    const { elements, addElement } = useElements({ projectId });
     const [ optimisticElements, setOptimisticElements ] = useOptimistic(elements, (state, newElement) => [...state, newElement]);
 
     const projectDeleteClickHandler = async () => {
