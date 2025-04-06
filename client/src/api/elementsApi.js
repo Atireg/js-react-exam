@@ -40,28 +40,6 @@ export const useElements = ({ projectId, filterParam } = {}) => {
     };
 }
 
-// // THIS IS A "ON MOUNT" HOOK/
-// export const useGetAllElements = (projectId) => {
-//     const { request } = useAuth();
-//     const [ elements, dispatch ] = useReducer(elementsReducer, [])
-
-//     useEffect(() => {
-//         const searchParams = new URLSearchParams({
-//             where: `projectId="${projectId}"`,
-//             load: `author=_ownerId:users` // using relations
-//         });
-    
-//         request.get(`${baseUrl}?${searchParams.toString()}`)
-//             .then(result => dispatch({type:'GET_ALL', payload: result}))
-
-//     }, [projectId])
-
-//     return {
-//         elements,
-//         addElement: (commentData) => dispatch({type: 'ADD_COMMENT', payload: commentData})
-//     }
-// }
-
 // THIS IS A "ON EVENT" HOOK
 export const useAddElement = () => {
     const { request } = useAuth();
