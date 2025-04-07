@@ -18,6 +18,9 @@ import { ToastContainer } from 'react-toastify'
 
 import './App.css';
 
+// console.log(import.meta.env.MODE);
+// console.log(import.meta.env.VITE_APP_SERVER_URL);
+
 function App() {
 	return (
 		<UserProvider>

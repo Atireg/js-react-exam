@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import request from "../utils/request";
 import useAuth from "../hooks/useAuth";
 
-const baseUrl = 'http://localhost:3030/data/projects'
+const baseUrl = `${import.meta.env.VITE_APP_SERVER_URL}/data/projects`
 
 // THIS IS A "ON MOUNT" HOOK
 export const useGetAllProjects = () => {

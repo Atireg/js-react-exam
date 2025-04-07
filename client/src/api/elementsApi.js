@@ -3,7 +3,7 @@ import useAuth from "../hooks/useAuth";
 import { UserContext } from "../contexts/UserContext";
 import request from "../utils/request";
 
-const baseUrl = 'http://localhost:3030/data/elements';
+const baseUrl = `${import.meta.env.VITE_APP_SERVER_URL}/data/elements`;
 
 function elementsReducer(state, action) {
     switch (action.type) {

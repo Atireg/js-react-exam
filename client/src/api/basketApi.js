@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 
 
-const basketUrl = 'http://localhost:3030/data/basket';
+const basketUrl = `${import.meta.env.VITE_APP_SERVER_URL}/data/basket`;
 
 export const useGetAllInBasket = () => {
     const { request } = useAuth();
