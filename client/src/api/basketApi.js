@@ -6,7 +6,6 @@ const basketUrl = 'http://localhost:3030/data/basket';
 
 export const useGetAllInBasket = () => {
     const { request } = useAuth();
-
     const [ elements, setElements ] = useState([]);
 
     useEffect(() => {
@@ -32,4 +31,16 @@ export const useAddToBasket = () => {
     return {
         addToBasket
     }
+}
+
+export const useDeleteFromBasket = () => {
+    const { request } = useAuth();
+
+    const deleteFromBasket = (elementId) => 
+        request.delete(`${basketUrl}/${elementId}`);
+
+    return {
+        deleteFromBasket
+    }
+
 }

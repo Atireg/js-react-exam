@@ -16,7 +16,7 @@ TO DOs:
 
 [ ] Make the upload form an Excel sheet possible.
 
-[ ] Add elements to the basket.
+[x] Add elements to the basket.
 
 [ ] Add the element download function to get a 3D model or OBJ.
 

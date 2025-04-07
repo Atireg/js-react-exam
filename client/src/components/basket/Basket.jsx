@@ -1,18 +1,31 @@
-import { useGetAllInBasket } from "../../api/basketApi"
+import { useEffect, useState } from "react";
+import { useDeleteFromBasket, useGetAllInBasket } from "../../api/basketApi"
 import idSlicer from "../../utils/idSlicer";
 
 export default function Basket() {
-
     const { elements } = useGetAllInBasket();
+    const { deleteFromBasket } = useDeleteFromBasket();
+    const [ elementsInBasket, setElementsInBasket ] = useState([]);
 
     if(elements?.length > 0){
         console.log(elements);
     }
 
+    useEffect(() => {
+        setElementsInBasket(elements)
+    }, [elements])
+
+    const onDeleteHandler = async (elementId) => {
+        await deleteFromBasket(elementId)
+        setElementsInBasket(prev => prev.filter(item => item._id !== elementId));
+    }
+    
+    console.log(elementsInBasket);
+    
     return (
         <div className="main-content"> 
         <div className="elements-table">
-            <h1>You have {elements.length} elements in your basket: </h1>
+            <h2>You have {elementsInBasket.length} elements in your basket: </h2>
             <table >
                 <thead>
                     <tr>
@@ -20,7 +33,6 @@ export default function Basket() {
                         <th>Tragend</th>
                         <th>Material</th>
                         <th>Funktion</th>
-                        {/* <th>Menge</th> */}
                         <th>Werkstoff</th>
                         <th>Materialgüte</th>
                         <th>Länge (m)</th>
@@ -33,14 +45,14 @@ export default function Basket() {
                     </tr>
                 </thead>
                 <tbody>
-                    {elements?.length > 0 ? (
-                        elements.map(item => (
+                    {elementsInBasket?.length > 0 ? (
+                        elementsInBasket.map(item => (
                             <tr key={item._id} >
                                 <td>#{idSlicer(item._id)}</td>
                                 <td>{item.element.element.loadBearing}</td>
                                 <td>{item.element.element.material}</td>
                                 <td>{item.element.element.function}</td>
-                                {/* <td>{item.element.element.quantity}</td> */}
+
                                 <td>{item.element.element.specification}</td>
                                 <td>{item.element.element.quality}</td>
                                 <td>{item.element.element.length}</td>
@@ -49,12 +61,12 @@ export default function Basket() {
                                 <td>{item.element.element.connectionType}</td>
                                 <td>{item.element.element.manufacturingYear}</td>
                                 <td>{item.element.element.comment}</td>
-                                <td><button className="delete-button">Delete</button></td>
+                                <td><button onClick={() => onDeleteHandler(item._id)}className="delete-button">Delete</button></td>
                             </tr>
                         ))
                     ) : (
                         <tr>
-                            <td colSpan="12">No data available</td>
+                            <td colSpan="13">No data available</td>
                         </tr>
                     )}
                 </tbody>
