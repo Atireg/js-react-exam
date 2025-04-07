@@ -61,7 +61,7 @@ export default function SearchItems({
                                 <td>{item.element.connectionType}</td>
                                 <td>{item.element.manufacturingYear}</td>
                                 <td>{item.element.comment}</td>
-                                <td><button onClick={() => getElementIdHandler(item._id)} className="grab-button">Grab One!</button></td>
+                                <td><button onClick={() => getElementIdHandler(item._id)} className="small-button">Grab One!</button></td>
                             </tr>
                         ))
                     ) : (

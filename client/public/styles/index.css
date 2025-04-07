@@ -311,7 +311,7 @@ input[type="radio"] {
     padding: 1em
 }
 
-.grab-button {
+.small-button {
     width: 100px;
     padding: 0.2em;
     background-color: #e98166cb;

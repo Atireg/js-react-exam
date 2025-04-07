@@ -18,7 +18,7 @@ export default function ElementItem (
             <p>Profil: {profileType}</p>
             <p>Project: {project.name}</p>
             <p>Length: {length}m</p>
-            {/* <button className="grab-button">Grab!</button> */}
+            <button className="small-button">Grab!</button>
         </li>
     )
 }

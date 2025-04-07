@@ -67,7 +67,7 @@ export default function Basket() {
                                     <td>{item.element.element.connectionType}</td>
                                     <td>{item.element.element.manufacturingYear}</td>
                                     <td>{item.element.element.comment}</td>
-                                    <td><button onClick={() => onDeleteHandler(item._id)} className="delete-button">Delete</button></td>
+                                    <td><button onClick={() => onDeleteHandler(item._id)} className="small-button">Delete</button></td>
                                 </tr>
                             ))
                         ) : (
@@ -79,7 +79,7 @@ export default function Basket() {
                 </table>
                 {elementsInBasket?.length == 0 && (
                     <Link to="/elements">
-                        <p>Go and grab some elements</p>
+                        <p>Go grab some elements!</p>
                     </Link>
                 )}
             </div>
