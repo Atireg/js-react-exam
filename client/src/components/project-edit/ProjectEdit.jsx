@@ -1,10 +1,8 @@
 
 import { Navigate, useNavigate, useParams } from "react-router"
 import { useEditProject, useGetOneProject } from "../../api/projectsApi";
-// import useAuth from "../../hooks/useAuth";
 
 export default function ProjectEdit() {
-    // const { userId } = useAuth();
     const navigate = useNavigate();
     const { projectId } = useParams();
     const { project } = useGetOneProject(projectId);
@@ -15,17 +13,8 @@ export default function ProjectEdit() {
 
         await edit(projectId, projectData);
 
-        //TODO try-catch
-
         navigate(`/projects/${projectId}/details`)
     };
-
-    //TODO Fix this part - not working yet
-
-    // const isOwner = userId === project._ownerId;
-    // if(!isOwner){
-    //     return <Navigate to="/projects" />
-    // }
 
     return (
         <div className="centered-container">

@@ -2,6 +2,7 @@ import { useActionState, useContext } from "react";
 import { Link, useNavigate } from "react-router"
 import { useLogin } from "../../api/authApi";
 import { UserContext } from "../../contexts/UserContext";
+import { toast } from 'react-toastify'
 
 export default function Login() {
     const navigate = useNavigate();
@@ -11,15 +12,17 @@ export default function Login() {
     const loginHandler = async (_, formData) => {
         const values = Object.fromEntries(formData);
 
-        const authData = await login(values.email, values.password);
-        
-        userLoginHandler(authData);
+        try {
+            const authData = await login(values.email, values.password);
+            userLoginHandler(authData);
+            toast.success('Successful Login!');  
 
-        // navigate('/projects');
-
-        navigate(-1);
-
-        //TODO Check the server --> do not return the password
+            navigate(-1);
+        } catch (error) {
+            console.log(error);
+            
+            toast.error(error.message);  
+        }
 
         return values;
     }

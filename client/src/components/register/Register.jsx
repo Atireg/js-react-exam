@@ -1,32 +1,34 @@
 import { Link, useNavigate } from 'react-router'
 import { useRegister } from '../../api/authApi';
 import { useUserContext } from '../../contexts/UserContext';
-    
-export default function Register(){
+import { toast } from 'react-toastify'
+
+export default function Register() {
     const navigate = useNavigate();
     const { register } = useRegister();
-    const { userLoginHandler }  = useUserContext();
-    
+    const { userLoginHandler } = useUserContext();
+
+
     const registerHandler = async (formData) => {
         const values = Object.fromEntries(formData);
- 
-        if (values.password !== values.confirmPassword){
-            //TODO Add error handling logic
-            console.log('password and confirm-password dont match!');
+
+        if (values.password !== values.confirmPassword) {
+            toast.error('Password and confirm-password don\'t match!');
+
             return;
         }
 
-        const authData = await register(values.email, values.password);
+        try {
+            const authData = await register(values.email, values.password);
+            userLoginHandler(authData);
+            toast.success('Successful Login!');
 
-        //TODO Add error handling logic --> if the user already exists
-        
-        userLoginHandler(authData);
+            navigate('/');
+        } catch (error) {
+            console.log(error);
 
-        navigate('/');
-
-        //TODO Check the server --> do not return the password
-
-        // return values;
+            toast.error(error.message);
+        }
     }
 
     // const [ _, registerAction, isPending ] = useActionState(registerHandler, { email: '', password: '', confirmPassword: '' });

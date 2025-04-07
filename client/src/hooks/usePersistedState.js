@@ -18,7 +18,7 @@ export default function usePersistedState(stateKey, initialState){
     });
 
     const setPersistedState = (input) => {
-        //TODO Add try/catch if you give data that cannot be sringified
+       
         const data = typeof input === 'function'
         ? input(state)
         : input;

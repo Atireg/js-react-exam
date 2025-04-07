@@ -24,8 +24,7 @@ export default function Home() {
             {latestProjects.length === 0 &&
                 <p>No projects yet</p>
             }
-
-            {/* //TODO Add more jsx + styles for latestProjects */}
+            
         </div>
     )
 }

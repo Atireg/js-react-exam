@@ -39,8 +39,6 @@ export default function ExcelToJson() {
     }
   };
 
-  
-
   return (
     <div>
       <h2>Upload an Excel file</h2>

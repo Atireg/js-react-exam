@@ -103,7 +103,10 @@ export default function ProjectDetails() {
             </div>
 
             <ReuseElementsInventory user={email} projectId={projectId} elements={optimisticElements} onAddElement={elementsAddHandler} />
+            {email  &&
+
             <ExcelToJson onAddElement={elementsAddFromExcel}/>
+            }
 
         </section>
     )

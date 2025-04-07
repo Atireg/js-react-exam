@@ -12,8 +12,6 @@ export default function ProjectAdd() {
 
         await addProject(projectData);
 
-        //TODO try-catch
-
         navigate('/projects')
         
     };
