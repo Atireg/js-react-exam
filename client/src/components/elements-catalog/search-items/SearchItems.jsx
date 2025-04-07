@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useGetElements } from "../../../api/elementsApi";
 import idSlicer from "../../../utils/idSlicer";
 import { useAddToBasket } from "../../../api/basketApi";
+import { Link } from "react-router";
 
 export default function SearchItems({
     selected,
@@ -70,7 +71,9 @@ export default function SearchItems({
                     )}
                 </tbody>
             </table>
-            <p>Go to Your Basket!</p>
+            <Link to='/basket'>
+                <p>Go to Your Basket!</p>
+            </Link>
         </div>
         
     )
