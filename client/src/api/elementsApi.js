@@ -1,6 +1,7 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { UserContext } from "../contexts/UserContext";
+import request from "../utils/request";
 
 const baseUrl = 'http://localhost:3030/data/elements';
 
@@ -15,7 +16,7 @@ function elementsReducer(state, action) {
     }
 }
 
-export const useElements = ({ projectId, filterParam, filterValue } = {}) => {
+export const useGetElements = ({ projectId, filterParam, filterValue } = {}) => {
     const { request } = useAuth();
     const [ elements, dispatch ] = useReducer(elementsReducer, []);
 
@@ -40,6 +41,19 @@ export const useElements = ({ projectId, filterParam, filterValue } = {}) => {
         addElement: (elementData) =>
             dispatch({ type: 'ADD_COMMENT', payload: elementData }),
     };
+}
+
+export const useGetOneElement = (elementId) => {
+    const [ element, setElement ] = useState({});
+
+    useEffect(() => {
+        request.get(`${baseUrl}/${elementId}`)
+        .then(setElement)
+    }, [elementId]);
+
+    return {
+        element
+    }
 }
 
 // THIS IS A "ON EVENT" HOOK

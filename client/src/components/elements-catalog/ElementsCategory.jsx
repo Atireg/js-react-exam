@@ -1,4 +1,4 @@
-import { useElements } from "../../api/elementsApi";
+import { useGetElements } from "../../api/elementsApi";
 import ElementItem from "./element-item/ElementItem";
 
 export default function ElementsCategory(
@@ -7,7 +7,7 @@ export default function ElementsCategory(
         filterValue
     }
 ) {
-    const { elements } = useElements( { filterParam, filterValue });
+    const { elements } = useGetElements( { filterParam, filterValue });
      
     return (
         <section className='elements-category'>

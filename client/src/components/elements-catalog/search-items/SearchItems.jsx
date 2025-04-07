@@ -1,20 +1,30 @@
-import { useElements } from "../../../api/elementsApi";
+import { useState } from "react";
+import { useGetElements } from "../../../api/elementsApi";
 import idSlicer from "../../../utils/idSlicer";
+import { useAddToBasket } from "../../../api/basketApi";
 
 export default function SearchItems({
     selected,
 }) {
     //TODO add a spinner
-    const { elements } = useElements({ filterParam: "profileType", filterValue: selected });
+    const { elements } = useGetElements({ filterParam: "profileType", filterValue: selected });
+    const { addToBasket } = useAddToBasket();
+    const [ elementForBasket, setElementForBasket ] = useState({});
+ 
+    const getElementIdHandler = (searchId) => {
+        const foundElement = elements.find(item => item._id === searchId);
+        setElementForBasket(foundElement);
+    };
 
-    const getElementIdHandler = (id) => {
-        console.log(id);
-    }
-  
+    if(Object.keys(elementForBasket).length !== 0){ //TODO Add a check if the element is already there
+        addToBasket(elementForBasket);
+    };
+
     return (
+        
         <div className="elements-table">
             <h3>Results</h3>
-            <table >
+            <table>
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -50,7 +60,7 @@ export default function SearchItems({
                                 <td>{item.element.connectionType}</td>
                                 <td>{item.element.manufacturingYear}</td>
                                 <td>{item.element.comment}</td>
-                                <td><button onClick={() => getElementIdHandler(item._id)} className="grab-button">Grab!</button></td>
+                                <td><button onClick={() => getElementIdHandler(item._id)} className="grab-button">Grab One!</button></td>
                             </tr>
                         ))
                     ) : (
@@ -60,6 +70,8 @@ export default function SearchItems({
                     )}
                 </tbody>
             </table>
+            <p>Go to Your Basket!</p>
         </div>
+        
     )
 }
