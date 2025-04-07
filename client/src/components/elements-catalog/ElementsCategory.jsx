@@ -20,7 +20,6 @@ export default function ElementsCategory(
                         profileType={item.profileType}
                         projectId={item.projectId}
                         length={item.element.length}
-                    // onSend={this.sendToBasket}
                     />
                 )}
             </ul>

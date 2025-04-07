@@ -1,7 +1,7 @@
 import { useGetOneProject } from "../../../api/projectsApi";
 import idSlicer from "../../../utils/idSlicer";
 
-export default function ElementItem(
+export default function ElementItem (
     {
         id,
         profileType,

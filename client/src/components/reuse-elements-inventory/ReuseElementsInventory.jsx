@@ -1,49 +1,12 @@
 import { Link } from "react-router";
-import * as XLSX from "xlsx"
 import idSlicer from "../../utils/idSlicer";
+import ExcelToJson from "./ExcelUpload";
 
 export default function ReuseElementsInventory({
     user,
     elements,
     onAddElement
 }) {
-
-    // console.log(elements);
-    
-
-    // const handleFileUpload = (event) => {
-    //     const file = event.target.files[0];
-
-    //     if (file) {
-    //         const reader = new FileReader();
-
-    //         reader.onload = (e) => {
-    //             const data = new Uint8Array(e.target.result);
-    //             const workbook = XLSX.read(data, { type: "array" });
-
-    //             const sheetName = workbook.SheetNames[0]; // Get first sheet
-    //             const sheet = workbook.Sheets[sheetName];
-
-    //             let jsonOutput = XLSX.utils.sheet_to_json(sheet, { header: 1 }); // Read as an array of rows
-
-    //             // Extract column headers (first row)
-    //             const headers = jsonOutput[0];
-
-    //             // Convert rows into JSON objects
-    //             const formattedData = jsonOutput.slice(1).map((row) => {
-    //                 let rowObject = { _id: crypto.randomUUID() }; // Unique ID for each row
-    //                 headers.forEach((header, index) => {
-    //                     rowObject[header] = row[index] || ""; // Assign values, handling empty cells
-    //                 });
-    //                 return rowObject;
-    //             });
-
-    //             setJsonData(formattedData);
-    //         };
-
-    //         reader.readAsArrayBuffer(file);
-    //     }
-    // };
 
     return (
         <section className="elements-table">
@@ -220,7 +183,7 @@ export default function ReuseElementsInventory({
                             <textarea id="comment" name="comment" />
                         </div>
 
-                        <button className="button" type="submit">Add Component</button>
+                        <button className="button" type="submit">Add Element</button>
                     </form>
                 </div>
                 :

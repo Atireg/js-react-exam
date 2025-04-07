@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import { useAddElement, useGetElements } from "../../api/elementsApi";
 import { useOptimistic } from "react";
 import { v4 as uuid } from 'uuid'
+import ExcelToJson from "../reuse-elements-inventory/ExcelUpload";
 
 export default function ProjectDetails() {
     const navigate = useNavigate();
@@ -27,9 +28,9 @@ export default function ProjectDetails() {
         navigate('/projects')
     };
 
-    const elementsAddHandler = async (formData) => {
+    const elementsAddHandler = async (data) => {
 
-        const element = Object.fromEntries(formData);
+        const element = Object.fromEntries(data);
       
         const newOptimisticElement = {
             _id: uuid(),
@@ -51,8 +52,16 @@ export default function ProjectDetails() {
         //TODO add try/catch
         const newElementServer = await add(projectId, element.material, element.profileType, element);
 
+        console.log(newElementServer);
+        
+
         // ACTUAL UPDATE
         addElement({...newElementServer, author: { email }});
+    }
+
+    const elementsAddFromExcel = (data) => {
+        console.log(data);
+        
     }
 
     //TODO Check if this is working properly.
@@ -94,6 +103,7 @@ export default function ProjectDetails() {
             </div>
 
             <ReuseElementsInventory user={email} projectId={projectId} elements={optimisticElements} onAddElement={elementsAddHandler} />
+            <ExcelToJson onAddElement={elementsAddFromExcel}/>
 
         </section>
     )
