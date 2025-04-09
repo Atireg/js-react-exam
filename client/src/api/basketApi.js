@@ -10,10 +10,7 @@ export const useGetAllBaskets = () => {
 
     useEffect(() => {
         request.get(basketUrl)
-            .then((data) => {
-                console.log('Baskets received', data);
-                setBaskets(data)
-            })
+            .then(setBaskets)
             .catch((err) => {
                 console.error('Failed to fetch', err);
             })
@@ -33,7 +30,7 @@ export const useAddBasket = () => {
 
     const addBasket = () => {
         const basketData = {
-            elements: {}
+            elements: []
         }
         return request.post(basketUrl, basketData);
     }
@@ -43,32 +40,52 @@ export const useAddBasket = () => {
     }
 }
 
-export const useGetAllInBasket = () => {
-    const { userId, request } = useAuth();
-    const [elements, setElements] = useState([]);
+export const useGetAllInBasket = (basketId) => {
+    const { request } = useAuth();
+    const [ elements, setElements ] = useState([]);
+    const [ loading, setLoading ] = useState(true);
 
     useEffect(() => {
-        request.get(`${basketUrl}/${userId}`)
+        if(!basketId) return;
+
+        request.get(`${basketUrl}/${basketId}`)
             .then(setElements)
-    }, [userId]);
+            .catch((err) => {
+                console.log('Failed to fetch elements from basket', err)
+            })
+            .finally(() => {
+                setLoading(false)
+            })
+    }, [basketId]);
 
     return {
-        elements
+        elements,
+        loading
     };
 }
 
 export const useAddToBasket = () => {
-    const { userId, request } = useAuth();
+    const { request } = useAuth();
 
-    useEffect(() => {
+    const addToBasket = async (element) => {
+        try {
+            const basketId = "bf5e45cf-3739-4e90-9703-0f1d9dfcccf6"; //TODO Fix this to get dynamically
+            const basketData = await request.get(`${basketUrl}/${basketId}`);
 
-    })
+            const currentElements = basketData.elements || [];
+            
+            const updatedElements = [...currentElements, element]
 
-    const addToBasket = (element) => {
-        const elementData = {
-            element
+            const response = await request.put(`${basketUrl}/${basketId}`, {
+                ...basketData, 
+                elements: updatedElements
+            })
+
+            return response.data;
+        } catch (error) {
+            console.error("Error adding element to basket", error);
+            throw error;
         }
-        return request.post(`${basketUrl}/${userId}`, elementData) // CHANGE THIS TO BASKETID
     }
 
     return {

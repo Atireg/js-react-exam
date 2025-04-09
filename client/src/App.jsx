@@ -33,7 +33,7 @@ function App() {
 					<Route element={<AuthGuard />}>
 						<Route path='/projects/add' element={<ProjectAdd />} />
 						<Route path='/projects/:projectId/edit' element={<ProjectEdit />} />
-						<Route path='/baskets/:_id' element={<Basket />} />
+						<Route path='/baskets/:ownerId' element={<Basket />} />
 						<Route path='/logout' element={<Logout />} />
 					</Route>
 					<Route element={<GuestGuard />}>

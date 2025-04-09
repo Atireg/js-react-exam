@@ -12,6 +12,7 @@ export default function ElementItem(
     }
 ) {
     const { project } = useGetOneProject(projectId);
+
     const { addToBasketHandler, isLoading } = useAddToBasketHandler();
     const { element } = useGetOneElement(id);
 
