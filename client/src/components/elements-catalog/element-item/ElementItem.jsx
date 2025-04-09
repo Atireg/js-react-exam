@@ -1,8 +1,7 @@
-import { useState } from "react";
-import { useAddToBasket } from "../../../api/basketApi";
-import { useGetOneElement } from "../../../api/elementsApi";
 import { useGetOneProject } from "../../../api/projectsApi";
 import idSlicer from "../../../utils/idSlicer";
+import useAddToBasketHandler from "../../../hooks/useAddToBasketHandler";
+import { useGetOneElement } from "../../../api/elementsApi";
 
 export default function ElementItem(
     {
@@ -14,23 +13,8 @@ export default function ElementItem(
 ) {
 
     const { project } = useGetOneProject(projectId);
-    const { element } = useGetOneElement(id);
-    const { addToBasket } = useAddToBasket();
-    const [isLoading, setIsLoading] = useState(false);
-
-    const addToBasketHandler = async () => {
-        if (!element) return;
-
-        setIsLoading(true);
-
-        try {
-            await addToBasket(element)
-            await new Promise((resolve) => setTimeout(resolve, 500));
-  
-        } finally {
-            setIsLoading(false)
-        }
-    }
+    const { addToBasketHandler, isLoading } = useAddToBasketHandler();
+    const { element } = useGetOneElement(id); // gets the full element by ID
 
     return (
         <li className='elements-item'>
@@ -39,17 +23,17 @@ export default function ElementItem(
             <p>Project: {project.name}</p>
             <p>Length: {length}m</p>
             <button
-                onClick={addToBasketHandler}
+                onClick={() => addToBasketHandler(element)}
                 className="small-button"
                 style={{
-                    backgroundColor: isLoading ? 'grey' : '#e98166cb',
+                    backgroundColor: isLoading(id) ? 'grey' : '#e98166cb',
                     color: 'white',
-                    cursor: isLoading ? 'not-allowed' : 'pointer',
-                    opacity: isLoading ? 0.7 : 1
+                    cursor: isLoading(id) ? 'not-allowed' : 'pointer',
+                    opacity: isLoading(id) ? 0.7 : 1
                 }}
-                disabled={isLoading}
+                disabled={isLoading(id)}
             >
-                {isLoading ? 'Adding...' : 'Grab!'}
+                {isLoading(id) ? 'Adding...' : 'Grab!'}
             </button>
         </li>
     )

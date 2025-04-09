@@ -1,31 +1,12 @@
-import { useState } from "react";
 import { useGetElements } from "../../../api/elementsApi";
 import idSlicer from "../../../utils/idSlicer";
-import { useAddToBasket } from "../../../api/basketApi";
 import { Link } from "react-router";
+import useAddToBasketHandler from "../../../hooks/useAddToBasketHandler";
 
 export default function SearchItems({ selected }) {
     const { elements } = useGetElements({ filterParam: "profileType", filterValue: selected });
-    const { addToBasket } = useAddToBasket();
-    
-    // Track loading state per item (by ID)
-    const [loadingIds, setLoadingIds] = useState({});
 
-    const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
-
-    const addToBasketHandler = async (searchId) => {
-        const foundElement = elements.find(item => item._id === searchId);
-        if (!foundElement) return;
-
-        setLoadingIds(prev => ({ ...prev, [searchId]: true }));
-
-        try {
-            await addToBasket(foundElement);
-            await sleep(500); 
-        } finally {
-            setLoadingIds(prev => ({ ...prev, [searchId]: false }));
-        }
-    };
+    const { addToBasketHandler, isLoading } = useAddToBasketHandler();
 
     return (
         <div className="elements-table">
@@ -52,8 +33,7 @@ export default function SearchItems({ selected }) {
                 <tbody>
                     {elements?.length > 0 ? (
                         elements.map(item => {
-                            const isLoading = loadingIds[item._id];
-
+   
                             return (
                                 <tr key={item._id}>
                                     <td>#{idSlicer(item._id)}</td>
@@ -71,17 +51,17 @@ export default function SearchItems({ selected }) {
                                     <td>{item.element.comment}</td>
                                     <td>
                                         <button
-                                            onClick={() => addToBasketHandler(item._id)}
+                                            onClick={() => addToBasketHandler(item)}
                                             className="small-button"
                                             style={{
-                                                backgroundColor: isLoading ? 'grey' : '#007bff',
+                                                backgroundColor: isLoading(item._id) ? 'grey' : '#e98166cb',
                                                 color: 'white',
-                                                cursor: isLoading ? 'not-allowed' : 'pointer',
-                                                opacity: isLoading ? 0.7 : 1
+                                                cursor: isLoading(item._id) ? 'not-allowed' : 'pointer',
+                                                opacity: isLoading(item._id) ? 0.7 : 1
                                             }}
-                                            disabled={isLoading}
+                                            // disabled={isLoading(item._id)}
                                         >
-                                            {isLoading ? 'Adding...' : 'Grab One!'}
+                                            {isLoading(item._id) ? 'Adding...' : 'Grab One!'}
                                         </button>
                                     </td>
                                 </tr>
