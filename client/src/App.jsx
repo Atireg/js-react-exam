@@ -13,8 +13,8 @@ import ProjectDetails from './components/project-details/ProjectDetails';
 import ProjectAdd from './components/project-add/ProjectAdd';
 import ProjectEdit from './components/project-edit/ProjectEdit';
 import ElementsCatalog from './components/elements-catalog/ElementsCatalog';
-import Basket from './components/basket/Basket';
 import { ToastContainer } from 'react-toastify'
+import Basket from './components/basket/Basket';
 
 import './App.css';
 
@@ -33,7 +33,7 @@ function App() {
 					<Route element={<AuthGuard />}>
 						<Route path='/projects/add' element={<ProjectAdd />} />
 						<Route path='/projects/:projectId/edit' element={<ProjectEdit />} />
-						<Route path='/basket' element={<Basket />} />
+						<Route path='/baskets/:_id' element={<Basket />} />
 						<Route path='/logout' element={<Logout />} />
 					</Route>
 					<Route element={<GuestGuard />}>

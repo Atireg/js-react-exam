@@ -1,9 +1,11 @@
-import { useState } from "react"
+import { useState } from "react";
 import SearchItems from "../search-items/SearchItems";
+
 
 export default function SearchForm() {
 
-    const [selected, setSelected] = useState('')
+
+    const [selected, setSelected] = useState('');
 
     const onChangeHandler = (event) => {
         const { name, checked } = event.target;
@@ -62,8 +64,8 @@ export default function SearchForm() {
                 </div>
             </form>
 
-            <SearchItems selected={selected}/>
-     
+            <SearchItems selected={selected} />
+
         </div>
     )
 }

@@ -28,6 +28,7 @@ export default function Login() {
     }
 
     const [ _, loginAction, isPending ] = useActionState(loginHandler, { email: '', password: '' });
+
     
     return (
         <div className="centered-container">

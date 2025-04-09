@@ -2,10 +2,14 @@ import { useGetElements } from "../../../api/elementsApi";
 import idSlicer from "../../../utils/idSlicer";
 import { Link } from "react-router";
 import useAddToBasketHandler from "../../../hooks/useAddToBasketHandler";
+import { useContext } from "react";
+import { UserContext } from "../../../contexts/UserContext";
 
-export default function SearchItems({ selected }) {
+export default function SearchItems({
+    selected,
+}) {
     const { elements } = useGetElements({ filterParam: "profileType", filterValue: selected });
-
+    const { _id: userId } = useContext(UserContext);
     const { addToBasketHandler, isLoading } = useAddToBasketHandler();
 
     return (
@@ -75,7 +79,7 @@ export default function SearchItems({ selected }) {
                 </tbody>
             </table>
 
-            <Link to="/basket">
+            <Link to={`/baskets/${userId}`}>
                 <p>Go to Your Basket!</p>
             </Link>
         </div>

@@ -11,10 +11,9 @@ export default function ElementItem(
         length,
     }
 ) {
-
     const { project } = useGetOneProject(projectId);
     const { addToBasketHandler, isLoading } = useAddToBasketHandler();
-    const { element } = useGetOneElement(id); // gets the full element by ID
+    const { element } = useGetOneElement(id);
 
     return (
         <li className='elements-item'>

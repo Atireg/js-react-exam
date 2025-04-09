@@ -1,6 +1,5 @@
 import { useEffect, useReducer, useState } from "react";
 import useAuth from "../hooks/useAuth";
-import { UserContext } from "../contexts/UserContext";
 import request from "../utils/request";
 
 const baseUrl = `${import.meta.env.VITE_APP_SERVER_URL}/data/elements`;

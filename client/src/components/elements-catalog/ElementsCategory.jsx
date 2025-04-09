@@ -8,7 +8,7 @@ export default function ElementsCategory(
     }
 ) {
     const { elements } = useGetElements( { filterParam, filterValue });
-     
+      
     return (
         <section className='elements-category'>
             <h3>{filterValue}</h3>
