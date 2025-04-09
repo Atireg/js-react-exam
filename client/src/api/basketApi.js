@@ -1,41 +1,51 @@
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
-import { UserContext } from "../contexts/UserContext";
 
 const basketUrl = `${import.meta.env.VITE_APP_SERVER_URL}/data/baskets`;
 
 export const useGetAllBaskets = () => {
     const { request } = useAuth();
-    const [ baskets, setBaskets ] = useState([]);
+    const [baskets, setBaskets] = useState(null);
+    const [ loading, setLoading ] = useState(true);
 
     useEffect(() => {
         request.get(basketUrl)
-        .then(setBaskets)
+            .then((data) => {
+                console.log('Baskets received', data);
+                setBaskets(data)
+            })
+            .catch((err) => {
+                console.error('Failed to fetch', err);
+            })
+            .finally(() => {
+                setLoading(false)
+            })
     }, [])
 
     return {
-        baskets
+        baskets,
+        loading
     }
 }
 
 export const useAddBasket = () => {
     const { request } = useAuth();
-    
+
     const addBasket = () => {
         const basketData = {
-            elements:{}
+            elements: {}
         }
         return request.post(basketUrl, basketData);
     }
-    
+
     return {
         addBasket,
-    }  
+    }
 }
 
 export const useGetAllInBasket = () => {
     const { userId, request } = useAuth();
-    const [ elements, setElements ] = useState([]);
+    const [elements, setElements] = useState([]);
 
     useEffect(() => {
         request.get(`${basketUrl}/${userId}`)
@@ -53,7 +63,7 @@ export const useAddToBasket = () => {
     useEffect(() => {
 
     })
-  
+
     const addToBasket = (element) => {
         const elementData = {
             element
@@ -69,7 +79,7 @@ export const useAddToBasket = () => {
 export const useDeleteFromBasket = () => {
     const { request } = useAuth();
 
-    const deleteFromBasket = (elementId) => 
+    const deleteFromBasket = (elementId) =>
         request.delete(`${basketUrl}/${elementId}`);
 
     return {

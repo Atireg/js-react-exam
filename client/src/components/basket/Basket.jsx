@@ -1,43 +1,15 @@
 import { useEffect, useState } from "react";
-import { useAddBasket, useDeleteFromBasket, useGetAllBaskets, useGetAllInBasket } from "../../api/basketApi"
+import { useDeleteFromBasket, useGetAllInBasket } from "../../api/basketApi"
 import idSlicer from "../../utils/idSlicer";
 import { Link } from "react-router";
-import { v4 as uuid } from 'uuid'
-import useAuth from "../../hooks/useAuth";
+import { useUserBasket } from "../../hooks/useUserBasket";
 
 export default function Basket() {
-    const { user } = useAuth();
+    const { userBasket } = useUserBasket();
     const { elements } = useGetAllInBasket();
     const { deleteFromBasket } = useDeleteFromBasket();
-    const [ elementsInBasket, setElementsInBasket ] = useState([]);
-    const { addBasket } = useAddBasket();
-    const { baskets } = useGetAllBaskets();
-
-    const [ userBasket, setUserBasket ] = useState(null);
-
-    
-  useEffect(() => {
-    if (!user || !baskets || userBasket) return;
-
-    // Check if user already has a basket
-    const existing = baskets.find(basket => basket._ownerId === user._id);
-
-    if (existing) {
-      setUserBasket(existing);
-    } else {
-      const createBasket = async () => {
-        const res = await addBasket(); 
-      };
-      createBasket();
-    }
-  }, [user, baskets]);
-    
-
-   
-    if (elements?.length > 0) {
-        console.log(elements);
-    }
-
+    const [elementsInBasket, setElementsInBasket] = useState([]);
+ 
     useEffect(() => {
         setElementsInBasket(elements)
     }, [elements])
@@ -51,6 +23,11 @@ export default function Basket() {
         await deleteFromBasket(elementId)
         setElementsInBasket(prev => prev.filter(item => item._id !== elementId));
     }
+
+    if (!userBasket) {
+        return <p>Loading your basket...</p>;
+    }
+
 
     return (
         <div className="main-content">
