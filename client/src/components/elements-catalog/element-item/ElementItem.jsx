@@ -10,23 +10,27 @@ export default function ElementItem(
         profileType,
         projectId,
         length,
-    
     }
 ) {
 
     const { project } = useGetOneProject(projectId);
     const { element } = useGetOneElement(id);
-    const [ elementForBasket, setElementForBasket ] = useState({});
     const { addToBasket } = useAddToBasket();
+    const [isLoading, setIsLoading] = useState(false);
 
+    const addToBasketHandler = async () => {
+        if (!element) return;
 
-    const getElementIdHandler = () => {
-        setElementForBasket(element);
-    };
+        setIsLoading(true);
 
-    if (Object.keys(elementForBasket).length !== 0) { //TODO Add a check if the element is already there
-        addToBasket(elementForBasket);
-    };
+        try {
+            await addToBasket(element)
+            await new Promise((resolve) => setTimeout(resolve, 500));
+  
+        } finally {
+            setIsLoading(false)
+        }
+    }
 
     return (
         <li className='elements-item'>
@@ -34,8 +38,21 @@ export default function ElementItem(
             <p>Profil: {profileType}</p>
             <p>Project: {project.name}</p>
             <p>Length: {length}m</p>
-            <button onClick={() => getElementIdHandler(id)} className="small-button">Grab!</button>
+            <button
+                onClick={addToBasketHandler}
+                className="small-button"
+                style={{
+                    backgroundColor: isLoading ? 'grey' : '#e98166cb',
+                    color: 'white',
+                    cursor: isLoading ? 'not-allowed' : 'pointer',
+                    opacity: isLoading ? 0.7 : 1
+                }}
+                disabled={isLoading}
+            >
+                {isLoading ? 'Adding...' : 'Grab!'}
+            </button>
         </li>
     )
 }
+
 
