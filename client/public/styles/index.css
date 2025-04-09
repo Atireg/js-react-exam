@@ -369,6 +369,15 @@ input[type="radio"] {
     section.threeDcontent {
         order: 2;
     }
+    .elements-categories{
+        justify-content: center;
+        flex-direction: column
+    }
+
+    .elements-categories section {
+        width: 85dvw;
+    
+    }
 }
 
 @media(min-width: 2000px) {
