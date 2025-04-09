@@ -7,7 +7,7 @@ import { useUserBasket } from "../../hooks/useUserBasket";
 export default function Basket() {
     const { userBasket } = useUserBasket();
     const { elements } = useGetAllInBasket(userBasket?._id);
-    const { deleteFromBasket } = useDeleteFromBasket();
+    const { deleteFromBasket } = useDeleteFromBasket(userBasket?._id);
     const [elementsInBasket, setElementsInBasket] = useState([]);
  
     useEffect(() => {

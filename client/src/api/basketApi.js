@@ -67,9 +67,9 @@ export const useGetAllInBasket = (basketId) => {
 export const useAddToBasket = () => {
     const { request } = useAuth();
 
-    const addToBasket = async (element) => {
+    const addToBasket = async (basketId, element) => {
         try {
-            const basketId = "bf5e45cf-3739-4e90-9703-0f1d9dfcccf6"; //TODO Fix this to get dynamically
+            
             const basketData = await request.get(`${basketUrl}/${basketId}`);
 
             const currentElements = basketData.elements || [];

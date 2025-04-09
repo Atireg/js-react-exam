@@ -2,10 +2,12 @@ import { Link } from "react-router"
 import useAuth from "../../hooks/useAuth"
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import BasketContext from "../../contexts/BasketContext";
 
 export default function Header() {
     const { email, isAuthenticated } = useAuth();
     const { _id: userId } = useContext(UserContext);
+    const { basketElements } = useContext(BasketContext);
     
     return (
         <header className="site-header">
@@ -24,7 +26,7 @@ export default function Header() {
                         (
                             <div id="user">
                                 <li>
-                                    <Link to={`/baskets/${userId}`}>My ReUse Basket </Link>
+                                    <Link to={`/baskets/${userId}`}>My ReUse Basket ({basketElements.length}) </Link>
                                 </li>
                                 <li>
                                     <Link to="/logout">Logout </Link>

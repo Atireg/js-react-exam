@@ -15,8 +15,11 @@ import ProjectEdit from './components/project-edit/ProjectEdit';
 import ElementsCatalog from './components/elements-catalog/ElementsCatalog';
 import { ToastContainer } from 'react-toastify'
 import Basket from './components/basket/Basket';
+import { BasketProvider } from './providers/BasketProvider';
+
 
 import './App.css';
+
 
 // console.log(import.meta.env.MODE);
 // console.log(import.meta.env.VITE_APP_SERVER_URL);
@@ -24,6 +27,7 @@ import './App.css';
 function App() {
 	return (
 		<UserProvider>
+			<BasketProvider>
 			<div>
 				<Header />
 				<Routes>
@@ -46,6 +50,7 @@ function App() {
 				<Footer />
 				<ToastContainer />
 			</div>
+			</BasketProvider>
 		</UserProvider>
 	)
 }

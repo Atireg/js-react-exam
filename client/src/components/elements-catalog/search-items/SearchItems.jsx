@@ -4,13 +4,15 @@ import { Link } from "react-router";
 import useAddToBasketHandler from "../../../hooks/useAddToBasketHandler";
 import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext";
+import BasketContext from "../../../contexts/BasketContext";
 
 export default function SearchItems({
     selected,
 }) {
     const { elements } = useGetElements({ filterParam: "profileType", filterValue: selected });
     const { _id: userId } = useContext(UserContext);
-    const { addToBasketHandler, isLoading } = useAddToBasketHandler();
+    const { basketId } = useContext(BasketContext); 
+    const { addToBasketHandler, isLoading } = useAddToBasketHandler(basketId);
 
     return (
         <div className="elements-table">

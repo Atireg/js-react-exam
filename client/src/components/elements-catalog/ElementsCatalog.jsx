@@ -1,7 +1,10 @@
+
 import ElementsCategory from "./ElementsCategory";
 import SearchForm from "./search-form/SearchForm";
 
 export default function ElementsCatalog() {
+
+    
     return (
         <section className="main-content">
             <h2>Categories</h2>

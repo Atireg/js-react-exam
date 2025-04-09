@@ -1,7 +1,10 @@
 import { useGetOneProject } from "../../../api/projectsApi";
 import idSlicer from "../../../utils/idSlicer";
-import useAddToBasketHandler from "../../../hooks/useAddToBasketHandler";
 import { useGetOneElement } from "../../../api/elementsApi";
+import BasketContext from "../../../contexts/BasketContext";
+import useAddToBasketHandler from "../../../hooks/useAddToBasketHandler";
+import { useContext } from "react";
+
 
 export default function ElementItem(
     {
@@ -12,10 +15,12 @@ export default function ElementItem(
     }
 ) {
     const { project } = useGetOneProject(projectId);
-
-    const { addToBasketHandler, isLoading } = useAddToBasketHandler();
     const { element } = useGetOneElement(id);
+    const { basketId } = useContext(BasketContext); 
+    const { addToBasketHandler, isLoading } = useAddToBasketHandler(basketId);
 
+    console.log(basketId);
+    
     return (
         <li className='elements-item'>
             <p><strong>ElementId: #{idSlicer(id)}</strong></p>
