@@ -3,8 +3,8 @@ import { useAddToBasket } from "../api/basketApi";
 
 export default function useAddToBasketHandler() {
     const { addToBasket } = useAddToBasket();
-    const [loadingIds, setLoadingIds] = useState({});
-
+    const [ loadingIds, setLoadingIds] = useState({});
+    
     const sleep = (ms) => new Promise(res => setTimeout(res, ms));
 
     const addToBasketHandler = async (element) => {
