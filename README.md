@@ -1,12 +1,12 @@
-🧱 Salvaged Elements Platform/ kh ReUse
+# 🧱 Salvaged Elements Platform/ kh ReUse
 Welcome to my project!
 
 This application is the result of a personal journey — bridging the gap between my work as an architect in the building industry and my growing passion for coding. After a year and a half of navigating these two worlds, I’m excited to finally bring them together in one meaningful project. 
 
-🏗️ About the Project
+# 🏗️ About the Project
 This platform is a user interface designed to collect, display, and reuse building elements salvaged from demolished structures.
 
-🔍 Key Features
+# 🔍 Key Features
 Explore a curated collection of salvaged elements from real architectural projects
 
 Logged-in users can:
@@ -21,35 +21,34 @@ Built-in categorization and filtering for easy navigation
 
 Guest users can browse content but cannot modify or save elements
 
-🚀 Getting Started
+# 🚀 Getting Started
 To run the project locally:
 
-bash
-Copy
-Edit
-# Frontend
+Frontend
+```bash
 cd client
 npm install
 npm run dev
-bash
-Copy
-Edit
-# Backend
+```
+Backend
+```bash
 cd server
 node server
-Or you can explore the live version here:
-👉 Live Demo: https://kh-reuse.web.app/
+```
 
-Log in with:
+# 👉 Live Demo: https://kh-reuse.web.app/
+A hard-coded login is ➡️
+
 email: admin@kh.com
 password: admin
 
-🛠️ Upcoming Improvements
+
+# 🛠️ Upcoming Improvements
  Add edit functionality for building elements
 
  Support Excel sheet upload for bulk entries
 
- Add 3D model / .OBJ download functionality
+ Add 3D model / .OBJ download functionality through THREE.js
 
  Generate PDF summaries of elements
 

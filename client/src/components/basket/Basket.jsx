@@ -87,7 +87,7 @@ export default function Basket() {
                 </table>
                 {elementsToDisplay?.length == 0 && (
                     <Link to="/elements">
-                        <p>Go grab some elements!</p>
+                        <button>Go grabsome elements! </button>
                     </Link>
                 )}
             </div>
