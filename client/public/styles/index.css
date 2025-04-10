@@ -32,27 +32,26 @@
 }
 
 .basket-indicator {
-    font-weight: bold;
     margin-left: auto;
     padding: 0.5rem;
-    color: #333;
-    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    color: #c4c4c4;
+    transition: color 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
-
+ 
 .basket-indicator.updated {
-    color: #ff6347;
-    transform: scale(1.2);
+    font-weight: bold;
+    color: #666666;
 }
-
+ 
 @keyframes bounce {
     0% {
         transform: translateY(0);
     }
-
+ 
     50% {
         transform: translateY(-10px);
     }
-
+ 
     100% {
         transform: translateY(0);
     }
@@ -314,17 +313,44 @@ th {
 .search-group {
     display: flex;
     gap: 0.8em;
+    margin-left: 2em
 }
 
-input[type="radio"] {
-    cursor: pointer;
+.choice input[type="radio"] {
+    display: none;
 }
-
+ 
 .choice {
     display: flex;
-    gap: 0.5em;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
 }
-
+ 
+.choice .radio-mark {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+ 
+.choice .radio-mark::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+ 
+.choice input[type="radio"]:checked + .radio-mark::before {
+    background-color: #e67154bb;
+    border-color: #e67154bb;
+}
 
 /* ELEMENTS CATALOG SECTION */
 
@@ -343,6 +369,10 @@ input[type="radio"] {
     width: 100px;
     padding: 0.2em;
     background-color: #e98166cb;
+}
+
+.elements-item .small-button{
+    margin-top: 0.3em;
 }
 
 .table-highlight {

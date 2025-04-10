@@ -5,13 +5,15 @@ import useAddToBasketHandler from "../../../hooks/useAddToBasketHandler";
 import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 import BasketContext from "../../../contexts/BasketContext";
+import useAuth from "../../../hooks/useAuth";
 
 export default function SearchItems({
     selected,
 }) {
+    const { isAuthenticated } = useAuth();
     const { elements } = useGetElements({ filterParam: "profileType", filterValue: selected });
     const { _id: userId } = useContext(UserContext);
-    const { basketId, updateBasketElements } = useContext(BasketContext); 
+    const { basketId, updateBasketElements } = useContext(BasketContext);
     const { addToBasketHandler, isLoading } = useAddToBasketHandler(basketId, updateBasketElements);
 
     return (
@@ -39,7 +41,7 @@ export default function SearchItems({
                 <tbody>
                     {elements?.length > 0 ? (
                         elements.map(item => {
-   
+
                             return (
                                 <tr key={item._id}>
                                     <td>#{idSlicer(item._id)}</td>
@@ -56,19 +58,28 @@ export default function SearchItems({
                                     <td>{item.element.manufacturingYear}</td>
                                     <td>{item.element.comment}</td>
                                     <td>
-                                        <button
-                                            onClick={() => addToBasketHandler(item)}
-                                            className="small-button"
-                                            style={{
-                                                backgroundColor: isLoading(item._id) ? 'grey' : '#e98166cb',
-                                                color: 'white',
-                                                cursor: isLoading(item._id) ? 'not-allowed' : 'pointer',
-                                                opacity: isLoading(item._id) ? 0.7 : 1
-                                            }}
-                                            // disabled={isLoading(item._id)}
-                                        >
-                                            {isLoading(item._id) ? 'Adding...' : 'Grab One!'}
-                                        </button>
+                                        {isAuthenticated
+                                            ?
+                                            <button
+                                                onClick={() => addToBasketHandler(item)}
+                                                className="small-button"
+                                                style={{
+                                                    backgroundColor: isLoading(item._id) ? 'grey' : '#e98166cb',
+                                                    color: 'white',
+                                                    cursor: isLoading(item._id) ? 'not-allowed' : 'pointer',
+                                                    opacity: isLoading(item._id) ? 0.7 : 1
+                                                }}
+                                                disabled={isLoading(item._id)}
+                                            >
+                                                {isLoading(item._id) ? 'Adding...' : 'Grab!'}
+                                            </button>
+                                            :
+                                            <Link to='/login'>
+                                                <button className="small-button">
+                                                    Login to Grab!
+                                                </button>
+                                            </Link>
+                                        }
                                     </td>
                                 </tr>
                             );

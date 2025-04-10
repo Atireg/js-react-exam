@@ -1,6 +1,8 @@
 # js-react-exam
 JS REACT @ SoftUni
 
+login with email: admin@kh.com & pass: admin
+
 
 TO DOs:
 

@@ -4,7 +4,8 @@ import { useGetOneElement } from "../../../api/elementsApi";
 import BasketContext from "../../../contexts/BasketContext";
 import useAddToBasketHandler from "../../../hooks/useAddToBasketHandler";
 import { useContext } from "react";
-
+import useAuth from "../../../hooks/useAuth";
+import { Link } from "react-router";
 
 export default function ElementItem(
     {
@@ -14,12 +15,11 @@ export default function ElementItem(
         length,
     }
 ) {
+    const { email } = useAuth();
     const { project } = useGetOneProject(projectId);
     const { element } = useGetOneElement(id);
     const { basketId, updateBasketElements } = useContext(BasketContext); 
     const { addToBasketHandler, isLoading } = useAddToBasketHandler(basketId, updateBasketElements);
-
-    console.log(basketId);
     
     return (
         <li className='elements-item'>
@@ -27,6 +27,9 @@ export default function ElementItem(
             <p>Profil: {profileType}</p>
             <p>Project: {project.name}</p>
             <p>Length: {length}m</p>
+
+            {email
+            ?
             <button
                 onClick={() => addToBasketHandler(element)}
                 className="small-button"
@@ -40,8 +43,16 @@ export default function ElementItem(
             >
                 {isLoading(id) ? 'Adding...' : 'Grab!'}
             </button>
+            :
+            <Link to='/login'>
+            <button className="small-button">
+                Login to Grab!
+            </button>
+            </Link>
+            }
         </li>
     )
 }
+
 
 

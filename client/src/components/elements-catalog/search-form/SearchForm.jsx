@@ -1,21 +1,13 @@
 import { useState } from "react";
 import SearchItems from "../search-items/SearchItems";
 
-
 export default function SearchForm() {
-
-
     const [selected, setSelected] = useState('');
 
     const onChangeHandler = (event) => {
-        const { name, checked } = event.target;
-        if (checked) {
-            setSelected(name);
-        } else {
-            setSelected('');
-        }
-    }
-
+        setSelected(event.target.value);
+    };
+ 
     const onSubmitHandler = (e) => {
         e.preventDefault();
     }
@@ -27,38 +19,38 @@ export default function SearchForm() {
                 <div className="search-group" >
                     <div>
                         <label className="choice">
-                            <input
+                        <input
                                 type="radio"
-                                name="Rechteckprofil"
-                                checked={setSelected === "Rechteckprofil"}
+                                name="profile"
+                                value="Rechteckprofil"
+                                checked={selected === "Rechteckprofil"}
                                 onChange={onChangeHandler}
-                                disabled={false}
                             />
-                            <p>Rechteckprofil</p>
+                            <p className="radio-mark">Rechteckprofil</p>
+                        </label>
+                    </div>
+                    <div>
+                        <label className="choice">
+                        <input
+                                type="radio"
+                                name="profile"
+                                value="IPE100"
+                                checked={selected === "IPE100"}
+                                onChange={onChangeHandler}
+                            />
+                            <p className="radio-mark">IPE100</p>
                         </label>
                     </div>
                     <div>
                         <label className="choice">
                             <input
                                 type="radio"
-                                name="IPE100"
-                                checked={setSelected === "IPE100"}
+                                name="profile"
+                                value="Rundprofil"
+                                checked={selected === "Rundprofil"}
                                 onChange={onChangeHandler}
-                                disabled={false}
                             />
-                            <p>IPE100</p>
-                        </label>
-                    </div>
-                    <div>
-                        <label className="choice">
-                            <input
-                                type="radio"
-                                name="Rundprofil"
-                                checked={setSelected === "Rundprofil"}
-                                onChange={onChangeHandler}
-                                disabled={false}
-                            />
-                            Rundprofil
+                            <p className="radio-mark">Rundprofil</p>
                         </label>
                     </div>
                 </div>
