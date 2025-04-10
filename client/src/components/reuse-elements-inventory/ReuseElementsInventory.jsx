@@ -56,7 +56,7 @@ export default function ReuseElementsInventory({
                             ))
                         ) : (
                             <tr>
-                                <td colSpan="13">No data available</td>
+                                <td colSpan="14">No data available</td>
                             </tr>
                         )}
                     </tbody>

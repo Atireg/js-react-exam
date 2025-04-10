@@ -51,7 +51,7 @@ export default function Basket() {
                             <th>Verbindung</th>
                             <th>Baujahr</th>
                             <th>Kommentar</th>
-                            <th></th>
+                            {/* <th></th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -71,12 +71,12 @@ export default function Basket() {
                                     <td>{item.element.connectionType}</td>
                                     <td>{item.element.manufacturingYear}</td>
                                     <td>{item.element.comment}</td>
-                                    <td><button onClick={() => onDeleteHandler(item._id)} className="small-button">Delete</button></td>
+                                    {/* <td><button onClick={() => onDeleteHandler(item._id)} className="small-button">Delete</button></td> */}
                                 </tr>
                             ))
                         ) : (
                             <tr>
-                                <td colSpan="13">No data available</td>
+                                <td colSpan="12">No data available</td>
                             </tr>
                         )}
                     </tbody>
