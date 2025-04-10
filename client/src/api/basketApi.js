@@ -102,11 +102,11 @@ export const useAddToBasket = () => {
     }
 }
 
-// export const useDeleteFromBasket = () => {
+// export const useDeleteBasket = () => {
 //     const { request } = useAuth();
 
-//     const deleteFromBasket = (basketId, elementId) =>
-//         request.delete(`${basketUrl}/${elementId}`);
+//     const deleteFromBasket = (basketId) =>
+//         request.get(`${basketUrl}/${basketId}`);
 
 //     return {
 //         deleteFromBasket

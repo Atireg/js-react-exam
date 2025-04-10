@@ -81,7 +81,7 @@ export const useEditProject = () => {
 };
 
 // THIS IS A "ON EVENT" HOOK
-export const useDeleteGame = () => {
+export const useDeleteProject = () => {
     const { request } = useAuth();
 
     const remove = (projectId) => {

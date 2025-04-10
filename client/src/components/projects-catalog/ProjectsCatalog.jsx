@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext, useEffect} from "react";
 import ProjectsCatalogItem from "./project-catalog-item/ProjectsCatalogItem";
 import { Link } from "react-router";
 import { UserContext } from "../../contexts/UserContext";
@@ -6,7 +6,13 @@ import { useGetAllProjects } from "../../api/projectsApi";
 
 export default function ProjectsCatalog() {
     const { email } = useContext(UserContext);
-    const { projects } = useGetAllProjects();
+    const { projects, fetchProjects } = useGetAllProjects();
+
+    useEffect(() => {
+        if (location.state?.projectDeleted) {
+            fetchProjects();
+        }
+    }, [location.state, fetchProjects]);
 
     return (
         <div className="centered-container">
@@ -20,8 +26,6 @@ export default function ProjectsCatalog() {
                 </ul>
 
                 {projects.length === 0 && <h2 className="no-items">No projects yet</h2>}
-
-                {/* TODO Only if logged */}
 
                 {email &&
                 <Link to={'/projects/add'} className="button">

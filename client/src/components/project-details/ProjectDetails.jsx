@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router";
 import ReuseElementsInventory from "../reuse-elements-inventory/ReuseElementsInventory";
-import { useDeleteGame, useGetOneProject } from "../../api/projectsApi";
+import { useDeleteProject, useGetOneProject } from "../../api/projectsApi";
 import useAuth from "../../hooks/useAuth";
 import { useAddElement, useGetElements } from "../../api/elementsApi";
 import { useOptimistic } from "react";
@@ -12,7 +12,7 @@ export default function ProjectDetails() {
     const { email, userId } = useAuth();
     const { projectId } = useParams();
     const { project } = useGetOneProject(projectId);
-    const { remove } = useDeleteGame();
+    const { remove } = useDeleteProject();
     const { add } = useAddElement();
     const { elements, addElement } = useGetElements({ projectId });
     const [ optimisticElements, setOptimisticElements ] = useOptimistic(elements, (state, newElement) => [...state, newElement]);
@@ -24,8 +24,12 @@ export default function ProjectDetails() {
             return;
         }
 
-        await remove(projectId);
-        navigate('/projects')
+        try {
+            await remove(projectId);
+            navigate('/projects', { state: { projectDeleted: true, deletedId: projectId } });
+        } catch (error) {
+            console.error("Error deleting project:", error);
+        }
     };
 
     const elementsAddHandler = async (data) => {
