@@ -1,24 +1,60 @@
-# js-react-exam
+🧱 Salvaged Elements Platform/ kh ReUse
+Welcome to my project!
 
-Hello and welcome to my project!
+This application is the result of a personal journey — bridging the gap between my work as an architect in the building industry and my growing passion for coding. After a year and a half of navigating these two worlds, I’m excited to finally bring them together in one meaningful project. 
 
-This application is linked to my first profesion as an architect in an engineering office. I am glad I can finally combine the two parralle universes I have been living in in the past year and a hlaf. 
+🏗️ About the Project
+This platform is a user interface designed to collect, display, and reuse building elements salvaged from demolished structures.
 
-The project is a User Interface to collect, display  a collection of buildings 
+🔍 Key Features
+Explore a curated collection of salvaged elements from real architectural projects
 
-login with email: admin@kh.com & pass: admin
+Logged-in users can:
 
+Add new projects
 
-TO DOs:
+Upload building components
 
-[ ] Add an edit functionality for the elements.
+Save items to their personal basket for reuse
 
-[ ] Make the upload form an Excel sheet possible.
+Built-in categorization and filtering for easy navigation
 
-[ ] Add the element download function to get a 3D model or OBJ.
+Guest users can browse content but cannot modify or save elements
 
-[ ] Add pdf generator function.
+🚀 Getting Started
+To run the project locally:
 
-[ ] Add all element properties.
+bash
+Copy
+Edit
+# Frontend
+cd client
+npm install
+npm run dev
+bash
+Copy
+Edit
+# Backend
+cd server
+node server
+Or you can explore the live version here:
+👉 Live Demo: https://kh-reuse.web.app/
 
-[ ] Fix the design/ mobile.
+Log in with:
+email: admin@kh.com
+password: admin
+
+🛠️ Upcoming Improvements
+ Add edit functionality for building elements
+
+ Support Excel sheet upload for bulk entries
+
+ Add 3D model / .OBJ download functionality
+
+ Generate PDF summaries of elements
+
+ Add missing element metadata/properties
+
+ Connect to a database for persistent storage
+
+ Improve responsive design and mobile layout

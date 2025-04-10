@@ -188,7 +188,7 @@ export default function ReuseElementsInventory({
                 </div>
                 :
                 <Link to="/login">
-                    <p>Login to add elements.</p>
+                    <button>Login to add elements.</button>
                 </Link>
             }
 
