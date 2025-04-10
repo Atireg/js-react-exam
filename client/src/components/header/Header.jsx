@@ -1,6 +1,6 @@
 import { Link } from "react-router"
 import useAuth from "../../hooks/useAuth"
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import BasketContext from "../../contexts/BasketContext";
 
@@ -8,8 +8,16 @@ export default function Header() {
     const { email, isAuthenticated } = useAuth();
     const { _id: userId } = useContext(UserContext);
     const { basketElements } = useContext(BasketContext);
+    const [itemCount, setItemCount] = useState(basketElements.length);
+    const [hasChanged, setHasChanged] = useState(false); 
 
-    const itemCount = basketElements?.length || 0;
+    useEffect(() => {
+        if (basketElements.length !== itemCount) {
+          setItemCount(basketElements.length);
+          setHasChanged(true); 
+          setTimeout(() => setHasChanged(false), 1000); 
+        }
+      }, [basketElements, itemCount]);
     
     return (
         <header className="site-header">
@@ -28,7 +36,7 @@ export default function Header() {
                         (
                             <div id="user">
                                 <li>
-                                    <Link to={`/baskets/${userId}`}>My ReUse Basket ({itemCount}) </Link>
+                                    <Link to={`/baskets/${userId}`} className={`basket-indicator ${hasChanged ? 'updated' : ''}`}>My ReUse Basket ({itemCount}) </Link>
                                 </li>
                                 <li>
                                     <Link to="/logout">Logout </Link>
