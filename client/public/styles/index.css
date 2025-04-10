@@ -110,6 +110,11 @@ input {
     border-radius: 0.5em;
 }
 
+.buttons {
+    display: flex;
+    gap: 1em;
+}
+
 button {
     width: 200px;
     padding: 1em;

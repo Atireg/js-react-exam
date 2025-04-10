@@ -12,6 +12,11 @@ export default function useAddToBasketHandler(basketId, updateBasketElements) {
     const addToBasketHandler = async (element) => {
         if (!element || !element._id) return;
 
+        if (!userBasket || !userBasket.elements) {
+            console.warn("Basket not ready yet. Try again shortly.");
+            return;
+        }
+
         const id = element._id;
         setLoadingIds(prev => ({ ...prev, [id]: true }));
 

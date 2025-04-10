@@ -99,7 +99,9 @@ export default function SearchItems({
             </table>
 
             <Link to={`/baskets/${userId}`}>
-                <p>Go to Your Basket!</p>
+                <button>
+                    Go to Your Basket!
+                </button>
             </Link>
         </div>
     );

@@ -1,24 +1,19 @@
 # js-react-exam
-JS REACT @ SoftUni
+
+Hello and welcome to my project!
+
+This application is linked to my first profesion as an architect in an engineering office. I am glad I can finally combine the two parralle universes I have been living in in the past year and a hlaf. 
+
+The project is a User Interface to collect, display  a collection of buildings 
 
 login with email: admin@kh.com & pass: admin
 
 
 TO DOs:
 
-[x] Make the search view with functional components.
-
-[x] Add the search input.
-
-[x] Add a couple of more search params.
-
-[x] Make the search result work (show on a panel using functional component and conditional rendering).
-
 [ ] Add an edit functionality for the elements.
 
 [ ] Make the upload form an Excel sheet possible.
-
-[x] Add elements to the basket.
 
 [ ] Add the element download function to get a 3D model or OBJ.
 
@@ -26,4 +21,4 @@ TO DOs:
 
 [ ] Add all element properties.
 
-[ ] Fix the design.
+[ ] Fix the design/ mobile.
