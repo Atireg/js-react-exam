@@ -8,6 +8,8 @@ export default function Header() {
     const { email, isAuthenticated } = useAuth();
     const { _id: userId } = useContext(UserContext);
     const { basketElements } = useContext(BasketContext);
+
+    const itemCount = basketElements?.length || 0;
     
     return (
         <header className="site-header">
@@ -26,7 +28,7 @@ export default function Header() {
                         (
                             <div id="user">
                                 <li>
-                                    <Link to={`/baskets/${userId}`}>My ReUse Basket ({basketElements.length}) </Link>
+                                    <Link to={`/baskets/${userId}`}>My ReUse Basket ({itemCount}) </Link>
                                 </li>
                                 <li>
                                     <Link to="/logout">Logout </Link>

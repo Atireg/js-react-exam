@@ -30,12 +30,19 @@ export const BasketProvider = ({ children }) => {
         }
       }, [userId, loading, baskets]);
       
-      // Value to be provided through the context
+      const updateBasketElements = (newElements) => {
+        setUserBasket(prev => ({
+          ...prev,
+          elements: newElements
+        }));
+      };
+
       const value = {
         userBasket,
         basketId: userBasket?._id || null,
         basketLoading: loading || (!loading && !userBasket),
-        basketElements: userBasket?.elements || []
+        basketElements: userBasket?.elements || [],
+        updateBasketElements
       };
     
     return (

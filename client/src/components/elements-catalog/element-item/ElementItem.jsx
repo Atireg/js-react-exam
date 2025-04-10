@@ -16,8 +16,8 @@ export default function ElementItem(
 ) {
     const { project } = useGetOneProject(projectId);
     const { element } = useGetOneElement(id);
-    const { basketId } = useContext(BasketContext); 
-    const { addToBasketHandler, isLoading } = useAddToBasketHandler(basketId);
+    const { basketId, updateBasketElements } = useContext(BasketContext); 
+    const { addToBasketHandler, isLoading } = useAddToBasketHandler(basketId, updateBasketElements);
 
     console.log(basketId);
     

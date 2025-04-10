@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useAddToBasket } from "../api/basketApi";
+import BasketContext from "../contexts/BasketContext";
 
-export default function useAddToBasketHandler(basketId) {
+export default function useAddToBasketHandler(basketId, updateBasketElements) {
+    const { userBasket } = useContext(BasketContext)
     const { addToBasket } = useAddToBasket();
     const [ loadingIds, setLoadingIds] = useState({});
     
@@ -15,6 +17,8 @@ export default function useAddToBasketHandler(basketId) {
 
         try {
             await addToBasket(basketId, element);
+            const updatedElements = [...userBasket.elements, element];
+            updateBasketElements(updatedElements);
             await sleep(500); 
         } finally {
             setLoadingIds(prev => ({ ...prev, [id]: false }));

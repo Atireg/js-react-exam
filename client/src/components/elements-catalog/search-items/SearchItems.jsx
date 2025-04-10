@@ -11,8 +11,8 @@ export default function SearchItems({
 }) {
     const { elements } = useGetElements({ filterParam: "profileType", filterValue: selected });
     const { _id: userId } = useContext(UserContext);
-    const { basketId } = useContext(BasketContext); 
-    const { addToBasketHandler, isLoading } = useAddToBasketHandler(basketId);
+    const { basketId, updateBasketElements } = useContext(BasketContext); 
+    const { addToBasketHandler, isLoading } = useAddToBasketHandler(basketId, updateBasketElements);
 
     return (
         <div className="elements-table">
