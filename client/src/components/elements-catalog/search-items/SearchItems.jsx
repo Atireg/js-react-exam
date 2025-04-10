@@ -13,7 +13,7 @@ export default function SearchItems({
     const { isAuthenticated } = useAuth();
     const { elements } = useGetElements({ filterParam: "profileType", filterValue: selected });
     const { _id: userId } = useContext(UserContext);
-    const { basketId, updateBasketElements } = useContext(BasketContext);
+    const { basketId, basketElements, updateBasketElements } = useContext(BasketContext);
     const { addToBasketHandler, isLoading } = useAddToBasketHandler(basketId, updateBasketElements);
 
     return (
@@ -41,6 +41,9 @@ export default function SearchItems({
                 <tbody>
                     {elements?.length > 0 ? (
                         elements.map(item => {
+                            const isAlreadyInBasket = basketElements?.some(
+                                (el) => el._id === item._id
+                            );
 
                             return (
                                 <tr key={item._id}>
@@ -58,28 +61,31 @@ export default function SearchItems({
                                     <td>{item.element.manufacturingYear}</td>
                                     <td>{item.element.comment}</td>
                                     <td>
-                                        {isAuthenticated
-                                            ?
+                                        {isAuthenticated ? (
                                             <button
                                                 onClick={() => addToBasketHandler(item)}
                                                 className="small-button"
                                                 style={{
-                                                    backgroundColor: isLoading(item._id) ? 'grey' : '#e98166cb',
+                                                    backgroundColor: isAlreadyInBasket || isLoading(item._id) ? 'grey' : '#e98166cb',
                                                     color: 'white',
-                                                    cursor: isLoading(item._id) ? 'not-allowed' : 'pointer',
-                                                    opacity: isLoading(item._id) ? 0.7 : 1
+                                                    cursor: isAlreadyInBasket || isLoading(item._id) ? 'not-allowed' : 'pointer',
+                                                    opacity: isAlreadyInBasket || isLoading(item._id) ? 0.7 : 1
                                                 }}
-                                                disabled={isLoading(item._id)}
+                                                disabled={isAlreadyInBasket || isLoading(item._id)}
                                             >
-                                                {isLoading(item._id) ? 'Adding...' : 'Grab!'}
+                                                {isAlreadyInBasket
+                                                    ? 'Already Grabbed'
+                                                    : isLoading(item._id)
+                                                    ? 'Adding...'
+                                                    : 'Grab!'}
                                             </button>
-                                            :
+                                        ) : (
                                             <Link to='/login'>
                                                 <button className="small-button">
                                                     Login to Grab!
                                                 </button>
                                             </Link>
-                                        }
+                                        )}
                                     </td>
                                 </tr>
                             );

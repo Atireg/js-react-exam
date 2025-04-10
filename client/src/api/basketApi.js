@@ -73,6 +73,15 @@ export const useAddToBasket = () => {
             const basketData = await request.get(`${basketUrl}/${basketId}`);
 
             const currentElements = basketData.elements || [];
+
+            const exists = currentElements.some(
+                (el) => el._id === element._id
+            );
+
+            if (exists) {
+                console.warn("Element already exists in basket:", element._id);
+                return basketData; 
+            }
             
             const updatedElements = [...currentElements, element]
 
@@ -93,14 +102,14 @@ export const useAddToBasket = () => {
     }
 }
 
-export const useDeleteFromBasket = () => {
-    const { request } = useAuth();
+// export const useDeleteFromBasket = () => {
+//     const { request } = useAuth();
 
-    const deleteFromBasket = (elementId) =>
-        request.delete(`${basketUrl}/${elementId}`);
+//     const deleteFromBasket = (basketId, elementId) =>
+//         request.delete(`${basketUrl}/${basketId}/${elementId}`);
 
-    return {
-        deleteFromBasket
-    }
+//     return {
+//         deleteFromBasket
+//     }
 
-}
+// }

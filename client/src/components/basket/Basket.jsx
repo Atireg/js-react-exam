@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDeleteFromBasket, useGetAllInBasket } from "../../api/basketApi"
+import { useGetAllInBasket } from "../../api/basketApi"
 import idSlicer from "../../utils/idSlicer";
 import { Link } from "react-router";
 import { useUserBasket } from "../../hooks/useUserBasket";
@@ -7,7 +7,7 @@ import { useUserBasket } from "../../hooks/useUserBasket";
 export default function Basket() {
     const { userBasket } = useUserBasket();
     const { elements } = useGetAllInBasket(userBasket?._id);
-    const { deleteFromBasket } = useDeleteFromBasket(userBasket?._id);
+    // const { deleteFromBasket } = useDeleteFromBasket(userBasket?._id);
     const [elementsInBasket, setElementsInBasket] = useState([]);
  
     useEffect(() => {
@@ -16,21 +16,28 @@ export default function Basket() {
         }
     }, [elements])
 
-    const onDeleteHandler = async (elementId) => {
-        const hasConfirm = confirm(`Are you sure you want to delete Element #${elementId}?`);
+    // const onDeleteHandler = async (elementId) => {
+    //     const hasConfirm = confirm(`Are you sure you want to delete Element #${elementId}?`);
 
-        if (!hasConfirm) {
-            return;
-        }
-        await deleteFromBasket(elementId)
-        setElementsInBasket(prev => prev.filter(item => item._id !== elementId));
-    }
+    //     if (!hasConfirm) {
+    //         return;
+    //     }
+    //     try {
+    //         await deleteFromBasket(elementId);
+    //         setElementsInBasket(prev => prev.filter(item => item._id !== elementId));
+    //     } catch (err) {
+    //         console.error("Error deleting from basket:", err);
+    //     }
+    // }
 
     if (!userBasket || elementsInBasket.length === 0) {
         return <p>Loading your basket...</p>;
     }
 
     const elementsToDisplay = elementsInBasket.elements
+
+    console.log(elementsToDisplay);
+    
 
     return (
         <div className="main-content">
@@ -71,7 +78,7 @@ export default function Basket() {
                                     <td>{item.element.connectionType}</td>
                                     <td>{item.element.manufacturingYear}</td>
                                     <td>{item.element.comment}</td>
-                                    {/* <td><button onClick={() => onDeleteHandler(item._id)} className="small-button">Delete</button></td> */}
+                                    {/* <td><button onClick={() => onDeleteHandler(userBasket._id, item._id)} className="small-button">Delete</button></td> */}
                                 </tr>
                             ))
                         ) : (
