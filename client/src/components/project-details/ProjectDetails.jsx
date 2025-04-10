@@ -59,10 +59,10 @@ export default function ProjectDetails() {
         addElement({...newElementServer, author: { email }});
     }
 
-    const elementsAddFromExcel = (data) => {
-        console.log(data);
+    // const elementsAddFromExcel = (data) => {
+    //     console.log(data);
         
-    }
+    // }
 
     //TODO Check if this is working properly.
     const isOwner = userId === project._ownerId;

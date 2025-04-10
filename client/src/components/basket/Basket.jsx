@@ -36,9 +36,6 @@ export default function Basket() {
 
     const elementsToDisplay = elementsInBasket.elements
 
-    console.log(elementsToDisplay);
-    
-
     return (
         <div className="main-content">
             <div className="elements-table">
