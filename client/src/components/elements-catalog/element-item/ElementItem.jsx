@@ -11,6 +11,7 @@ export default function ElementItem(
     {
         id,
         profileType,
+        material,
         projectId,
         length,
     }
@@ -29,6 +30,7 @@ export default function ElementItem(
         <li className='elements-item'>
             <p><strong>ElementId: #{idSlicer(id)}</strong></p>
             <p>Profil: {profileType}</p>
+            <p>Material: {material}</p>
             <p>Project: {project.name}</p>
             <p>Length: {length}m</p>
 
