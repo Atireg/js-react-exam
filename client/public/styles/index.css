@@ -306,40 +306,38 @@ th {
     box-sizing: border-box;
 }
 
-.search-form {
-    margin-left: 2em;
+.search-box {
+    margin-left: 1em;
+    max-width: 400px;
+    border: 1px solid #ccc;
+}
+
+.respSearchForm {
+    flex-direction: row;
+    gap: 2em;
+    align-items: flex-start;
+    margin-bottom: 0;
     border: none;
 }
 
-.search-param {
-    align-self: left;
-}
-
-.search-group {
-    display: flex;
-    gap: 0.8em;
-    margin-left: 2em
-}
-
-.choice input[type="radio"] {
+.choice input[type="checkbox"] {
     display: none;
 }
- 
+
 .choice {
     display: flex;
-    align-items: center;
     cursor: pointer;
     margin-bottom: 10px;
 }
  
-.choice .radio-mark {
+.choice .checkbox-mark {
     position: relative;
     padding-left: 30px;
     cursor: pointer;
     user-select: none;
 }
  
-.choice .radio-mark::before {
+.choice .checkbox-mark::before {
     content: "";
     position: absolute;
     left: 0;
@@ -352,10 +350,10 @@ th {
     transition: all 0.2s ease;
 }
  
-.choice input[type="radio"]:checked + .radio-mark::before {
+.choice input[type="checkbox"]:checked + .checkbox-mark::before {
     background-color: #e67154bb;
     border-color: #e67154bb;
-}
+} 
 
 /* ELEMENTS CATALOG SECTION */
 
