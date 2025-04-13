@@ -3,7 +3,6 @@ import * as XLSX from "xlsx";
 
 export default function ExcelToJson() {
   const [jsonData, setJsonData] = useState([]);
-
  
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -15,19 +14,17 @@ export default function ExcelToJson() {
         const data = new Uint8Array(e.target.result);
         const workbook = XLSX.read(data, { type: "array" });
 
-        const sheetName = workbook.SheetNames[0]; // Get first sheet
+        const sheetName = workbook.SheetNames[0]; 
         const sheet = workbook.Sheets[sheetName];
 
-        let jsonOutput = XLSX.utils.sheet_to_json(sheet, { header: 1 }); // Read as an array of rows
-
-        // Extract column headers (first row)
+        let jsonOutput = XLSX.utils.sheet_to_json(sheet, { header: 1 }); 
         const headers = jsonOutput[0];
 
-        // Convert rows into JSON objects
+        
         const formattedData = jsonOutput.slice(1).map((row) => {
-          let rowObject = {}; // Unique ID for each row
+          let rowObject = {}; 
           headers.forEach((header, index) => {
-            rowObject[header] = row[index] || ""; // Assign values, handling empty cells
+            rowObject[header] = row[index] || ""; 
           });
           return rowObject;
         });
