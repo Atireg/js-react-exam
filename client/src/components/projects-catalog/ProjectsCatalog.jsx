@@ -30,7 +30,6 @@ export default function ProjectsCatalog() {
                 {email &&
                 <Link to={'/projects/add'} className="button">
                     <button
-                        // onClick={}
                         className="button"
                     >
                         Add new project
