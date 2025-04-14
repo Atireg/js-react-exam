@@ -15,7 +15,7 @@ export default function ProjectDetails() {
     const { remove } = useDeleteProject();
     const { add } = useAddElement();
     const { elements, addElement } = useGetElements({ projectId });
-    const [ optimisticElements, setOptimisticElements ] = useOptimistic(elements, (state, newElement) => [...state, newElement]);
+    const [optimisticElements, setOptimisticElements] = useOptimistic(elements, (state, newElement) => [...state, newElement]);
 
     const projectDeleteClickHandler = async () => {
         const hasConfirm = confirm(`Are you sure you want to delete ${project.name}?`);
@@ -36,8 +36,8 @@ export default function ProjectDetails() {
 
         const element = Object.fromEntries(data);
         console.log();
-        
-      
+
+
         const newOptimisticElement = {
             _id: uuid(),
             _ownerId: userId,
@@ -55,7 +55,7 @@ export default function ProjectDetails() {
                 email,
             }
         };
-        
+
         // OPTIMISTIC UPDATE
         setOptimisticElements(newOptimisticElement);
 
@@ -73,14 +73,14 @@ export default function ProjectDetails() {
             element);
 
         console.log(newElementServer);
-        
+
         // ACTUAL UPDATE
-        addElement({...newElementServer, author: { email }});
+        addElement({ ...newElementServer, author: { email } });
     }
 
     // const elementsAddFromExcel = (data) => {
     //     console.log(data);
-        
+
     // }
 
     //TODO Check if this is working properly.
@@ -90,34 +90,48 @@ export default function ProjectDetails() {
         <section className="main-content">
             <div className="content-container">
                 <main>
+                        <section className="project-details">
+                            <h2>{project.name}</h2>
+                            <h3>{project.location}</h3>
+                            <h3>{project.client}</h3>
+                        </section>
+                </main>
+                <aside>
+                    <div className="project-info">
                     <figure className="hero">
                         <img src={project.imageUrl} alt="" />
                     </figure>
-                </main>
-                <aside>
-                    <section className="description">
-                        <h2>{project.name}</h2>
-                        <h3>{project.location}</h3>
-                        <h5>built: {project.construction}</h5>
-                        <h5>demolished: {project.demolition}</h5>
-                        <p>{project.description}</p>
-                    </section>
-
-                    {isOwner &&
-                        <section className="buttons">
-                            <Link to={`/projects/${projectId}/edit`} className="button">
-                                <button
-                                    className="button">
-                                    Edit Project Details
-                                </button>
-                            </Link>
-                            <button
-                                onClick={projectDeleteClickHandler}
-                                className="button">
-                                Delete Project
-                            </button>
+                        <section className="description">
+                            <section>
+                                <p>{project.descriptionConstruction}</p>
+                                <h5>Baujahr: {project.construction}</h5>
+                                <h5>Abrissdatum: {project.demolished}</h5>
+                                <h5>Nutzung: {project.purpose}</h5>
+                                <h5>Bauweise: {project.constructionType}</h5>
+                                <h5>BGF (qm): {project.bgf}</h5>
+                                <h5>NUF (qm): {project.nuf}</h5>
+                                <h5>Ausführungspläne vorliegend: {project.shopDrawings}</h5>
+                                <h5>Statik vorliegend: {project.structuralCalcs}</h5>
+                                <h5>Objektplanung: {project.projectPlanning}</h5>
+                                <h5>Tragwerksplanung: {project.structuralPlaning}</h5>
+                                <h5>Fassadenplanung: {project.facadePlanning}</h5>
+                            </section>
+                            {isOwner &&
+                                <section className="buttons">
+                                    <Link to={`/projects/${projectId}/edit`} className="button">
+                                        <button
+                                            className="button">
+                                            Edit Project Details
+                                        </button>
+                                    </Link>
+                                    <button
+                                        onClick={projectDeleteClickHandler}
+                                        className="button">
+                                        Delete Project
+                                    </button>
+                                </section>}
                         </section>
-                     }
+                    </div>
                 </aside>
             </div>
 
