@@ -35,6 +35,8 @@ export default function ProjectDetails() {
     const elementsAddHandler = async (data) => {
 
         const element = Object.fromEntries(data);
+        console.log();
+        
       
         const newOptimisticElement = {
             _id: uuid(),
@@ -59,11 +61,19 @@ export default function ProjectDetails() {
 
         // SERVER UPDATE
         //TODO add try/catch
-        const newElementServer = await add(projectId, element.material, element.profileType, element);
+        const newElementServer = await add(
+            projectId,
+            element.material,
+            element.elementType,
+            element.profileType,
+            element.profile,
+            element.condition,
+            element.quality,
+            element.specification,
+            element);
 
         console.log(newElementServer);
         
-
         // ACTUAL UPDATE
         addElement({...newElementServer, author: { email }});
     }

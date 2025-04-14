@@ -17,15 +17,15 @@ function elementsReducer(state, action) {
 
 export const useGetElements = ({ projectId, whereString } = {}) => {
     const { request } = useAuth();
-    const [ elements, dispatch ] = useReducer(elementsReducer, []);
+    const [elements, dispatch] = useReducer(elementsReducer, []);
 
     useEffect(() => {
         const searchParams = new URLSearchParams();
 
         if (whereString) {
             searchParams.set('where', whereString);
-            
-        } else if (projectId){
+
+        } else if (projectId) {
             searchParams.set('where', `projectId="${projectId}"`);
             searchParams.set('load', `author=_ownerId:users`);
         }
@@ -43,11 +43,11 @@ export const useGetElements = ({ projectId, whereString } = {}) => {
 }
 
 export const useGetOneElement = (elementId) => {
-    const [ element, setElement ] = useState({});
+    const [element, setElement] = useState({});
 
     useEffect(() => {
         request.get(`${baseUrl}/${elementId}`)
-        .then(setElement)
+            .then(setElement)
     }, [elementId]);
 
     return {
@@ -58,7 +58,7 @@ export const useGetOneElement = (elementId) => {
 // THIS IS A "ON EVENT" HOOK
 export const useAddElement = () => {
     const { request } = useAuth();
-    
+
     const add = (
         projectId,
         material,
@@ -80,8 +80,11 @@ export const useAddElement = () => {
             condition,
             quality,
             specification,
-            element,
+            element
         }
+
+        console.log(elementData);
+
 
         return request.post(baseUrl, elementData);
     }

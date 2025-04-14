@@ -1,9 +1,7 @@
-// Utility function to handle checkbox group changes
 const handleCheckboxChange = (state, setState, fieldName, value) => {
     setState({ ...state, [fieldName]: value });
 };
 
-// Reusable component for a checkbox group
 export default function CheckboxGroup ({ label, options, selectedOptions, setSelectedOptions }) {
     return (
         <div className="subcategories">
