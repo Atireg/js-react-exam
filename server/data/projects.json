@@ -1,14 +1,23 @@
 [
     {
-        "name": "Kittler Schuler",
-        "construction": "1950",
-        "demolition": "2027",
-        "location": "Stuttgart",
-        "imageUrl": "https://images.unsplash.com/photo-1701844279504-e3a974aaafb5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum soluta nam magnam beatae. Velit nulla itaque odit rerum quo in pariatur doloremque assumenda quae sit ratione voluptatibus rem non animi iste ipsa, sint deserunt incidunt, magnam eos fugiat tempore iusto! Ullam deserunt magni placeat, odit, odio dicta quidem sapiente ipsam ab, neque nemo facilis nesciunt. Sequi reiciendis suscipit esse maiores culpa repellat. Accusantium, pariatur itaque! Cupiditate, atque repellat nesciunt, beatae, doloremque animi reprehenderit soluta exercitationem officia officiis dignissimos non quidem at cumque alias reiciendis quaerat enim harum voluptatem ab tenetur magni. Optio iste nulla quam voluptates laboriosam veniam pariatur? ",
-        "_id": "df917370-5f9d-4e59-b045-727c3c4f659b",
-        "_createdOn": 1743857002141,
-        "_ownerId": "160796e9-76f7-45fd-91c2-ef0e50f26057",
-        "_updatedOn": 1743857026282
+        "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+        "name": "Kittler Schule",
+        "construction": "1970",
+        "type": "Hochhaus",
+        "purpose": "Versammlungsstätten",
+        "location": "Heilbronn",
+        "constructionType": "Skelettbauweise",
+        "bgf": "100000",
+        "nuf": "2000000",
+        "client": "Stadt Heilbronn",
+        "descriptionConstruction": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum soluta nam magnam beatae. Velit nulla itaque odit rerum quo in pariatur doloremque assumenda quae sit ratione voluptatibus rem non animi iste ipsa, sint deserunt incidunt, magnam eos fugiat tempore iusto! Ullam deserunt magni placeat, odit, odio dicta quidem sapiente ipsam ab, neque nemo facilis nesciunt. Sequi reiciendis suscipit esse maiores culpa repellat. Accusantium, pariatur itaque! Cupiditate, atque repellat nesciunt, beatae, doloremque animi reprehenderit soluta exercitationem officia officiis dignissimos non quidem at cumque alias reiciendis quaerat enim harum voluptatem ab tenetur magni. Optio iste nulla quam voluptates laboriosam veniam pariatur? \"\n",
+        "imageUrl": "https://images.unsplash.com/photo-1620003048292-c4db88559488?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "shopDrawings": "Ja",
+        "structuralCalcs": "Ja",
+        "projectPlanning": "Behnisch",
+        "structuralPlaning": "knippershelbig",
+        "facadePlanning": "knippershelbig",
+        "_createdOn": 1744659289375,
+        "_id": "f0b3248f-6731-4243-b64a-0336ff2a6f4c"
     }
 ]
