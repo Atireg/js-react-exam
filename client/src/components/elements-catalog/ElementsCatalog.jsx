@@ -8,8 +8,8 @@ export default function ElementsCatalog() {
     const [whereString, setWhereString] = useState(null);
     const { elements } = useGetElements({ whereString });
 
-    console.log(whereString);
-    console.log(elements);
+    // console.log(whereString);
+    // console.log(elements);
 
     const handleSearch = (newWhere) => {
         setWhereString(newWhere);
