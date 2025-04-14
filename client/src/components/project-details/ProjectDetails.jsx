@@ -41,7 +41,12 @@ export default function ProjectDetails() {
             _ownerId: userId,
             projectId,
             material: element.material,
+            elementType: element.elementType,
             profileType: element.profileType,
+            profile: element.profile,
+            condition: element.condition,
+            quality: element.quality,
+            specification: element.specification,
             element,
             pending: true,
             author: {

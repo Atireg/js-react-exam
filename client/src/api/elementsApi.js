@@ -15,33 +15,6 @@ function elementsReducer(state, action) {
     }
 }
 
-// export const useGetElements = ({ projectId, filterParam, filterValue } = {}) => {
-//     const { request } = useAuth();
-//     const [ elements, dispatch ] = useReducer(elementsReducer, []);
-
-//     useEffect(() => {
-//         const searchParams = new URLSearchParams();
-
-//         if (filterParam) {
-//             searchParams.set('where', `${filterParam}="${filterValue}"`);
-            
-//         } else if (projectId){
-//             searchParams.set('where', `projectId="${projectId}"`);
-//             searchParams.set('load', `author=_ownerId:users`);
-//         }
-
-//         request.get(`${baseUrl}?${searchParams.toString()}`)
-//             .then(result => dispatch({ type: 'GET_ALL', payload: result }));
-
-//     }, [projectId, filterParam, filterValue]);
-
-//     return {
-//         elements,
-//         addElement: (elementData) =>
-//             dispatch({ type: 'ADD_ELEMENT', payload: elementData }),
-//     };
-// }
-
 export const useGetElements = ({ projectId, whereString } = {}) => {
     const { request } = useAuth();
     const [ elements, dispatch ] = useReducer(elementsReducer, []);
@@ -86,12 +59,27 @@ export const useGetOneElement = (elementId) => {
 export const useAddElement = () => {
     const { request } = useAuth();
     
-    const add = (projectId, material, profileType, element) => {
+    const add = (
+        projectId,
+        material,
+        elementType,
+        profileType,
+        profile,
+        condition,
+        quality,
+        specification,
+        element
+    ) => {
 
         const elementData = {
             projectId,
             material,
+            elementType,
             profileType,
+            profile,
+            condition,
+            quality,
+            specification,
             element,
         }
 
