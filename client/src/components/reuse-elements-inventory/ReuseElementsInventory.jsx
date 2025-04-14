@@ -253,7 +253,7 @@ export default function ReuseElementsInventory({
                             ))
                         ) : (
                             <tr>
-                                <td colSpan="14">No data available</td>
+                                <td colSpan="20">No data available</td>
                             </tr>
                         )}
                     </tbody>
