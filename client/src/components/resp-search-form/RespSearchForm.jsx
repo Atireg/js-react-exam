@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import buildWhereString from "../../utils/buildWhereString";
 
-// Utility function to handle checkbox group changes
 const handleCheckboxChange = (state, setState, fieldName, value) => {
     setState({ ...state, [fieldName]: value });
 };
 
-// Reusable component for a checkbox group
 const CheckboxGroup = ({ label, options, selectedOptions, setSelectedOptions }) => {
     return (
         <div className="subcategories">
-            <h4>{label}</h4>
+             <p className="elements-individual">{label}:</p>
             {Object.entries(options).map(([key]) => (
                 <label className="choice" key={key}>
                     <input

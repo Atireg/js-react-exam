@@ -33,7 +33,7 @@ export default function buildWhereString({ profileType, material, profile, condi
         conditions.push(selectedConditions.length === 1 ? `condition=${selectedConditions[0]}` : `condition IN (${selectedConditions.join(", ")})`);
     }
 
-    // console.log(conditions.join(" AND "));
+    console.log(conditions.join(" AND "));
 
     return conditions.join(" AND ");
 };
