@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import idSlicer from "../../utils/idSlicer";
 import ExcelToJson from "./ExcelUpload";
 import { useState } from "react";
+import VerticalArrowCell from "./VerticalArrowCell";
 
 export default function ReuseElementsInventory({
     user,
@@ -10,10 +11,16 @@ export default function ReuseElementsInventory({
 }) {
     const [material, setMaterial] = useState("");
     const [elementType, setElementType] = useState("");
+    const [profileType, setProfileType] = useState("");
     const [fireProtection, setFireProtection] = useState("");
+    const [openGroup, setOpenGroup] = useState(null);
 
     const materialChangeHandler = (e) => {
         setMaterial(e.target.value);
+    };
+
+    const profileTypeChangeHandler = (e) => {
+        setProfileType(e.target.value);
     };
 
     const elementTypeChangeHandler = (e) => {
@@ -23,6 +30,16 @@ export default function ReuseElementsInventory({
     const fireProtectionChangeHandler = (e) => {
         setFireProtection(e.target.value);
     };
+
+    const toggleGroup = (groupName) => {
+        if (openGroup === groupName) {
+            setOpenGroup(null);
+        } else {
+            setOpenGroup(groupName);
+        }
+    };
+
+    const isGroupOpen = (groupName) => openGroup === groupName;
 
     return (
         <section className="elements-table">
@@ -40,42 +57,79 @@ export default function ReuseElementsInventory({
                             <th>Material</th>
                             <th>Funktion</th>
                             <th>Menge</th>
-                            <th>Werkstoff</th>
-                            <th>Materialgüte</th>
                             <th>Art</th>
                             <th>Profilart</th>
                             <th>Profil</th>
-                            <th>Länge (mm)</th>
-                            <th>Breite (mm)</th>
-                            <th>Höhe (mm)</th>
-                            <th>tw</th>
-                            <th>tf</th>
-                            <th>r</th>
-                            <th>d</th>
-                            <th>Durchmesser</th>
-                            <th>t</th>
                             <th>Verbindung</th>
                             <th>Baujahr</th>
-                            <th>Brandschutz</th>
-                            <th>Schichtdicke</th>
-                            <th>Oberflächenbehandlung</th>
-                            <th>U-Wert</th>
-                            <th>Feuchtigkeit</th>
-                            <th>Schallschutz</th>
                             <th>Zustand</th>
-                            <th>Verwendbarkeits-NW</th>
-                            <th>Ausführungspläne</th>
-                            <th>Bestandstatik</th>
-                            <th>Rückbauart</th>
-                            <th>Aufwand</th>
-                            <th>Eignung für</th>
+
+                            <th className="arrow-cell"></th>
+                            {isGroupOpen('dimensions') && (
+                                <>
+                                    <th>Länge (mm)</th>
+                                    <th>Breite (mm)</th>
+                                    <th>Höhe (mm)</th>
+                                    <th>tw</th>
+                                    <th>tf</th>
+                                    <th>r</th>
+                                    <th>d</th>
+                                    <th>Durchmesser</th>
+                                    <th>t</th>
+                                </>
+                            )}
+
+                            <th className="arrow-cell"></th>
+                            {isGroupOpen('material') && (
+                                <>
+                                    <th>Werkstoff</th>
+                                    <th>Materialgüte</th>
+                                </>
+                            )}
+
+                            <th className="arrow-cell"></th>
+                            {isGroupOpen('technical') && (
+                                <>
+                                    <th>Brandschutz</th>
+                                    <th>Schichtdicke</th>
+                                    <th>Oberflächenbehandlung</th>
+                                </>
+                            )}
+
+                            <th className="arrow-cell"></th>
+                            {isGroupOpen('physical') && (
+                                <>
+                                    <th>U-Wert</th>
+                                    <th>Feuchtigkeit</th>
+                                    <th>Schallschutz</th>
+                                </>
+                            )}
+
+                            <th className="arrow-cell"></th>
+                            {isGroupOpen('regulatory') && (
+                                <>
+                                    <th>Verwendbarkeits-NW</th>
+                                    <th>Ausführungspläne</th>
+                                    <th>Bestandstatik</th>
+                                </>
+                            )}
+
+                            <th className="arrow-cell"></th>
+                            {isGroupOpen('dismantling') && (
+                                <>
+                                    <th>Rückbauart</th>
+                                    <th>Aufwand</th>
+                                    <th>Eignung für</th>
+                                </>
+                            )}
+
                             <th>Kommentar</th>
                             <th>Hinzugefügt von</th>
                         </tr>
                     </thead>
                     <tbody>
                         {elements?.length > 0 ? (
-                            elements.map(item => (
+                            elements.map((item, index) => (
                                 <tr key={item._id} className="element" style={{ color: item.pending ? 'lightgray' : '' }}>
                                     <td>#{idSlicer(item._id)}</td>
                                     <td>{item.element.loadBearing}</td>
@@ -83,35 +137,116 @@ export default function ReuseElementsInventory({
                                     <td>{item.element.material}</td>
                                     <td>{item.element.function}</td>
                                     <td>{item.element.quantity}</td>
-                                    <td>{item.element.specification}</td>
-                                    <td>{item.element.quality}</td>
                                     <td>{item.element.elementType}</td>
                                     <td>{item.element.profileType}</td>
                                     <td>{item.element.profile}</td>
-                                    <td>{item.element.length}</td>
-                                    <td>{item.element.width}</td>
-                                    <td>{item.element.height}</td>
-                                    <td>{item.element.tw}</td>
-                                    <td>{item.element.tf}</td>
-                                    <td>{item.element.r}</td>
-                                    <td>{item.element.d}</td>
-                                    <td>{item.elementdiameter}</td>
-                                    <td>{item.elementt}</td>
                                     <td>{item.element.connectionType}</td>
                                     <td>{item.element.manufacturingYear}</td>
-                                    <td>{item.element.fireProtection}</td>
-                                    <td>{item.element.fPrThickness}</td>
-                                    <td>{item.element.surfaceTreatment}</td>
-                                    <td>{item.element.uValue}</td>
-                                    <td>{item.element.humidity}</td>
-                                    <td>{item.element.soundproofing}</td>
                                     <td>{item.element.condition}</td>
-                                    <td>{item.element.nW}</td>
-                                    <td>{item.element.shopDrawings}</td>
-                                    <td>{item.element.structuralCalcs}</td>
-                                    <td>{item.element.dismantlingType}</td>
-                                    <td>{item.element.effort}</td>
-                                    <td>{item.element.suitableFor}</td>
+
+                                    {index === 0 && (
+                                        <VerticalArrowCell
+                                            label="Dimensionen"
+                                            onClick={() => toggleGroup('dimensions')}
+                                            isOpen={isGroupOpen('dimensions')}
+                                            rowSpan={elements.length}
+                                        />
+                                    )}
+
+                                    {isGroupOpen('dimensions') && (
+                                        <>
+                                            <td>{item.element.length}</td>
+                                            <td>{item.element.width}</td>
+                                            <td>{item.element.height}</td>
+                                            <td>{item.element.tw}</td>
+                                            <td>{item.element.tf}</td>
+                                            <td>{item.element.r}</td>
+                                            <td>{item.element.d}</td>
+                                            <td>{item.element.diameter}</td>
+                                            <td>{item.element.t}</td>
+                                        </>
+                                    )}
+
+                                    {index === 0 && (
+                                        <VerticalArrowCell
+                                            label="Materialleigenschaften"
+                                            onClick={() => toggleGroup('material')}
+                                            isOpen={isGroupOpen('material')}
+                                            rowSpan={elements.length}
+                                        />
+                                    )}
+
+                                    {isGroupOpen('material') && (
+                                        <>
+                                            <td>{item.element.specification}</td>
+                                            <td>{item.element.quality}</td>
+                                        </>
+                                    )}
+
+                                    {index === 0 && (
+                                        <VerticalArrowCell
+                                            label="Technische Eigenschaften"
+                                            onClick={() => toggleGroup('technical')}
+                                            isOpen={isGroupOpen('technical')}
+                                            rowSpan={elements.length}
+                                        />
+                                    )}
+                                    {isGroupOpen('technical') && (
+                                        <>
+                                            <td>{item.element.fireProtection}</td>
+                                            <td>{item.element.fPrThickness}</td>
+                                            <td>{item.element.surfaceTreatment}</td>
+                                        </>
+                                    )}
+
+                                    {index === 0 && (
+                                        <VerticalArrowCell
+                                            label="Bauphysikalische Eigenschaften"
+                                            onClick={() => toggleGroup('physical')}
+                                            isOpen={isGroupOpen('physical')}
+                                            rowSpan={elements.length}
+                                        />
+                                    )}
+                                    {isGroupOpen('physical') && (
+                                        <>
+                                            <td>{item.element.uValue}</td>
+                                            <td>{item.element.humidity}</td>
+                                            <td>{item.element.soundproofing}</td>
+                                        </>
+                                    )}
+
+                                    {index === 0 && (
+                                        <VerticalArrowCell
+                                            label="Bauaufsichtliche Regelung"
+                                            onClick={() => toggleGroup('regulatory')}
+                                            isOpen={isGroupOpen('regulatory')}
+                                            rowSpan={elements.length}
+                                        />
+                                    )}
+
+                                    {isGroupOpen('regulatory') && (
+                                        <>
+                                            <td>{item.element.nW}</td>
+                                            <td>{item.element.shopDrawings}</td>
+                                            <td>{item.element.structuralCalcs}</td>
+                                        </>
+                                    )}
+
+                                    {index === 0 && (
+                                        <VerticalArrowCell
+                                            label="Rückbau & ReUse"
+                                            onClick={() => toggleGroup('dismantling')}
+                                            isOpen={isGroupOpen('dismantling')}
+                                            rowSpan={elements.length}
+                                        />
+                                    )}
+                                    {isGroupOpen('dismantling') && (
+                                        <>
+                                            <td>{item.element.dismantlingType}</td>
+                                            <td>{item.element.effort}</td>
+                                            <td>{item.element.suitableFor}</td>
+                                        </>
+                                    )}
                                     <td>{item.element.comment}</td>
                                     <td>{item.author.email}</td>
                                 </tr>
@@ -196,6 +331,122 @@ export default function ReuseElementsInventory({
                             />
                         </div>
 
+                        {material === "Stahl" &&
+                            <div className="input-group">
+                                <label htmlFor="elementType">Art (elementType)</label>
+                                <select
+                                    id="elementType"
+                                    name="elementType"
+                                    value={elementType}
+                                    onChange={elementTypeChangeHandler}
+                                    required
+                                >
+                                    <option value="">Bitte wählen</option>
+                                    <option value="Rundprofil">Rundprofil</option>
+                                    <option value="Rechteckprofil">Rechteckprofil</option>
+                                    <option value="Hohlprofil">Hohlprofil</option>
+                                    <option value="Walzprofil">Walzprofil</option>
+                                    <option value="Schweißprofil">Schweißprofil</option>
+                                    <option value="Keine Angabe">Keine Angabe</option>
+                                </select>
+                            </div>}
+
+                        {material === "Stahl" &&
+                            <div className="input-group">
+                                <label htmlFor="profileType">Profilart</label>
+                                <select
+                                    id="profileType"
+                                    name="profileType"
+                                    value={profileType}
+                                    onChange={profileTypeChangeHandler}
+                                    required>
+                                    <option value="">Bitte wählen</option>
+                                    <option value="IProfil">IProfil</option>
+                                    <option value="Rechteckprofil">Rechteckprofil</option>
+                                    <option value="Rundprofil">Rundprofil</option>
+                                    <option value="Hohlprofil">Hohlprofil</option>
+                                    <option value="Sonderfall">Sonderfall</option>
+                                    <option value="Keine Angabe">Keine Angabe</option>
+                                </select>
+                            </div>}
+
+                        {material === "Holz" &&
+                            <div className="input-group">
+                                <label htmlFor="profileType">Profilart</label>
+                                <select id="profileType"
+                                    name="profileType"
+                                    value={profileType}
+                                    onChange={profileTypeChangeHandler}
+                                    required>
+                                    <option value="">Bitte wählen</option>
+                                    <option value="Rundprofil">Rundprofil</option>
+                                    <option value="Rechteckprofil">Rechteckprofil</option>
+                                    <option value="Sonderfall">Sonderfall</option>
+                                    <option value="Keine Angabe">Keine Angabe</option>
+                                </select>
+                            </div>}
+
+                        {material === "Stahl" &&
+                            <div className="input-group">
+                                <label htmlFor="profile">Profil</label>
+                                <select id="profile" name="profile" required>
+                                    <option value="">Bitte wählen</option>
+                                    <option value="IPE100">IPE100</option>
+                                    <option value="IPE120">IPE120</option>
+                                    <option value="Rohr">Rohr</option>
+                                    <option value="Keine Angabe">Keine Angabe</option>
+                                </select>
+                            </div>}
+
+                        {material === "Holz" &&
+                            <div className="input-group">
+                                <label htmlFor="connectionType">Verbindung</label>
+                                <select id="connectionType" name="connectionType" required>
+                                    <option value="">Bitte wählen</option>
+                                    <option value="geschraubt ">Geschraubt </option>
+                                    <option value="eingehängt">Eingehängt</option>
+                                    <option value="vernagelt">Vernagelt</option>
+                                    <option value="verkeilt">Verkeilt</option>
+                                    <option value="ineineinander geschoben">Ineineinander Geschoben</option>
+                                    <option value="gefüllt">Gefüllt</option>
+                                    <option value="Keine Angabe">Keine Angabe</option>
+                                </select>
+                            </div>}
+
+                        {material === "Stahl" &&
+                            <div className="input-group">
+                                <label htmlFor="connectionType">Verbindung</label>
+                                <select id="connectionType" name="connectionType" required>
+                                    <option value="">Bitte wählen</option>
+                                    <option value="geschweißt">Geschweißt</option>
+                                    <option value="geschraubt ">Geschraubt </option>
+                                    <option value="gegossen">Gegossen</option>
+                                    <option value="eingehängt">Eingehängt</option>
+                                    <option value="Keine Angabe">Keine Angabe</option>
+                                </select>
+                            </div>}
+
+                        <div className="input-group">
+                            <label htmlFor="manufacturingYear">Baujahr</label>
+                            <input
+                                type="number"
+                                id="manufacturingYear"
+                                min="1920"
+                                name="manufacturingYear"
+                                required
+                            />
+                        </div>
+
+                        <div className="input-group">
+                            <label htmlFor="condition">Zustand</label>
+                            <select id="condition" name="condition" required>
+                                <option value="">Bitte wählen</option>
+                                <option value="Ausreichend">Ausreichend</option>
+                                <option value="Gut">Gut</option>
+                                <option value="Sehr Gut">Sehr Gut</option>
+                                <option value="Keine Angabe">Keine Angabe</option>
+                            </select>
+                        </div>
 
                         {material === "Holz" &&
                             <div className="input-group">
@@ -243,63 +494,7 @@ export default function ReuseElementsInventory({
                                 </select>
                             </div>}
 
-                        {material === "Stahl" &&
-                            <div className="input-group">
-                                <label htmlFor="elementType">Art (elementType)</label>
-                                <select
-                                    id="elementType"
-                                    name="elementType"
-                                    value={elementType}
-                                    onChange={elementTypeChangeHandler}
-                                    required
-                                >
-                                    <option value="">Bitte wählen</option>
-                                    <option value="Rundprofil">Rundprofil</option>
-                                    <option value="Rechteckprofil">Rechteckprofil</option>
-                                    <option value="Hohlprofil">Hohlprofil</option>
-                                    <option value="Walzprofil">Walzprofil</option>
-                                    <option value="Schweißprofil">Schweißprofil</option>
-                                    <option value="Keine Angabe">Keine Angabe</option>
-                                </select>
-                            </div>}
-
-                        {material === "Stahl" &&
-                            <div className="input-group">
-                                <label htmlFor="profileType">Profilart</label>
-                                <select id="profileType" name="profileType" required>
-                                    <option value="">Bitte wählen</option>
-                                    <option value="IProfil">IProfil</option>
-                                    <option value="Rechteckprofil">Rechteckprofil</option>
-                                    <option value="Rundprofil">Rundprofil</option>
-                                    <option value="Hohlprofil">Hohlprofil</option>
-                                    <option value="Sonderfall">Sonderfall</option>
-                                    <option value="Keine Angabe">Keine Angabe</option>
-                                </select>
-                            </div>}
-
-                        {material === "Holz" &&
-                            <div className="input-group">
-                                <label htmlFor="profileType">Profilart</label>
-                                <select id="profileType" name="profileType" required>
-                                    <option value="">Bitte wählen</option>
-                                    <option value="Rundprofil">Rundprofil</option>
-                                    <option value="Rechteckprofil">Rechteckprofil</option>
-                                    <option value="Sonderfall">Sonderfall</option>
-                                    <option value="Keine Angabe">Keine Angabe</option>
-                                </select>
-                            </div>}
-
-                        {material === "Stahl" &&
-                            <div className="input-group">
-                                <label htmlFor="profile">Profil</label>
-                                <select id="profile" name="profile" required>
-                                    <option value="">Bitte wählen</option>
-                                    <option value="IPE100">IPE100</option>
-                                    <option value="IPE120">IPE120</option>
-                                    <option value="Rohr">Rohr</option>
-                                    <option value="Keine Angabe">Keine Angabe</option>
-                                </select>
-                            </div>}
+                        <h3 className="addElementForm">Dimesionen</h3>
 
                         <div className="input-group">
                             <label htmlFor="length">Länge (mm)</label>
@@ -313,7 +508,11 @@ export default function ReuseElementsInventory({
                             />
                         </div>
 
-                        {elementType && elementType !== 'Rundprofil' || elementType !== "Sonderfall" &&
+                        {elementType && elementType !== 'Rundprofil'
+                            || elementType !== "Sonderfall"
+                            || profileType !== 'Rundprofil'
+                            || material === 'Glas'
+                            &&
                             <div className="input-group">
                                 <label htmlFor="width">Breite (mm)</label>
                                 <input
@@ -325,6 +524,20 @@ export default function ReuseElementsInventory({
                                     required
                                 />
                             </div>}
+
+                        {material === 'Glas' &&
+                        <div className="input-group">
+                        <label htmlFor="width">Breite (mm)</label>
+                        <input
+                            type="number"
+                            id="width"
+                            name="width"
+                            step="10"
+                            min="100"
+                            required
+                        />
+                    </div>
+                        }
 
                         {elementType !== 'Rundprofil' || elementType !== "Sonderfall" &&
                             <div className="input-group">
@@ -392,7 +605,7 @@ export default function ReuseElementsInventory({
                                 />
                             </div>}
 
-                        {elementType === 'Rundprofil' &&
+                        {elementType === 'Rundprofil' || profileType === 'Rundprofil' &&
                             <div className="input-group">
                                 <label htmlFor="diameter">Durchmesser (mm)</label>
                                 <input
@@ -418,56 +631,7 @@ export default function ReuseElementsInventory({
                                 />
                             </div>}
 
-                        {material === "Holz" &&
-                            <div className="input-group">
-                                <label htmlFor="connectionType">Verbindung</label>
-                                <select id="connectionType" name="connectionType" required>
-                                    <option value="">Bitte wählen</option>
-                                    <option value="geschraubt ">Geschraubt </option>
-                                    <option value="eingehängt">Eingehängt</option>
-                                    <option value="vernagelt">Vernagelt</option>
-                                    <option value="verkeilt">Verkeilt</option>
-                                    <option value="ineineinander geschoben">Ineineinander Geschoben</option>
-                                    <option value="gefüllt">Gefüllt</option>
-                                    <option value="Keine Angabe">Keine Angabe</option>
-                                </select>
-                            </div>}
-
-                        {material === "Stahl" &&
-                            <div className="input-group">
-                                <label htmlFor="connectionType">Verbindung</label>
-                                <select id="connectionType" name="connectionType" required>
-                                    <option value="">Bitte wählen</option>
-                                    <option value="geschweißt">Geschweißt</option>
-                                    <option value="geschraubt ">Geschraubt </option>
-                                    <option value="gegossen">Gegossen</option>
-                                    <option value="eingehängt">Eingehängt</option>
-                                    <option value="Keine Angabe">Keine Angabe</option>
-                                </select>
-                            </div>}
-
-                        <div className="input-group">
-                            <label htmlFor="manufacturingYear">Baujahr</label>
-                            <input
-                                type="number"
-                                id="manufacturingYear"
-                                min="1920"
-                                name="manufacturingYear"
-                                required
-                            />
-                        </div>
-
-                        {material === "Stahl" &&
-                            <div className="input-group">
-                                <label htmlFor="fireProtection">Brandschutz</label>
-                                <select id="fireProtection" name="fireProtection" required>
-                                    <option value="">Bitte wählen</option>
-                                    <option value="verzinkung">Verzinkung</option>
-                                    <option value="Keine Angabe">Keine Angabe</option>
-                                </select>
-                            </div>}
-
-                        <h4>Technische Eigenschaften</h4>
+                        <h3 className="addElementForm">Technische Eigenschaften</h3>
 
                         {material === "Holz" &&
                             <div className="input-group">
@@ -481,6 +645,37 @@ export default function ReuseElementsInventory({
                                     <option value="">Bitte wählen</option>
                                     <option value="Beschichtung">Beschichtung</option>
                                     <option value="Bekleidung">Bekleidung</option>
+                                    <option value="Keine Angabe">Keine Angabe</option>
+                                </select>
+                            </div>}
+
+                        {material === "Stahl" &&
+                            <div className="input-group">
+                                <label htmlFor="fireProtection">Brandschutz</label>
+                                <select
+                                    id="fireProtection"
+                                    name="fireProtection"
+                                    value={fireProtection}
+                                    onChange={fireProtectionChangeHandler}
+                                    required>
+                                    <option value="">Bitte wählen</option>
+                                    <option value="Verzinkung">Verzinkung</option>
+                                    <option value="Keine Angabe">Keine Angabe</option>
+                                </select>
+                            </div>}
+
+                        {material === "Glas" &&
+                            <div className="input-group">
+                                <label htmlFor="fireProtection">Brandschutz</label>
+                                <select
+                                    id="fireProtection"
+                                    name="fireProtection"
+                                    value={fireProtection}
+                                    onChange={fireProtectionChangeHandler}
+                                    required>
+                                    <option value="">Bitte wählen</option>
+                                    <option value="option1">option1</option>
+                                    <option value="option2">option2</option>
                                     <option value="Keine Angabe">Keine Angabe</option>
                                 </select>
                             </div>}
@@ -509,9 +704,8 @@ export default function ReuseElementsInventory({
                                 </select>
                             </div>}
 
-
                         {material === "Glas" &&
-                            <h4>Bauphysikalische Eigenschaften</h4>
+                            <h3 className="addElementForm">Bauphysikalische Eigenschaften</h3>
                         }
 
                         {material === "Glas" &&
@@ -547,18 +741,7 @@ export default function ReuseElementsInventory({
                                 </select>
                             </div>}
 
-                        <div className="input-group">
-                            <label htmlFor="condition">Zustand</label>
-                            <select id="condition" name="condition" required>
-                                <option value="">Bitte wählen</option>
-                                <option value="Ausreichend">Ausreichend</option>
-                                <option value="Gut">Gut</option>
-                                <option value="Sehr Gut">Sehr Gut</option>
-                                <option value="Keine Angabe">Keine Angabe</option>
-                            </select>
-                        </div>
-
-                        <h4>Bauaufsichtliche Regelung</h4>
+                        <h3 className="addElementForm">Bauaufsichtliche Regelung</h3>
 
                         <div className="input-group">
                             <label htmlFor="nW">Verwendbarkeits-NW vorliegend?</label>
@@ -599,7 +782,7 @@ export default function ReuseElementsInventory({
                             </select>
                         </div>
 
-                        <h4>Rückbau & ReUse</h4>
+                        <h3 className="addElementForm">Rückbau & ReUse</h3>
 
                         <div className="input-group">
                             <label htmlFor="dismantlingType">Rückbauart</label>
@@ -650,6 +833,6 @@ export default function ReuseElementsInventory({
                 </Link>
             }
 
-        </section>
+        </section >
     )
 }
