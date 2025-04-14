@@ -23,7 +23,7 @@ export default function ElementsCatalog() {
                 {elements.length > 0 ?
                     <ElementsCategory elements={elements} />
                     :
-                    <p>No elements found... Try again! </p>
+                    <h4>No elements found... Try again! </h4>
                 }
             </section>
         </section>

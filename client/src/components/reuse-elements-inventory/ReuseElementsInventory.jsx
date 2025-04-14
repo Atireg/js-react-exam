@@ -448,6 +448,8 @@ export default function ReuseElementsInventory({
                             </select>
                         </div>
 
+                        <h3 className="addElementForm">Materialeigenschaften:</h3>
+
                         {material === "Holz" &&
                             <div className="input-group">
                                 <label htmlFor="specification">Werkstoff</label>
@@ -494,7 +496,7 @@ export default function ReuseElementsInventory({
                                 </select>
                             </div>}
 
-                        <h3 className="addElementForm">Dimesionen</h3>
+                        <h3 className="addElementForm">Dimensionen:</h3>
 
                         <div className="input-group">
                             <label htmlFor="length">Länge (mm)</label>
@@ -631,7 +633,7 @@ export default function ReuseElementsInventory({
                                 />
                             </div>}
 
-                        <h3 className="addElementForm">Technische Eigenschaften</h3>
+                        <h3 className="addElementForm">Technische Eigenschaften:</h3>
 
                         {material === "Holz" &&
                             <div className="input-group">
@@ -705,7 +707,7 @@ export default function ReuseElementsInventory({
                             </div>}
 
                         {material === "Glas" &&
-                            <h3 className="addElementForm">Bauphysikalische Eigenschaften</h3>
+                            <h3 className="addElementForm">Bauphysikalische Eigenschaften:</h3>
                         }
 
                         {material === "Glas" &&
@@ -741,7 +743,7 @@ export default function ReuseElementsInventory({
                                 </select>
                             </div>}
 
-                        <h3 className="addElementForm">Bauaufsichtliche Regelung</h3>
+                        <h3 className="addElementForm">Bauaufsichtliche Regelung:</h3>
 
                         <div className="input-group">
                             <label htmlFor="nW">Verwendbarkeits-NW vorliegend?</label>
@@ -782,7 +784,7 @@ export default function ReuseElementsInventory({
                             </select>
                         </div>
 
-                        <h3 className="addElementForm">Rückbau & ReUse</h3>
+                        <h3 className="addElementForm">Rückbau & ReUse:</h3>
 
                         <div className="input-group">
                             <label htmlFor="dismantlingType">Rückbauart</label>

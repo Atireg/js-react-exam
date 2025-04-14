@@ -284,6 +284,11 @@ th.arrow-cell {
     background-color: #f1bdb0bb;
 }
 
+tr.element:hover {
+    background-color: #f1bdb0bb; 
+    /* cursor: pointer; */
+    transition: background-color 0.2s ease;
+}
 
 tbody tr:first-child td.arrow-cell {
     border-top: none;
