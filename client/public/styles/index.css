@@ -37,21 +37,21 @@
     color: #c4c4c4;
     transition: color 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
- 
+
 .basket-indicator.updated {
     font-weight: bold;
     color: #666666;
 }
- 
+
 @keyframes bounce {
     0% {
         transform: translateY(0);
     }
- 
+
     50% {
         transform: translateY(-10px);
     }
- 
+
     100% {
         transform: translateY(0);
     }
@@ -110,6 +110,16 @@ input {
     border-radius: 0.5em;
 }
 
+.addElementForm {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+.register-link {
+    text-align: center;
+    margin-top: 2em;
+}
+
 .buttons {
     display: flex;
     gap: 1em;
@@ -130,11 +140,6 @@ button {
 button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
-}
-
-.register-link {
-    text-align: center;
-    margin-top: 2em;
 }
 
 /* PROJECT DETAILS */
@@ -237,32 +242,100 @@ section.description p {
 }
 
 table {
+    table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 1em;
+    border-spacing: 0;
+    font-size: 10px;
     margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 th,
 td {
+    width: 40px;
     border: 1px solid black;
-    padding: 8px;
     text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0.3em
 }
 
 th {
+    word-wrap: break-word;    
+    white-space: normal; 
+    overflow-wrap: break-word;
+    hyphens: inherit;
     background-color: #f2f2f2;
 }
 
-/* CATEGORIES ELEMENTS SECTION */
+.arrow-cell {
+    width: 30px;
+    background-color: #f1bdb0bb;
+    vertical-align: top;
+    text-align: center;
+    cursor: pointer;
+}
 
+
+th.arrow-cell {
+    border-bottom: none;
+    background-color: #f1bdb0bb; 
+}
+
+
+tbody tr:first-child td.arrow-cell {
+    border-top: none;
+}
+
+.arrow {
+    display: inline-block;
+    font-size: 1.5em;
+    color: #e67154bb;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+.arrow.open {
+    transform: rotate(90deg);
+}
+
+.vertical-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    gap: 0.5em;
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-weight: bold;
+    font-size: 0.75rem;
+    color: #e67154bb;
+}
+
+.arrow-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    padding: 0;
+    color: inherit;
+    font-size: 1rem;
+    z-index: 200;
+}
+
+/* CATEGORIES ELEMENTS SECTION */
 .elements-categories {
     display: flex;
     flex-wrap: wrap;
     gap: 2em;
     justify-content: space-between;
     z-index: 100;
-    /* padding: 2em; */
 }
 
 .elements-categories section {
@@ -329,14 +402,14 @@ th {
     cursor: pointer;
     margin-bottom: 10px;
 }
- 
+
 .choice .checkbox-mark {
     position: relative;
     padding-left: 30px;
     cursor: pointer;
     user-select: none;
 }
- 
+
 .choice .checkbox-mark::before {
     content: "";
     position: absolute;
@@ -349,14 +422,13 @@ th {
     background-color: transparent;
     transition: all 0.2s ease;
 }
- 
-.choice input[type="checkbox"]:checked + .checkbox-mark::before {
+
+.choice input[type="checkbox"]:checked+.checkbox-mark::before {
     background-color: #e67154bb;
     border-color: #e67154bb;
-} 
+}
 
 /* ELEMENTS CATALOG SECTION */
-
 .elements-catalog {
     display: flex;
     gap: 2em;
@@ -374,7 +446,7 @@ th {
     background-color: #e98166cb;
 }
 
-.elements-item .small-button{
+.elements-item .small-button {
     margin-top: 0.3em;
 }
 
@@ -385,7 +457,6 @@ th {
 
 
 /* FOOTER SECTION */
-
 .site-footer {
     margin: 0.5em 1em;
     display: flex;
