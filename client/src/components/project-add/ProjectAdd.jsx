@@ -1,4 +1,4 @@
-import { useNavigate  } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useAddProject } from '../../api/projectsApi';
 
 export default function ProjectAdd() {
@@ -13,37 +13,129 @@ export default function ProjectAdd() {
         await addProject(projectData);
 
         navigate('/projects')
-        
+
     };
 
     return (
         <div className="centered-container">
             <h2>Add Project</h2>
-            <form id="add" action={submitAction}>
+            <form className="add" action={submitAction}>
                 <div className="input-group">
-                    <label htmlFor="name">Project Name</label>
+                    <label htmlFor="name">Projektname</label>
                     <input type="text" id="name" name="name" required />
                 </div>
+
                 <div className="input-group">
-                    <label htmlFor="construction">Year of Construction</label>
+                    <label htmlFor="construction">Baujahr</label>
                     <input type="number" id="construction" name="construction" min="1700" max="2040" required />
                 </div>
+                
                 <div className="input-group">
-                    <label htmlFor="demolition">Year of Demolition</label>
-                    <input type="number" id="demolition" name="demolition" min="2000" max="2100" required />
+                    <label htmlFor="type">Gebäudeart</label>
+                    <select id="type" name="type" required>
+                        <option value="">Bitte wählen</option>
+                        <option value="Hochhaus">Hochhaus</option>
+                        <option value="Keine Angabe">Keine Angabe</option>
+                    </select>
                 </div>
+
                 <div className="input-group">
-                    <label htmlFor="location">Location</label>
-                    <input type="text" id="location" name="location" required />
+                    <label htmlFor="purpose">Nutzung</label>
+                    <select id="purpose" name="purpose" required>
+                        <option value="">Bitte wählen</option>
+                        <option value="Büro">Büro</option>
+                        <option value="Wohnen">Wohnen</option>
+                        <option value="Versammlungsstätten">Versammlungsstätten</option>
+                        <option value="Keine Angabe">Keine Angabe</option>
+                    </select>
                 </div>
+
+                <div className="input-group">
+                    <label htmlFor="location">Standort</label>
+                    <textarea id="location" name="location" required />
+                </div>
+
+                <div className="input-group">
+                    <label htmlFor="demolition">Abrissdatum</label>
+                    <input type="date" id="demolition" required />
+                </div>
+
+                <div className="input-group">
+                    <label htmlFor="constructionType">Bauweise</label>
+                    <select id="constructionType" name="constructionType" required>
+                        <option value="">Bitte wählen</option>
+                        <option value="Skelettbauweise">Skelettbauweise</option>
+                        <option value="Schottenbauweise">Schottenbauweise</option>
+                        <option value="Keine Angabe">Keine Angabe</option>
+                    </select>
+                </div>
+
+                <div className="input-group">
+                    <label htmlFor="bgf">BGF (qm)</label>
+                    <input type="number" id="bgf" name="bgf" required />
+                </div>
+
+                <div className="input-group">
+                    <label htmlFor="nuf">NUF (qm)</label>
+                    <input type="number" id="nuf" name="nuf" required />
+                </div>
+
+                <div className="input-group">
+                    <label htmlFor="client">Bauherr</label>
+                    <textarea id="client" name="client" required />
+                </div>
+
+                <div className="input-group">
+                    <label htmlFor="descriptionConstruction">Beschreibung Bauweise</label>
+                    <textarea id="descriptionConstruction" name="descriptionConstruction" required />
+                </div>
+
                 <div className="input-group">
                     <label htmlFor="imageUrl">Enter image URL</label>
                     <input type="url" id="imageUrl" name="imageUrl" />
                 </div>
+
                 <div className="input-group">
-                    <label htmlFor="description">Description</label>
-                    <textarea id="description" name="description" required />
+                            <label htmlFor="shopDrawings">Ausführungspläne vorliegend?</label>
+                            <select
+                                id="shopDrawings"
+                                name="shopDrawings"
+                                required
+                            >
+                                <option value="">Bitte wählen</option>
+                                <option value="Ja">Ja</option>
+                                <option value="Nein">Nein</option>
+                            </select>
+                        </div>
+
+                <div className="input-group">
+                    <label htmlFor="structuralCalcs">Statik vorliegend?</label>
+                    <select
+                        id="structuralCalcs"
+                        name="structuralCalcs"
+                        required
+                    >
+                        <option value="">Bitte wählen</option>
+                        <option value="Ja">Ja</option>
+                        <option value="Nein">Nein</option>
+                    </select>
                 </div>
+
+                <div className="input-group">
+                    <label htmlFor="projectPlanning">Objektplanung</label>
+                    <textarea id="projectPlanning" name="projectPlanning" required />
+                </div>
+
+                <div className="input-group">
+                    <label htmlFor="structuralPlaning">Tragwerksplanung</label>
+                    <textarea id="structuralPlaning" name="structuralPlaning" required />
+                </div>
+
+                <div className="input-group">
+                    <label htmlFor="facadePlanning">Fassadenplanung</label>
+                    <textarea id="facadePlanning" name="facadePlanning" required />
+                </div>
+
                 <button type="submit">Add</button>
             </form>
         </div>
