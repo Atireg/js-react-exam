@@ -67,8 +67,13 @@ body {
 .welcome-msg {
     width: 50dvw;
     margin: 3em;
-    line-height: 3em;
+    line-height: 1.6em;
 }
+
+.welcome-msg h2 {
+    line-height: 1.6;
+    font-weight: 100;
+  }
 
 /*GENERAL CONTAINER TO CENTER FORMS/MESSAGES*/
 
@@ -244,6 +249,11 @@ aside {
     /* gap: 1em */
 }
 
+.project-details {
+    display: flex;
+    gap: 2em;
+}
+
 h5.project-details-side {
     color: #000000;
     margin: 0;
@@ -263,7 +273,7 @@ p.project-details-side {
     width: 100%;
 
     button {
-        width: 10em;
+        width: 15em;
     }
 }
 
@@ -274,6 +284,7 @@ p.project-details-side {
     justify-content: space-between;
     text-decoration: none;
     scroll-snap-type: y proximity;
+    margin-bottom: 1em;
 
     &::after,
     li.gallery-img {
@@ -306,6 +317,7 @@ p.project-details-side {
         overflow: hidden;
         position: relative;
         scroll-snap-align: center;
+        margin-bottom: 0.5em;
     }
 
     img {
@@ -337,6 +349,52 @@ section.description p {
 }
 
 /* REUSE INVENTORY SECTION */
+
+.container-add-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.formAddElement {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    align-items: left;
+    width: 100%;
+    max-width: 400px;
+    padding: 2em;
+    border: 1px solid #ccc;
+    background: white;
+
+    .input-group {
+        height: 3em;
+        display: flex;
+        gap: 1em;
+        align-items: center;
+    }
+
+    input,
+    textarea,
+    select {
+        width: 80%;
+        padding: 1em;
+        height: 4em;
+        border: 1px solid #ccc;
+        border-radius: 0.5em;
+        resize: none;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 0.5em;
+        flex: 0 1 100px
+    }
+
+    button {
+        width: 100%;
+    }
+}
 
 .elements-table {
     gap: 2em;
@@ -441,11 +499,11 @@ tbody tr:first-child td.arrow-cell {
 }
 
 /* CATEGORIES ELEMENTS SECTION */
+
 .elements-categories {
     display: flex;
     flex-wrap: wrap;
     gap: 2em;
-    justify-content: space-between;
     z-index: 100;
 }
 
@@ -461,20 +519,19 @@ tbody tr:first-child td.arrow-cell {
 .elements-category {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 80%;
     padding: 1em;
     margin-top: 1em;
-    justify-content: top;
 }
 
 .elements-category ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 2em;
+    gap: 3em;
     list-style-type: none;
     padding: 0;
     margin: 0;
-    justify-content: left;
+    justify-content: center; 
 }
 
 .elements-category li {
@@ -483,19 +540,29 @@ tbody tr:first-child td.arrow-cell {
 
 .elements-item {
     display: flex;
+    justify-content: flex-start; 
+    align-items: flex-start; 
     max-width: 200px;
     flex-direction: column;
     flex: 0 0 200px;
     margin: 0.5em;
-    padding: 0 3em;
+    padding: 1em; 
     box-sizing: border-box;
-    border: 1px solid #ccc
+    border: 1px solid #ccc;
+    text-align: left; 
+}
+
+.element-property {
+    width: 100%; 
+    text-align: left; 
+    line-height: 1.6rem;
 }
 
 .elements-individual {
     font-weight: bold;
     color: #E4481F;
     padding-bottom: 1em;
+    width: 100%; 
 }
 
 .centered-arrow {
@@ -509,16 +576,18 @@ tbody tr:first-child td.arrow-cell {
     margin: 0 1em;
     max-width: 700px;
     border: 1px solid #ccc;
-    display: block;
+    display: flex;
 }
 
 .respSearchForm {
+    display: flex;
     flex-direction: row;
     gap: 2em;
     align-items: flex-start;
     margin-bottom: 0;
     border: none;
     width: 100%;
+    padding: 1em
 }
 
 .choice input[type="checkbox"] {
@@ -563,9 +632,10 @@ tbody tr:first-child td.arrow-cell {
 }
 
 .elements-item {
-    flex: 1 1 150px;
+    flex: 1 1 200px;
     text-decoration: none;
-    padding: 1em
+    padding: 1em;
+    
 }
 
 .hover-modal {
@@ -576,12 +646,13 @@ tbody tr:first-child td.arrow-cell {
     color: #666666;
     padding: 1em;
     border: 1px solid #e98166cb;
-    width: 300px;
+    width: 250px;
     z-index: 500;
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: none;
+    line-height: 1.6rem;
 }
 
 .elements-item:hover .hover-modal {
@@ -604,7 +675,7 @@ tbody tr:first-child td.arrow-cell {
 
 .small-button {
     width: 100px;
-    padding: 0.2em;
+    padding: 0.5em;
     background-color: #e98166cb;
 }
 
@@ -650,7 +721,7 @@ tbody tr:first-child td.arrow-cell {
     .project-details-side {
         flex-direction: column;
     }
-
+    
     section.description {
         flex-direction: column;
     }
@@ -661,10 +732,11 @@ tbody tr:first-child td.arrow-cell {
 
     .gallery {
         gap: 0.5em;
+        justify-content: center;
     }
 
     .gallery li.gallery-img {
-        max-width: calc(50% - 0.5em);
+        /* max-width: calc(60% - 0.5em); */
     }
 
     .gallery figcaption {
@@ -675,6 +747,14 @@ tbody tr:first-child td.arrow-cell {
 
     section.threeDcontent {
         order: 2;
+    }
+
+    .container-add-element {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%
+
     }
 
     .elements-categories {

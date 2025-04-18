@@ -16,7 +16,7 @@ export default function ElementsCatalog() {
     }
 
     return (
-        <section className="main-content">
+        <section className="centered-container">
             <h2>Search Parameters</h2>
             <RespSearchForm onSearch={handleSearch} />
             <section className='elements-category'>

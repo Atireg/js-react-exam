@@ -90,7 +90,7 @@ export default function ProjectDetails() {
         <section className="main-content">
             <div className="content-container">
                 <main>
-                    <section className="project-details">
+                    <section className="project-headline">
                         <h2>{project.name}</h2>
                         <h3>{project.location}</h3>
                     </section>
@@ -101,45 +101,47 @@ export default function ProjectDetails() {
                             <img src={project.imageUrl} alt="" />
                         </figure>
                         <section className="description">
-                            <section>
-                                <h5 className="project-details-side">Baujahr:
-                                    <p className="project-details-side">{project.construction}</p>
-                                </h5>
-                                <h5 className="project-details-side">Abrissdatum:
-                                    <p className="project-details-side">{project.demolished}tba</p>
-                                </h5>
-                                <h5 className="project-details-side">Nutzung:
-                                    <p className="project-details-side">{project.purpose}</p>
-                                </h5>
-                                <h5 className="project-details-side">Bauweise:
-                                    <p className="project-details-side">{project.constructionType}</p>
-                                </h5>
-                                <h5 className="project-details-side">BGF (m²):
-                                    <p className="project-details-side">{project.bgf}</p>
-                                </h5>
-                                <h5 className="project-details-side">NUF (m²):
-                                    <p className="project-details-side">{project.nuf}</p>
-                                </h5>
-                            </section>
-                            <section>
-                                <h5 className="project-details-side">Bauherr:
-                                    <p className="project-details-side">{project.client}</p>
-                                </h5>
-                                <h5 className="project-details-side">Ausführungspläne:
-                                    <p className="project-details-side">{project.shopDrawings}</p>
-                                </h5>
-                                <h5 className="project-details-side">Statik:
-                                    <p className="project-details-side">{project.structuralCalcs}</p>
-                                </h5>
-                                <h5 className="project-details-side">Objektplanung:
-                                    <p className="project-details-side">{project.projectPlanning}</p>
-                                </h5>
-                                <h5 className="project-details-side">Tragwerksplanung:
-                                    <p className="project-details-side">{project.structuralPlaning}</p>
-                                </h5>
-                                <h5 className="project-details-side">Fassadenplanung:
-                                    <p className="project-details-side">{project.facadePlanning}</p>
-                                </h5>
+                            <section className="project-details">
+                                <section>
+                                    <h5 className="project-details-side">Baujahr:
+                                        <p className="project-details-side">{project.construction}</p>
+                                    </h5>
+                                    <h5 className="project-details-side">Abrissdatum:
+                                        <p className="project-details-side">{project.demolished}tba</p>
+                                    </h5>
+                                    <h5 className="project-details-side">Nutzung:
+                                        <p className="project-details-side">{project.purpose}</p>
+                                    </h5>
+                                    <h5 className="project-details-side">Bauweise:
+                                        <p className="project-details-side">{project.constructionType}</p>
+                                    </h5>
+                                    <h5 className="project-details-side">BGF (m²):
+                                        <p className="project-details-side">{project.bgf}</p>
+                                    </h5>
+                                    <h5 className="project-details-side">NUF (m²):
+                                        <p className="project-details-side">{project.nuf}</p>
+                                    </h5>
+                                </section>
+                                <section>
+                                    <h5 className="project-details-side">Bauherr:
+                                        <p className="project-details-side">{project.client}</p>
+                                    </h5>
+                                    <h5 className="project-details-side">Ausführungspläne:
+                                        <p className="project-details-side">{project.shopDrawings}</p>
+                                    </h5>
+                                    <h5 className="project-details-side">Statik:
+                                        <p className="project-details-side">{project.structuralCalcs}</p>
+                                    </h5>
+                                    <h5 className="project-details-side">Objektplanung:
+                                        <p className="project-details-side">{project.projectPlanning}</p>
+                                    </h5>
+                                    <h5 className="project-details-side">Tragwerksplanung:
+                                        <p className="project-details-side">{project.structuralPlaning}</p>
+                                    </h5>
+                                    <h5 className="project-details-side">Fassadenplanung:
+                                        <p className="project-details-side">{project.facadePlanning}</p>
+                                    </h5>
+                                </section>
                             </section>
                             <section className="project-details-buttons">
                                 <p>{project.descriptionConstruction}</p>
@@ -148,13 +150,15 @@ export default function ProjectDetails() {
                                         <Link to={`/projects/${projectId}/edit`} className="button">
                                             <button
                                                 className="button">
-                                                Edit Project
+                                                {/* Edit Project */}
+                                                Projekt bearbeiten
                                             </button>
                                         </Link>
                                         <button
                                             onClick={projectDeleteClickHandler}
                                             className="button">
-                                            Delete Project
+                                            {/* Delete Project */}
+                                            Projekt löschen
                                         </button>
                                     </section>}
                             </section>

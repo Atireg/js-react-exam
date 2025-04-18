@@ -84,69 +84,67 @@ export default function ProjectAdd() {
 
                 </div>
 
-                <div className='formSection'>
-
-                    <div className="input-group">
-                        <label htmlFor="client">Bauherr</label>
-                        <textarea id="client" name="client" required />
-                    </div>
-
-                    <div className="input-group">
-                        <label htmlFor="descriptionConstruction">Beschreibung Bauweise</label>
-                        <textarea id="descriptionConstruction" name="descriptionConstruction" required />
-                    </div>
-
-                    <div className="input-group">
-                        <label htmlFor="imageUrl">Enter image URL</label>
-                        <input type="url" id="imageUrl" name="imageUrl" />
-                    </div>
-
-                    <div className="input-group">
-                        <label htmlFor="shopDrawings">Ausführungspläne vorliegend?</label>
-                        <select
-                            id="shopDrawings"
-                            name="shopDrawings"
-                            required
-                        >
-                            <option value="">Bitte wählen</option>
-                            <option value="Ja">Ja</option>
-                            <option value="Nein">Nein</option>
-                        </select>
-                    </div>
-
-                    <div className="input-group">
-                        <label htmlFor="structuralCalcs">Statik vorliegend?</label>
-                        <select
-                            id="structuralCalcs"
-                            name="structuralCalcs"
-                            required
-                        >
-                            <option value="">Bitte wählen</option>
-                            <option value="Ja">Ja</option>
-                            <option value="Nein">Nein</option>
-                        </select>
-                    </div>
-
-                    <div className="input-group">
-                        <label htmlFor="projectPlanning">Objektplanung</label>
-                        <textarea id="projectPlanning" name="projectPlanning" required />
-                    </div>
-
-                    <div className="input-group">
-                        <label htmlFor="structuralPlaning">Tragwerksplanung</label>
-                        <textarea id="structuralPlaning" name="structuralPlaning" required />
-                    </div>
-
-                    <div className="input-group">
-                        <label htmlFor="facadePlanning">Fassadenplanung</label>
-                        <textarea id="facadePlanning" name="facadePlanning" required />
-                    </div>
-
-                    <div className="input-group">
-                        <button type="submit">Add</button>
-                    </div>
-
+                <div className="input-group">
+                    <label htmlFor="client">Bauherr</label>
+                    <textarea id="client" name="client" required />
                 </div>
+
+                <div className="input-group">
+                    <label htmlFor="descriptionConstruction">Beschreibung Bauweise</label>
+                    <textarea id="descriptionConstruction" name="descriptionConstruction" required />
+                </div>
+
+                <div className="input-group">
+                    <label htmlFor="imageUrl">Enter image URL</label>
+                    <input type="url" id="imageUrl" name="imageUrl" />
+                </div>
+
+                <div className="input-group">
+                    <label htmlFor="shopDrawings">Ausführungspläne vorliegend?</label>
+                    <select
+                        id="shopDrawings"
+                        name="shopDrawings"
+                        required
+                    >
+                        <option value="">Bitte wählen</option>
+                        <option value="Ja">Ja</option>
+                        <option value="Nein">Nein</option>
+                    </select>
+                </div>
+
+                <div className="input-group">
+                    <label htmlFor="structuralCalcs">Statik vorliegend?</label>
+                    <select
+                        id="structuralCalcs"
+                        name="structuralCalcs"
+                        required
+                    >
+                        <option value="">Bitte wählen</option>
+                        <option value="Ja">Ja</option>
+                        <option value="Nein">Nein</option>
+                    </select>
+                </div>
+
+                <div className="input-group">
+                    <label htmlFor="projectPlanning">Objektplanung</label>
+                    <textarea id="projectPlanning" name="projectPlanning" required />
+                </div>
+
+                <div className="input-group">
+                    <label htmlFor="structuralPlaning">Tragwerksplanung</label>
+                    <textarea id="structuralPlaning" name="structuralPlaning" required />
+                </div>
+
+                <div className="input-group">
+                    <label htmlFor="facadePlanning">Fassadenplanung</label>
+                    <textarea id="facadePlanning" name="facadePlanning" required />
+                </div>
+
+                <div className="input-group">
+                    <button type="submit">Add</button>
+                </div>
+
+
             </form>
         </div>
     )

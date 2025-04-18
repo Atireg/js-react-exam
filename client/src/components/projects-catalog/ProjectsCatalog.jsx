@@ -18,7 +18,8 @@ export default function ProjectsCatalog() {
         <div className="centered-container">
             <main>
                 <section>
-                    <h2>We have collected building elements from the following projects: </h2>
+                    {/* <h2>We have collected building elements from the following projects: </h2> */}
+                    <h2>Wir haben Bauelemente aus folgenden Projekten gesammelt: </h2>
                 </section>
 
                 <ul className="gallery">
@@ -32,7 +33,8 @@ export default function ProjectsCatalog() {
                     <button
                         className="button"
                     >
-                        Add new project
+                        {/* Add new project */}
+                        Neues Projekt anlegen
                     </button>
                 </Link>}
             </main>

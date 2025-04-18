@@ -40,38 +40,38 @@ export default function ElementItem(
             <p className="elements-individual">ElementId: #{idSlicer(id)}</p>
             <p className="element-property">
                 {/* <span className="centered-arrow">&#9654;</span> */}
-                <strong>Project:</strong>
-                <br />
+                <strong>Project: </strong>
+                {/* <br /> */}
                 {project.name}
             </p>
             <p className="element-property">
                 {/* <span className="centered-arrow">&#9654;</span> */}
-                <strong>Profilart:</strong>
-                <br />
+                <strong>Profilart: </strong>
+                {/* <br /> */}
                 {profileType}
             </p>
             <p className="element-property">
                 {/* <span className="centered-arrow">&#9654;</span> */}
-                <strong>Profil:</strong>
-                <br />
+                <strong>Profil: </strong>
+                {/* <br /> */}
                 {profile}
             </p>
             <p className="element-property">
                 {/* <span className="centered-arrow">&#9654;</span> */}
-                <strong>Material:</strong>
-                <br />
+                <strong>Material: </strong>
+                {/* <br /> */}
                 {material}
             </p>
             <p className="element-property">
                 {/* <span className="centered-arrow">&#9654;</span> */}
-                <strong>Zustand:</strong>
-                <br />
+                <strong>Zustand: </strong>
+                {/* <br /> */}
                 {condition}
             </p>
             <p className="element-property">
                 {/* <span className="centered-arrow">&#9654;</span> */}
-                <strong>Length:</strong>
-                <br />
+                <strong>Length: </strong>
+                {/* <br /> */}
                 {length}mm
             </p>
 

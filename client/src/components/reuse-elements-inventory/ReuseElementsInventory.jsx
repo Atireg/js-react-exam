@@ -263,12 +263,10 @@ export default function ReuseElementsInventory({
 
             {user
                 ?
-                <div>
-                    <h2>Add a new element</h2>
-                    <form className="addElement" action={onAddElement}>
-
-                        
-
+                <div className="container-add-element">
+                    {/* <h3>Add a new element</h3> */}
+                    <h3>Neues Bauteil anlegen: </h3>
+                    <form className="formAddElement" action={onAddElement}>
                             <div className="input-group">
                                 <label htmlFor="loadBearing">Tragend</label>
                                 <select
@@ -334,13 +332,9 @@ export default function ReuseElementsInventory({
                                 />
                             </div>
 
-                        
-
-                        
-
                             {material === "Stahl" &&
                                 <div className="input-group">
-                                    <label htmlFor="elementType">Art (elementType)</label>
+                                    <label htmlFor="elementType">Art </label> 
                                     <select
                                         id="elementType"
                                         name="elementType"
@@ -455,11 +449,8 @@ export default function ReuseElementsInventory({
                                 </select>
                             </div>
 
-                        
-
-                        
-
-                        <h3 className="addElementForm">Materialeigenschaften:</h3>
+                        {material &&
+                        <h4 className="addElementForm">Materialeigenschaften:</h4>}
 
                         {material === "Holz" &&
                             <div className="input-group">
@@ -507,7 +498,7 @@ export default function ReuseElementsInventory({
                                 </select>
                             </div>}
 
-                        <h3 className="addElementForm">Dimensionen:</h3>
+                        <h4 className="addElementForm">Dimensionen:</h4>
 
                         <div className="input-group">
                             <label htmlFor="length">Länge (mm)</label>
@@ -644,9 +635,11 @@ export default function ReuseElementsInventory({
                                 />
                             </div>}
 
+                        {material &&
                         
+                        <h4 className="addElementForm">Technische Eigenschaften:</h4>
+                        }
 
-                        <h3 className="addElementForm">Technische Eigenschaften:</h3>
 
                         {material === "Holz" &&
                             <div className="input-group">
@@ -720,7 +713,7 @@ export default function ReuseElementsInventory({
                             </div>}
 
                         {material === "Glas" &&
-                            <h3 className="addElementForm">Bauphysikalische Eigenschaften:</h3>
+                            <h4 className="addElementForm">Bauphysikalische Eigenschaften:</h4>
                         }
 
                         {material === "Glas" &&
@@ -756,7 +749,7 @@ export default function ReuseElementsInventory({
                                 </select>
                             </div>}
 
-                        <h3 className="addElementForm">Bauaufsichtliche Regelung:</h3>
+                        <h4 className="addElementForm">Bauaufsichtliche Regelung:</h4>
 
                         <div className="input-group">
                             <label htmlFor="nW">Verwendbarkeits-NW vorliegend?</label>
@@ -797,7 +790,7 @@ export default function ReuseElementsInventory({
                             </select>
                         </div>
 
-                        <h3 className="addElementForm">Rückbau & ReUse:</h3>
+                        <h4 className="addElementForm">Rückbau & ReUse:</h4>
 
                         <div className="input-group">
                             <label htmlFor="dismantlingType">Rückbauart</label>
@@ -838,8 +831,12 @@ export default function ReuseElementsInventory({
                             <textarea id="comment" name="comment" />
                         </div>
 
-
-                        <button className="button" type="submit">Add Element</button>
+                        <div className="input-group">
+                        <button className="button" type="submit">
+                            {/* Add Element */}
+                            Bauteil hinzufügen
+                            </button>
+                        </div>
                     </form>
                 </div>
                 :

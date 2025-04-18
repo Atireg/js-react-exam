@@ -20,6 +20,8 @@ export default function Home() {
                 {latestProjects.map(project => (
                     <section key={project._id} className="latestProjects">
                         <p>{project.name}</p>
+                        <p>{project.location}</p>
+                        <br />
                         <Link to={`/projects/${project._id}/details`}>
                             <button className="small-button">Details</button>
                         </Link>
