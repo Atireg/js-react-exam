@@ -82,7 +82,8 @@ export default function SearchItems({
                                         ) : (
                                             <Link to='/login'>
                                                 <button className="small-button">
-                                                    Login to Grab!
+                                                    {/* Login to Grab! */}
+                                                    Einloggen, um zu schnappen!
                                                 </button>
                                             </Link>
                                         )}
@@ -100,7 +101,8 @@ export default function SearchItems({
 
             <Link to={`/baskets/${userId}`}>
                 <button>
-                    Go to Your Basket!
+                    {/* Go to Your Basket! */}
+                    Zu deinem Warenkorb!
                 </button>
             </Link>
         </div>

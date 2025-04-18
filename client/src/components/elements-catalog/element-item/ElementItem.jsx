@@ -111,10 +111,10 @@ export default function ElementItem(
                     disabled={isAlreadyInBasket || isLoading(id)}
                 >
                     {isAlreadyInBasket
-                        ? 'Already Grabbed'
+                        ? 'Bereits Gegriffen'
                         : isLoading(id)
-                            ? 'Grabbing...'
-                            : 'Grab!'}
+                            ? 'Greifen...'
+                            : 'Greif zu!'}
                 </button>
                 :
                 <Link to='/login'>

@@ -113,7 +113,7 @@ export default function RespSearchForm({ onSearch }) {
                     setSelectedOptions={setCondition} 
                 />
 
-                <button type="submit">Search</button>
+                <button type="submit">Suchen</button>
             </form>
         </div>
     );

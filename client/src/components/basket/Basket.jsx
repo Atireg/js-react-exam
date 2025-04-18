@@ -40,7 +40,8 @@ export default function Basket() {
         <div className="centered-container">
             {elementsToDisplay?.length > 0 &&
                 <>
-                        <h3>You have {elementsToDisplay.length} elements in your basket: </h3>
+                        {/* <h3>You have {elementsToDisplay.length} elements in your basket: </h3> */}
+                        <h3>Sie haben {elementsToDisplay.length} Elemente in Ihrem Warenkorb: </h3>
                         <section className='elements-category'>
                             <ul>
                                 {elementsToDisplay.map(item =>

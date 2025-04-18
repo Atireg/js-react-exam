@@ -60,11 +60,7 @@ export default function Header() {
                         <Link to="/about">About</Link>
                     </li> */}
 
-                    <div class="hamburger" onclick="document.querySelector('.navigation').classList.toggle('open')">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
+                    
 
                 </ul>
             </nav>

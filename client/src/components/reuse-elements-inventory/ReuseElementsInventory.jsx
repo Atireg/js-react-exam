@@ -574,7 +574,7 @@ export default function ReuseElementsInventory({
                             </div>
                         }
 
-                        {elementType !== 'Rundprofil' || elementType !== "Sonderfall" &&
+                        {elementType !== 'Rundprofil' && elementType !== "Sonderfall" && elementType !== 'Walzprofil' &&
                             <div className="input-group">
                                 <label htmlFor="height">Höhe (mm)</label>
                                 <input
@@ -872,7 +872,9 @@ export default function ReuseElementsInventory({
                 </div>
                 :
                 <Link to="/login">
-                    <button>Login to add elements</button>
+                    {/* <button>Login to add elements</button> */}
+                    <button>Einloggen, um Elemente hinzuzufügen</button>
+
                 </Link>
             }
 

@@ -35,7 +35,8 @@ export default function Register() {
 
     return (
         <div className="centered-container">
-            <h2>Register</h2>
+            {/* <h2>Register</h2> */}
+            <h2>Registrieren</h2>
             {/* <form action={registerAction}> */}
             <form className="formAuth" action={registerHandler}>
                 <div className="input-group">
@@ -43,16 +44,18 @@ export default function Register() {
                     <input type="email" id="email" name="email" required />
                 </div>
                 <div className="input-group">
-                    <label htmlFor="password">Password:</label>
+                    <label htmlFor="password">Passwort:</label>
                     <input type="password" id="password" name="password" required />
                 </div>
                 <div className="input-group">
-                    <label htmlFor="confirmPassword">Confirm Password:</label>
+                    {/* <label htmlFor="confirmPassword">Confirm Password:</label> */}
+                    <label htmlFor="confirmPassword">Passwort bestätigen:</label>
                     <input type="password" id="confirmPassword" name="confirmPassword" required />
                 </div>
                 {/* <button type="submit" disabled={isPending}>Register</button> */}
                 <button type="submit">Register</button>
-                <p className="register-link">Already have an account? <Link to="/login">Login</Link></p>
+                {/* <p className="register-link">Already have an account? <Link to="/login">Login</Link></p> */}
+                <p className="register-link">Haben Sie bereits ein Konto? <Link to="/login">Einloggen</Link></p>
             </form>
         </div>
     )

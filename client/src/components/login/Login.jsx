@@ -32,18 +32,19 @@ export default function Login() {
     
     return (
         <div className="centered-container">
-            <h2>Login</h2>
+            <h2>Anmelden</h2>
             <form className="formAuth" action={loginAction}>
                 <div className="input-group">
                     <label htmlFor="email">Email</label>
                     <input type="email" id="email" name="email" required />
                 </div>
                 <div className="input-group">
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Passwort</label>
                     <input type="password" id="password" name="password" required />
                 </div>
                 <button type="submit" disabled={isPending}>Login</button>
-                <p className="register-link">Don't have an account? <Link to="/register">Register</Link></p>
+                {/* <p className="register-link">Don't have an account? <Link to="/register">Register</Link></p> */}
+                <p className="register-link">Haben Sie noch kein Konto? <Link to="/register">Registrieren</Link></p>
             </form>
         </div>
     )
