@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { useGetAllInBasket } from "../../api/basketApi"
-import idSlicer from "../../utils/idSlicer";
 import { Link } from "react-router";
 import { useUserBasket } from "../../hooks/useUserBasket";
+import ElementItem from "../elements-catalog/element-item/ElementItem";
 
 export default function Basket() {
     const { userBasket } = useUserBasket();
     const { elements } = useGetAllInBasket(userBasket?._id);
     // const { deleteFromBasket } = useDeleteFromBasket(userBasket?._id);
     const [elementsInBasket, setElementsInBasket] = useState([]);
- 
+
     useEffect(() => {
         if (elements) {
-            setElementsInBasket(elements); 
+            setElementsInBasket(elements);
         }
     }, [elements])
 
@@ -38,59 +38,36 @@ export default function Basket() {
 
     return (
         <div className="centered-container">
-            <div className="elements-table">
-                <h2>You have {elementsToDisplay.length} elements in your basket: </h2>
-                <table >
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Tragend</th>
-                            <th>Material</th>
-                            <th>Funktion</th>
-                            <th>Werkstoff</th>
-                            <th>Materialgüte</th>
-                            <th>Länge (m)</th>
-                            <th>Profil</th>
-                            <th>Zustand</th>
-                            <th>Verbindung</th>
-                            <th>Baujahr</th>
-                            <th>Kommentar</th>
-                            {/* <th></th> */}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {elementsToDisplay?.length > 0 ? (
-                            elementsToDisplay.map(item => (
-                                <tr key={item._id} >
-                                    <td>#{idSlicer(item._id)}</td>
-                                    <td>{item.element.loadBearing}</td>
-                                    <td>{item.element.material}</td>
-                                    <td>{item.element.function}</td>
-
-                                    <td>{item.element.specification}</td>
-                                    <td>{item.element.quality}</td>
-                                    <td>{item.element.length}</td>
-                                    <td>{item.element.profileType}</td>
-                                    <td>{item.element.condition}</td>
-                                    <td>{item.element.connectionType}</td>
-                                    <td>{item.element.manufacturingYear}</td>
-                                    <td>{item.element.comment}</td>
-                                    {/* <td><button onClick={() => onDeleteHandler(userBasket._id, item._id)} className="small-button">Delete</button></td> */}
-                                </tr>
-                            ))
-                        ) : (
-                            <tr>
-                                <td colSpan="12">No data available</td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
-                {elementsToDisplay?.length == 0 && (
+            {elementsToDisplay?.length > 0 &&
+                <>
+                        <h3>You have {elementsToDisplay.length} elements in your basket: </h3>
+                        <section className='elements-category'>
+                            <ul>
+                                {elementsToDisplay.map(item =>
+                                    <ElementItem
+                                        key={item._id}
+                                        id={item._id}
+                                        projectId={item.projectId}
+                                        material={item.material}
+                                        profileType={item.profileType}
+                                        profile={item.profile}
+                                        length={item.element.length}
+                                        condition={item.element.condition}
+                                        details={item.element}
+                                        tag = 'basket'
+                                    />
+                                )}
+                            </ul>
+                        </section>
+                </>}
+            {elementsToDisplay?.length == 0 &&
+                <>
+                    <h3>Your basket is empty!</h3>
                     <Link to="/elements">
                         <button>Go grabsome elements! </button>
                     </Link>
-                )}
-            </div>
+                </>
+            }
         </div>
     )
 }

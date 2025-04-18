@@ -16,7 +16,8 @@ export default function ElementItem(
         profile,
         length,
         condition,
-        details
+        details,
+        tag
     }
 ) {
     const { email } = useAuth();
@@ -82,7 +83,7 @@ export default function ElementItem(
                     <p><strong>Funktion: </strong>{details.function}</p>
                     <p><strong>Menge: </strong>{details.quantity}</p>
                     <p><strong>Verbindung: </strong>{details.connectionType}</p>
-                    <p><strong>Baujahr: </strong>{details.manufacturingYear}</p>
+                    <p><strong>Herstellungsjahr: </strong>{details.manufacturingYear}</p>
                     <p><strong>Materialgüte: </strong>{details.quality}</p>
                     <p><strong>Brandschutz: </strong> {details.fireProtection} / {details.fPrThickness}mm</p>
                     <p><strong>Verwendbarkeits-NW: </strong>{details.nW}</p>
@@ -94,6 +95,8 @@ export default function ElementItem(
                 </div>
             )}
 
+            {tag === 'elementsCatalog' && 
+            <>
             {email
                 ?
                 <button
@@ -120,6 +123,7 @@ export default function ElementItem(
                     </button>
                 </Link>
             }
+            </>}
         </li>
     )
 }

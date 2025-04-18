@@ -62,7 +62,7 @@ export default function ReuseElementsInventory({
                             <th>Profilart</th>
                             <th>Profil</th>
                             <th>Verbindung</th>
-                            <th>Baujahr</th>
+                            <th>Herstellungsjahr</th>
                             <th>Zustand</th>
 
                             <th className="arrow-cell"></th>
@@ -267,6 +267,8 @@ export default function ReuseElementsInventory({
                     {/* <h3>Add a new element</h3> */}
                     <h3>Neues Bauteil anlegen: </h3>
                     <form className="formAddElement" action={onAddElement}>
+                    <h4>Allgemeine Angaben: </h4>
+
                             <div className="input-group">
                                 <label htmlFor="loadBearing">Tragend</label>
                                 <select
@@ -428,7 +430,7 @@ export default function ReuseElementsInventory({
                                 </div>}
 
                             <div className="input-group">
-                                <label htmlFor="manufacturingYear">Baujahr</label>
+                                <label htmlFor="manufacturingYear">Herstellungsjahr</label>
                                 <input
                                     type="number"
                                     id="manufacturingYear"
@@ -805,9 +807,9 @@ export default function ReuseElementsInventory({
                                 required
                             >
                                 <option value="">Bitte wählen</option>
-                                <option value="high">Hoch</option>
-                                <option value="medium">Mittel</option>
-                                <option value="low">Gering</option>
+                                <option value="hoch">Hoch</option>
+                                <option value="mittel">Mittel</option>
+                                <option value="gering">Gering</option>
                             </select>
                         </div>
 
@@ -819,10 +821,10 @@ export default function ReuseElementsInventory({
                                 required
                             >
                                 <option value="">Bitte wählen</option>
-                                <option value="preservation">Bestandserhalt</option>
-                                <option value="reuse">Reuse</option>
-                                <option value="recycling">Recycling</option>
-                                <option value="disposal">Entsorgung</option>
+                                <option value="Bestandserhalt">Bestandserhalt</option>
+                                <option value="Reuse">Reuse</option>
+                                <option value="Recycling">Recycling</option>
+                                <option value="Entsorgung">Entsorgung</option>
                             </select>
                         </div>
 

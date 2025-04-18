@@ -107,7 +107,7 @@ export default function ProjectDetails() {
                                         <p className="project-details-side">{project.construction}</p>
                                     </h5>
                                     <h5 className="project-details-side">Abrissdatum:
-                                        <p className="project-details-side">{project.demolished}tba</p>
+                                        <p className="project-details-side">{project.demolition}</p>
                                     </h5>
                                     <h5 className="project-details-side">Nutzung:
                                         <p className="project-details-side">{project.purpose}</p>

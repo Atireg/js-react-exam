@@ -19,10 +19,13 @@ export default function ProjectEdit() {
     return (
         <div className="centered-container">
             <h2>Edit Project Details</h2>
+            
             <form className="formData" action={formAction}>
+
+            <div className='formSection'>
                 <div className="input-group">
                     <label htmlFor="name">Projektname</label>
-                    <input type="text" id="name" name="name" defaultValue={project.name} required />
+                    <input type="text" id="name" name="name" defaultValue={project.name} required={!project.name} />
                 </div>
 
                 <div className="input-group">
@@ -32,7 +35,7 @@ export default function ProjectEdit() {
                 
                 <div className="input-group">
                     <label htmlFor="type">Gebäudeart</label>
-                    <select id="type" name="type" required>
+                    <select id="type" name="type" required={!project.type}>
                         <option value="">{project.type} </option>
                         <option value="Hochhaus">Hochhaus</option>
                         <option value="Keine Angabe">Keine Angabe</option>
@@ -41,7 +44,7 @@ export default function ProjectEdit() {
 
                 <div className="input-group">
                     <label htmlFor="purpose">Nutzung</label>
-                    <select id="purpose" name="purpose" required>
+                    <select id="purpose" name="purpose" required={!project.purpose}>
                         <option value="">{project.purpose} </option>
                         <option value="Büro">Büro</option>
                         <option value="Wohnen">Wohnen</option>
@@ -52,17 +55,17 @@ export default function ProjectEdit() {
 
                 <div className="input-group">
                     <label htmlFor="location">Standort</label>
-                    <textarea id="location" name="location" defaultValue={project.location} required />
+                    <textarea id="location" name="location" defaultValue={project.location} required={!project.location} />
                 </div>
 
                 <div className="input-group">
                     <label htmlFor="demolition">Abrissdatum</label>
-                    <input type="date" id="demolition" required />
+                    <input type="date" id="demolition" name="demolition" required={!project.demolition} />
                 </div>
 
                 <div className="input-group">
                     <label htmlFor="constructionType">Bauweise</label>
-                    <select id="constructionType" name="constructionType" required>
+                    <select id="constructionType" name="constructionType" required={!project.constructionType}>
                         <option value="">{project.constructionType}</option>
                         <option value="Skelettbauweise">Skelettbauweise</option>
                         <option value="Schottenbauweise">Schottenbauweise</option>
@@ -72,22 +75,25 @@ export default function ProjectEdit() {
 
                 <div className="input-group">
                     <label htmlFor="bgf">BGF (qm)</label>
-                    <input type="number" id="bgf" name="bgf" defaultValue={project.bgf} required />
+                    <input type="number" id="bgf" name="bgf" defaultValue={project.bgf} required={!project.bgf} />
                 </div>
 
                 <div className="input-group">
                     <label htmlFor="nuf">NUF (qm)</label>
-                    <input type="number" id="nuf" name="nuf" defaultValue={project.nuf} required />
+                    <input type="number" id="nuf" name="nuf" defaultValue={project.nuf} required={!project.nuf} />
                 </div>
+                </div>
+
+                <div className='formSection'>
 
                 <div className="input-group">
                     <label htmlFor="client">Bauherr</label>
-                    <textarea id="client" name="client" defaultValue={project.client} required />
+                    <textarea id="client" name="client" defaultValue={project.client} required={!project.client} />
                 </div>
 
                 <div className="input-group">
                     <label htmlFor="descriptionConstruction">Beschreibung Bauweise</label>
-                    <textarea id="descriptionConstruction" name="descriptionConstruction" defaultValue={project.descriptionConstruction} required />
+                    <textarea id="descriptionConstruction" name="descriptionConstruction" defaultValue={project.descriptionConstruction} required={!project.descriptionConstruction} />
                 </div>
 
                 <div className="input-group">
@@ -100,7 +106,7 @@ export default function ProjectEdit() {
                             <select
                                 id="shopDrawings"
                                 name="shopDrawings"
-                                required
+                                required={!project.shopDrawings}
                             >
                                 <option value="">{project.shopDrawings}</option>
                                 <option value="Ja">Ja</option>
@@ -113,7 +119,7 @@ export default function ProjectEdit() {
                     <select
                         id="structuralCalcs"
                         name="structuralCalcs"
-                        required
+                        required={!project.structuralCalcs}
                     >
                         <option value="">{project.structuralCalcs}</option>
                         <option value="Ja">Ja</option>
@@ -123,48 +129,24 @@ export default function ProjectEdit() {
 
                 <div className="input-group">
                     <label htmlFor="projectPlanning">Objektplanung</label>
-                    <textarea id="projectPlanning" name="projectPlanning" defaultValue={project.projectPlanning} required />
+                    <textarea id="projectPlanning" name="projectPlanning" defaultValue={project.projectPlanning} required={!project.projectPlanning} />
                 </div>
 
                 <div className="input-group">
                     <label htmlFor="structuralPlaning">Tragwerksplanung</label>
-                    <textarea id="structuralPlaning" name="structuralPlaning" defaultValue={project.structuralPlaning} required />
+                    <textarea id="structuralPlaning" name="structuralPlaning" defaultValue={project.structuralPlaning} required={!project.structuralPlaning} />
                 </div>
 
                 <div className="input-group">
                     <label htmlFor="facadePlanning">Fassadenplanung</label>
-                    <textarea id="facadePlanning" name="facadePlanning" defaultValue={project.facadePlanning} required />
+                    <textarea id="facadePlanning" name="facadePlanning" defaultValue={project.facadePlanning} required={!project.facadePlanning} />
                 </div>
 
-                <button type="submit">Edit</button>
+                <div className="input-group">
+                        <button type="submit">Speichern</button>
+                    </div>
+                </div>
             </form>
-            {/* <form className="edit" action={formAction}>
-                <div className="input-group">
-                    <label htmlFor="name">Project Name</label>
-                    <input type="text" id="name" name="name" defaultValue={project.name} required />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="construction">Year of Construction</label>
-                    <input type="number" id="construction" name="construction" defaultValue={project.construction} min="1700" max="2040" required />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="demolition">Year of Demolition</label>
-                    <input type="number" id="demolition" name="demolition" defaultValue={project.demolition} min="2000" max="2100" required />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="location">Location</label>
-                    <input type="text" id="location" name="location" defaultValue={project.location} required />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="imageUrl">Enter image URL</label>
-                    <input type="url" id="imageUrl" defaultValue={project.imageUrl} name="imageUrl" />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="description">Description</label>
-                    <textarea id="description" name="description" defaultValue={project.description} required />
-                </div>
-                <button type="submit">Edit</button>
-            </form> */}
         </div>
     )
 }

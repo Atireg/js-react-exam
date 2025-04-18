@@ -73,7 +73,7 @@ body {
 .welcome-msg h2 {
     line-height: 1.6;
     font-weight: 100;
-  }
+}
 
 /*GENERAL CONTAINER TO CENTER FORMS/MESSAGES*/
 
@@ -205,6 +205,10 @@ button:disabled {
     button {
         height: 3.3em;
         margin: 1.2em 0;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -359,10 +363,9 @@ section.description p {
 .formAddElement {
     display: flex;
     flex-direction: column;
-    gap: 1.5em;
+    gap: 2em;
     align-items: left;
-    width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     padding: 2em;
     border: 1px solid #ccc;
     background: white;
@@ -370,7 +373,7 @@ section.description p {
     .input-group {
         height: 3em;
         display: flex;
-        gap: 1em;
+        gap: 2em;
         align-items: center;
     }
 
@@ -398,7 +401,13 @@ section.description p {
 
 .elements-table {
     gap: 2em;
-    margin: 2em 1em
+    margin: 2em 1em;
+}
+
+.basket-table {
+    gap: 2em;
+    margin: 2em 1em;
+    max-width: 60%
 }
 
 .inventory-table-container {
@@ -531,7 +540,7 @@ tbody tr:first-child td.arrow-cell {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .elements-category li {
@@ -540,21 +549,21 @@ tbody tr:first-child td.arrow-cell {
 
 .elements-item {
     display: flex;
-    justify-content: flex-start; 
-    align-items: flex-start; 
+    justify-content: flex-start;
+    align-items: flex-start;
     max-width: 200px;
     flex-direction: column;
     flex: 0 0 200px;
     margin: 0.5em;
-    padding: 1em; 
+    padding: 1em;
     box-sizing: border-box;
     border: 1px solid #ccc;
-    text-align: left; 
+    text-align: left;
 }
 
 .element-property {
-    width: 100%; 
-    text-align: left; 
+    width: 100%;
+    text-align: left;
     line-height: 1.6rem;
 }
 
@@ -562,7 +571,7 @@ tbody tr:first-child td.arrow-cell {
     font-weight: bold;
     color: #E4481F;
     padding-bottom: 1em;
-    width: 100%; 
+    width: 100%;
 }
 
 .centered-arrow {
@@ -635,7 +644,7 @@ tbody tr:first-child td.arrow-cell {
     flex: 1 1 200px;
     text-decoration: none;
     padding: 1em;
-    
+
 }
 
 .hover-modal {
@@ -721,7 +730,7 @@ tbody tr:first-child td.arrow-cell {
     .project-details-side {
         flex-direction: column;
     }
-    
+
     section.description {
         flex-direction: column;
     }
@@ -749,11 +758,17 @@ tbody tr:first-child td.arrow-cell {
         order: 2;
     }
 
+
     .container-add-element {
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 100%
+    }
+
+    .formAddElement {
+        width: 100%;
+        max-width: 100%;
 
     }
 

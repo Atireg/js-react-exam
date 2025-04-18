@@ -33,7 +33,7 @@ export default function SearchItems({
                         <th>Profil</th>
                         <th>Zustand</th>
                         <th>Verbindung</th>
-                        <th>Baujahr</th>
+                        <th>Herstellungsjahr</th>
                         <th>Kommentar</th>
                         <th></th>
                     </tr>

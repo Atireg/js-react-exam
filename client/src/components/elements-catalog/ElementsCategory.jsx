@@ -20,6 +20,7 @@ export default function ElementsCategory(
                         length={item.element.length}
                         condition={item.element.condition}
                         details = {item.element}
+                        tag = 'elementsCatalog'
                     />
                 )}
             </ul>

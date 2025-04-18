@@ -1,4 +1,5 @@
 import { Link } from 'react-router'
+import extractYear from '../../../utils/extractYear'
 
 export default function ProjectsCatalogItem({
     _id,
@@ -17,7 +18,7 @@ export default function ProjectsCatalogItem({
                 </Link>
             </figure>
             <p>{name} ({location})</p>
-            <p>{construction} - {demolition}</p>
+            <p>{construction} - {extractYear(demolition)}</p>
         </li>
     )
 }
