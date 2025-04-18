@@ -596,7 +596,12 @@ tbody tr:first-child td.arrow-cell {
     margin-bottom: 0;
     border: none;
     width: 100%;
-    padding: 1em
+    padding: 1em;
+    flex-wrap: wrap;
+
+    button {
+        
+    }
 }
 
 .choice input[type="checkbox"] {

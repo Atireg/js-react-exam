@@ -354,7 +354,7 @@ export default function ReuseElementsInventory({
                                     </select>
                                 </div>}
 
-                            {material === "Stahl" &&
+                            {elementType === "Walzprofil" &&
                                 <div className="input-group">
                                     <label htmlFor="profileType">Profilart</label>
                                     <select
@@ -364,11 +364,13 @@ export default function ReuseElementsInventory({
                                         onChange={profileTypeChangeHandler}
                                         required>
                                         <option value="">Bitte wählen</option>
-                                        <option value="IProfil">IProfil</option>
-                                        <option value="Rechteckprofil">Rechteckprofil</option>
-                                        <option value="Rundprofil">Rundprofil</option>
+                                        <option value="IProfil">I-Profil</option>
+                                        <option value="HEBProfil">HEB-Profil</option>
+                                        <option value="HEAProfil">HEA-Profil</option>
+                                        {/* <option value="Rechteckprofil">Rechteckprofil</option> */}
+                                        {/* <option value="Rundprofil">Rundprofil</option>
                                         <option value="Hohlprofil">Hohlprofil</option>
-                                        <option value="Sonderfall">Sonderfall</option>
+                                        <option value="Sonderfall">Sonderfall</option> */}
                                         <option value="Keine Angabe">Keine Angabe</option>
                                     </select>
                                 </div>}
@@ -389,14 +391,41 @@ export default function ReuseElementsInventory({
                                     </select>
                                 </div>}
 
-                            {material === "Stahl" &&
+                            {profileType === "IProfil" &&
                                 <div className="input-group">
                                     <label htmlFor="profile">Profil</label>
                                     <select id="profile" name="profile" required>
                                         <option value="">Bitte wählen</option>
                                         <option value="IPE100">IPE100</option>
                                         <option value="IPE120">IPE120</option>
-                                        <option value="Rohr">Rohr</option>
+                                        <option value="IPE120">IPE200</option>
+                                        {/* <option value="Rohr">Rohr</option> */}
+                                        <option value="Keine Angabe">Keine Angabe</option>
+                                    </select>
+                                </div>}
+
+                                {profileType === "HEBProfil" &&
+                                <div className="input-group">
+                                    <label htmlFor="profile">Profil</label>
+                                    <select id="profile" name="profile" required>
+                                        <option value="">Bitte wählen</option>
+                                        <option value="HEB100">HEB100</option>
+                                        <option value="HEB120">HEB120</option>
+                                        <option value="HEB120">HEB200</option>
+                                        {/* <option value="Rohr">Rohr</option> */}
+                                        <option value="Keine Angabe">Keine Angabe</option>
+                                    </select>
+                                </div>}
+                            
+                                {profileType === "HEAProfil" &&
+                                <div className="input-group">
+                                    <label htmlFor="profile">Profil</label>
+                                    <select id="profile" name="profile" required>
+                                        <option value="">Bitte wählen</option>
+                                        <option value="HEA100">HEA100</option>
+                                        <option value="HEA120">HEA120</option>
+                                        <option value="HEA120">HEA200</option>
+                                        {/* <option value="Rohr">Rohr</option> */}
                                         <option value="Keine Angabe">Keine Angabe</option>
                                     </select>
                                 </div>}

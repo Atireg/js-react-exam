@@ -17,13 +17,15 @@ export default function ElementsCatalog() {
 
     return (
         <section className="centered-container">
-            <h2>Search Parameters</h2>
+            <h2>Suchkriterien</h2>
+            {/* <h2>Search Parameters</h2> */}
             <RespSearchForm onSearch={handleSearch} />
             <section className='elements-category'>
                 {elements.length > 0 ?
                     <ElementsCategory elements={elements} />
                     :
-                    <h4>No elements found... Try again! </h4>
+                    // <h4>No elements found... Try again! </h4>
+                    <h4>Keine Elemente gefunden ... Versuch es erneut!</h4>
                 }
             </section>
         </section>

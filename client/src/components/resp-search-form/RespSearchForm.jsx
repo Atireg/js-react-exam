@@ -46,7 +46,14 @@ export default function RespSearchForm({ onSearch }) {
 
     const [profile, setProfile] = useState({
         IPE100: false,
+        IPE120: false,
         IPE200: false,
+        HEA100: false,
+        HEA120: false,
+        HEA200: false,
+        HEB100: false,
+        HEB120: false,
+        HEB200: false,
     });
 
 
@@ -83,7 +90,16 @@ export default function RespSearchForm({ onSearch }) {
                 {/* Profile Checkbox Group */}
                 <CheckboxGroup 
                     label="Profil" 
-                    options={{ IPE100: false, IPE200: false }} 
+                    options={{
+                        IPE100: false,
+                        IPE120: false,
+                        IPE200: false,
+                        HEA100: false,
+                        HEA120: false,
+                        HEA200: false,
+                        HEB100: false,
+                        HEB120: false,
+                        HEB200: false,}} 
                     selectedOptions={profile}
                     setSelectedOptions={setProfile} 
                 />
@@ -91,7 +107,8 @@ export default function RespSearchForm({ onSearch }) {
                 {/* Profile Checkbox Group */}
                 <CheckboxGroup 
                     label="Zustand" 
-                    options={{ ausreichend: false, sehrGut: false, gut: false }} 
+                    options={{
+                        ausreichend: false, sehrGut: false, gut: false }} 
                     selectedOptions={condition}
                     setSelectedOptions={setCondition} 
                 />
