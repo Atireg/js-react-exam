@@ -90,46 +90,74 @@ export default function ProjectDetails() {
         <section className="main-content">
             <div className="content-container">
                 <main>
-                        <section className="project-details">
-                            <h2>{project.name}</h2>
-                            <h3>{project.location}</h3>
-                            <h3>{project.client}</h3>
-                        </section>
+                    <section className="project-details">
+                        <h2>{project.name}</h2>
+                        <h3>{project.location}</h3>
+                    </section>
                 </main>
                 <aside>
                     <div className="project-info">
-                    <figure className="hero">
-                        <img src={project.imageUrl} alt="" />
-                    </figure>
+                        <figure className="hero">
+                            <img src={project.imageUrl} alt="" />
+                        </figure>
                         <section className="description">
                             <section>
-                                <p>{project.descriptionConstruction}</p>
-                                <h5>Baujahr: {project.construction}</h5>
-                                <h5>Abrissdatum: {project.demolished}</h5>
-                                <h5>Nutzung: {project.purpose}</h5>
-                                <h5>Bauweise: {project.constructionType}</h5>
-                                <h5>BGF (qm): {project.bgf}</h5>
-                                <h5>NUF (qm): {project.nuf}</h5>
-                                <h5>Ausführungspläne vorliegend: {project.shopDrawings}</h5>
-                                <h5>Statik vorliegend: {project.structuralCalcs}</h5>
-                                <h5>Objektplanung: {project.projectPlanning}</h5>
-                                <h5>Tragwerksplanung: {project.structuralPlaning}</h5>
-                                <h5>Fassadenplanung: {project.facadePlanning}</h5>
+                                <h5 className="project-details-side">Baujahr:
+                                    <p className="project-details-side">{project.construction}</p>
+                                </h5>
+                                <h5 className="project-details-side">Abrissdatum:
+                                    <p className="project-details-side">{project.demolished}tba</p>
+                                </h5>
+                                <h5 className="project-details-side">Nutzung:
+                                    <p className="project-details-side">{project.purpose}</p>
+                                </h5>
+                                <h5 className="project-details-side">Bauweise:
+                                    <p className="project-details-side">{project.constructionType}</p>
+                                </h5>
+                                <h5 className="project-details-side">BGF (m²):
+                                    <p className="project-details-side">{project.bgf}</p>
+                                </h5>
+                                <h5 className="project-details-side">NUF (m²):
+                                    <p className="project-details-side">{project.nuf}</p>
+                                </h5>
                             </section>
-                            {isOwner &&
-                                <section className="buttons">
-                                    <Link to={`/projects/${projectId}/edit`} className="button">
+                            <section>
+                                <h5 className="project-details-side">Bauherr:
+                                    <p className="project-details-side">{project.client}</p>
+                                </h5>
+                                <h5 className="project-details-side">Ausführungspläne:
+                                    <p className="project-details-side">{project.shopDrawings}</p>
+                                </h5>
+                                <h5 className="project-details-side">Statik:
+                                    <p className="project-details-side">{project.structuralCalcs}</p>
+                                </h5>
+                                <h5 className="project-details-side">Objektplanung:
+                                    <p className="project-details-side">{project.projectPlanning}</p>
+                                </h5>
+                                <h5 className="project-details-side">Tragwerksplanung:
+                                    <p className="project-details-side">{project.structuralPlaning}</p>
+                                </h5>
+                                <h5 className="project-details-side">Fassadenplanung:
+                                    <p className="project-details-side">{project.facadePlanning}</p>
+                                </h5>
+                            </section>
+                            <section className="project-details-buttons">
+                                <p>{project.descriptionConstruction}</p>
+                                {isOwner &&
+                                    <section className="buttons">
+                                        <Link to={`/projects/${projectId}/edit`} className="button">
+                                            <button
+                                                className="button">
+                                                Edit Project
+                                            </button>
+                                        </Link>
                                         <button
+                                            onClick={projectDeleteClickHandler}
                                             className="button">
-                                            Edit Project Details
+                                            Delete Project
                                         </button>
-                                    </Link>
-                                    <button
-                                        onClick={projectDeleteClickHandler}
-                                        className="button">
-                                        Delete Project
-                                    </button>
-                                </section>}
+                                    </section>}
+                            </section>
                         </section>
                     </div>
                 </aside>

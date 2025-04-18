@@ -44,7 +44,8 @@ export default function ReuseElementsInventory({
     return (
         <section className="elements-table">
             <section>
-                <h2>Harvested Building Elements</h2>
+                <h3>Gewonnene Bauelemente:</h3>
+                {/* <h3>Harvested Building Elements:</h3> */}
             </section>
 
             <div className="inventory-table-container">
@@ -264,189 +265,199 @@ export default function ReuseElementsInventory({
                 ?
                 <div>
                     <h2>Add a new element</h2>
-                    <form action={onAddElement}>
+                    <form className="addElement" action={onAddElement}>
 
-                        <div className="input-group">
-                            <label htmlFor="loadBearing">Tragend</label>
-                            <select
-                                id="loadBearing"
-                                name="loadBearing"
-                                required
-                            >
-                                <option value="">Bitte wählen</option>
-                                <option value="Ja">Ja</option>
-                                <option value="Nein">Nein</option>
-                            </select>
-                        </div>
+                        
 
-                        <div className="input-group">
-                            <label htmlFor="member">Bauteil</label>
-                            <select
-                                id="member"
-                                name="member"
-                                required
-                            >
-                                <option value="">Bitte wählen</option>
-                                <option value="Stütze">Stütze</option>
-                                <option value="Träger">Träger</option>
-                                <option value="Fassade">Fassade</option>
-                                <option value="Keine Angabe">Keine Angabe</option>
-                            </select>
-                        </div>
-
-                        <div className="input-group">
-                            <label htmlFor="material">Material</label>
-                            <select
-                                id="material"
-                                name="material"
-                                value={material}
-                                onChange={materialChangeHandler}
-                                required
-                            >
-                                <option value="">Bitte wählen</option>
-                                <option value="Holz">Holz</option>
-                                <option value="Stahl">Stahl</option>
-                                <option value="Glas">Glas</option>
-                                <option value="Anderes">Anderes</option>
-                            </select>
-                        </div>
-
-                        <div className="input-group">
-                            <label htmlFor="function">Funktion</label>
-                            <textarea
-                                id="function"
-                                name="function"
-                                required
-                            />
-                        </div>
-
-                        <div className="input-group">
-                            <label htmlFor="quantity">Menge</label>
-                            <input
-                                type="number"
-                                id="quantity"
-                                name="quantity"
-                                min="1"
-                                required
-                            />
-                        </div>
-
-                        {material === "Stahl" &&
                             <div className="input-group">
-                                <label htmlFor="elementType">Art (elementType)</label>
+                                <label htmlFor="loadBearing">Tragend</label>
                                 <select
-                                    id="elementType"
-                                    name="elementType"
-                                    value={elementType}
-                                    onChange={elementTypeChangeHandler}
+                                    id="loadBearing"
+                                    name="loadBearing"
                                     required
                                 >
                                     <option value="">Bitte wählen</option>
-                                    <option value="Rundprofil">Rundprofil</option>
-                                    <option value="Rechteckprofil">Rechteckprofil</option>
-                                    <option value="Hohlprofil">Hohlprofil</option>
-                                    <option value="Walzprofil">Walzprofil</option>
-                                    <option value="Schweißprofil">Schweißprofil</option>
-                                    <option value="Keine Angabe">Keine Angabe</option>
+                                    <option value="Ja">Ja</option>
+                                    <option value="Nein">Nein</option>
                                 </select>
-                            </div>}
+                            </div>
 
-                        {material === "Stahl" &&
                             <div className="input-group">
-                                <label htmlFor="profileType">Profilart</label>
+                                <label htmlFor="member">Bauteil</label>
                                 <select
-                                    id="profileType"
-                                    name="profileType"
-                                    value={profileType}
-                                    onChange={profileTypeChangeHandler}
-                                    required>
+                                    id="member"
+                                    name="member"
+                                    required
+                                >
                                     <option value="">Bitte wählen</option>
-                                    <option value="IProfil">IProfil</option>
-                                    <option value="Rechteckprofil">Rechteckprofil</option>
-                                    <option value="Rundprofil">Rundprofil</option>
-                                    <option value="Hohlprofil">Hohlprofil</option>
-                                    <option value="Sonderfall">Sonderfall</option>
+                                    <option value="Stütze">Stütze</option>
+                                    <option value="Träger">Träger</option>
+                                    <option value="Fassade">Fassade</option>
                                     <option value="Keine Angabe">Keine Angabe</option>
                                 </select>
-                            </div>}
+                            </div>
 
-                        {material === "Holz" &&
                             <div className="input-group">
-                                <label htmlFor="profileType">Profilart</label>
-                                <select id="profileType"
-                                    name="profileType"
-                                    value={profileType}
-                                    onChange={profileTypeChangeHandler}
-                                    required>
+                                <label htmlFor="material">Material</label>
+                                <select
+                                    id="material"
+                                    name="material"
+                                    value={material}
+                                    onChange={materialChangeHandler}
+                                    required
+                                >
                                     <option value="">Bitte wählen</option>
-                                    <option value="Rundprofil">Rundprofil</option>
-                                    <option value="Rechteckprofil">Rechteckprofil</option>
-                                    <option value="Sonderfall">Sonderfall</option>
-                                    <option value="Keine Angabe">Keine Angabe</option>
+                                    <option value="Holz">Holz</option>
+                                    <option value="Stahl">Stahl</option>
+                                    <option value="Glas">Glas</option>
+                                    <option value="Anderes">Anderes</option>
                                 </select>
-                            </div>}
+                            </div>
 
-                        {material === "Stahl" &&
                             <div className="input-group">
-                                <label htmlFor="profile">Profil</label>
-                                <select id="profile" name="profile" required>
-                                    <option value="">Bitte wählen</option>
-                                    <option value="IPE100">IPE100</option>
-                                    <option value="IPE120">IPE120</option>
-                                    <option value="Rohr">Rohr</option>
-                                    <option value="Keine Angabe">Keine Angabe</option>
-                                </select>
-                            </div>}
+                                <label htmlFor="function">Funktion</label>
+                                <textarea
+                                    id="function"
+                                    name="function"
+                                    required
+                                />
+                            </div>
 
-                        {material === "Holz" &&
                             <div className="input-group">
-                                <label htmlFor="connectionType">Verbindung</label>
-                                <select id="connectionType" name="connectionType" required>
-                                    <option value="">Bitte wählen</option>
-                                    <option value="geschraubt ">Geschraubt </option>
-                                    <option value="eingehängt">Eingehängt</option>
-                                    <option value="vernagelt">Vernagelt</option>
-                                    <option value="verkeilt">Verkeilt</option>
-                                    <option value="ineineinander geschoben">Ineineinander Geschoben</option>
-                                    <option value="gefüllt">Gefüllt</option>
-                                    <option value="Keine Angabe">Keine Angabe</option>
-                                </select>
-                            </div>}
+                                <label htmlFor="quantity">Menge</label>
+                                <input
+                                    type="number"
+                                    id="quantity"
+                                    name="quantity"
+                                    min="1"
+                                    required
+                                />
+                            </div>
 
-                        {material === "Stahl" &&
+                        
+
+                        
+
+                            {material === "Stahl" &&
+                                <div className="input-group">
+                                    <label htmlFor="elementType">Art (elementType)</label>
+                                    <select
+                                        id="elementType"
+                                        name="elementType"
+                                        value={elementType}
+                                        onChange={elementTypeChangeHandler}
+                                        required
+                                    >
+                                        <option value="">Bitte wählen</option>
+                                        <option value="Rundprofil">Rundprofil</option>
+                                        <option value="Rechteckprofil">Rechteckprofil</option>
+                                        <option value="Hohlprofil">Hohlprofil</option>
+                                        <option value="Walzprofil">Walzprofil</option>
+                                        <option value="Schweißprofil">Schweißprofil</option>
+                                        <option value="Keine Angabe">Keine Angabe</option>
+                                    </select>
+                                </div>}
+
+                            {material === "Stahl" &&
+                                <div className="input-group">
+                                    <label htmlFor="profileType">Profilart</label>
+                                    <select
+                                        id="profileType"
+                                        name="profileType"
+                                        value={profileType}
+                                        onChange={profileTypeChangeHandler}
+                                        required>
+                                        <option value="">Bitte wählen</option>
+                                        <option value="IProfil">IProfil</option>
+                                        <option value="Rechteckprofil">Rechteckprofil</option>
+                                        <option value="Rundprofil">Rundprofil</option>
+                                        <option value="Hohlprofil">Hohlprofil</option>
+                                        <option value="Sonderfall">Sonderfall</option>
+                                        <option value="Keine Angabe">Keine Angabe</option>
+                                    </select>
+                                </div>}
+
+                            {material === "Holz" &&
+                                <div className="input-group">
+                                    <label htmlFor="profileType">Profilart</label>
+                                    <select id="profileType"
+                                        name="profileType"
+                                        value={profileType}
+                                        onChange={profileTypeChangeHandler}
+                                        required>
+                                        <option value="">Bitte wählen</option>
+                                        <option value="Rundprofil">Rundprofil</option>
+                                        <option value="Rechteckprofil">Rechteckprofil</option>
+                                        <option value="Sonderfall">Sonderfall</option>
+                                        <option value="Keine Angabe">Keine Angabe</option>
+                                    </select>
+                                </div>}
+
+                            {material === "Stahl" &&
+                                <div className="input-group">
+                                    <label htmlFor="profile">Profil</label>
+                                    <select id="profile" name="profile" required>
+                                        <option value="">Bitte wählen</option>
+                                        <option value="IPE100">IPE100</option>
+                                        <option value="IPE120">IPE120</option>
+                                        <option value="Rohr">Rohr</option>
+                                        <option value="Keine Angabe">Keine Angabe</option>
+                                    </select>
+                                </div>}
+
+                            {material === "Holz" &&
+                                <div className="input-group">
+                                    <label htmlFor="connectionType">Verbindung</label>
+                                    <select id="connectionType" name="connectionType" required>
+                                        <option value="">Bitte wählen</option>
+                                        <option value="geschraubt ">Geschraubt </option>
+                                        <option value="eingehängt">Eingehängt</option>
+                                        <option value="vernagelt">Vernagelt</option>
+                                        <option value="verkeilt">Verkeilt</option>
+                                        <option value="ineineinander geschoben">Ineineinander Geschoben</option>
+                                        <option value="gefüllt">Gefüllt</option>
+                                        <option value="Keine Angabe">Keine Angabe</option>
+                                    </select>
+                                </div>}
+
+                            {material === "Stahl" &&
+                                <div className="input-group">
+                                    <label htmlFor="connectionType">Verbindung</label>
+                                    <select id="connectionType" name="connectionType" required>
+                                        <option value="">Bitte wählen</option>
+                                        <option value="geschweißt">Geschweißt</option>
+                                        <option value="geschraubt ">Geschraubt </option>
+                                        <option value="gegossen">Gegossen</option>
+                                        <option value="eingehängt">Eingehängt</option>
+                                        <option value="Keine Angabe">Keine Angabe</option>
+                                    </select>
+                                </div>}
+
                             <div className="input-group">
-                                <label htmlFor="connectionType">Verbindung</label>
-                                <select id="connectionType" name="connectionType" required>
+                                <label htmlFor="manufacturingYear">Baujahr</label>
+                                <input
+                                    type="number"
+                                    id="manufacturingYear"
+                                    min="1920"
+                                    name="manufacturingYear"
+                                    required
+                                />
+                            </div>
+
+                            <div className="input-group">
+                                <label htmlFor="condition">Zustand</label>
+                                <select id="condition" name="condition" required>
                                     <option value="">Bitte wählen</option>
-                                    <option value="geschweißt">Geschweißt</option>
-                                    <option value="geschraubt ">Geschraubt </option>
-                                    <option value="gegossen">Gegossen</option>
-                                    <option value="eingehängt">Eingehängt</option>
+                                    <option value="Ausreichend">Ausreichend</option>
+                                    <option value="Gut">Gut</option>
+                                    <option value="Sehr Gut">Sehr Gut</option>
                                     <option value="Keine Angabe">Keine Angabe</option>
                                 </select>
-                            </div>}
+                            </div>
 
-                        <div className="input-group">
-                            <label htmlFor="manufacturingYear">Baujahr</label>
-                            <input
-                                type="number"
-                                id="manufacturingYear"
-                                min="1920"
-                                name="manufacturingYear"
-                                required
-                            />
-                        </div>
+                        
 
-                        <div className="input-group">
-                            <label htmlFor="condition">Zustand</label>
-                            <select id="condition" name="condition" required>
-                                <option value="">Bitte wählen</option>
-                                <option value="Ausreichend">Ausreichend</option>
-                                <option value="Gut">Gut</option>
-                                <option value="Sehr Gut">Sehr Gut</option>
-                                <option value="Keine Angabe">Keine Angabe</option>
-                            </select>
-                        </div>
+                        
 
                         <h3 className="addElementForm">Materialeigenschaften:</h3>
 
@@ -528,17 +539,17 @@ export default function ReuseElementsInventory({
                             </div>}
 
                         {material === 'Glas' &&
-                        <div className="input-group">
-                        <label htmlFor="width">Breite (mm)</label>
-                        <input
-                            type="number"
-                            id="width"
-                            name="width"
-                            step="10"
-                            min="100"
-                            required
-                        />
-                    </div>
+                            <div className="input-group">
+                                <label htmlFor="width">Breite (mm)</label>
+                                <input
+                                    type="number"
+                                    id="width"
+                                    name="width"
+                                    step="10"
+                                    min="100"
+                                    required
+                                />
+                            </div>
                         }
 
                         {elementType !== 'Rundprofil' || elementType !== "Sonderfall" &&
@@ -632,6 +643,8 @@ export default function ReuseElementsInventory({
                                     required
                                 />
                             </div>}
+
+                        
 
                         <h3 className="addElementForm">Technische Eigenschaften:</h3>
 
@@ -831,7 +844,7 @@ export default function ReuseElementsInventory({
                 </div>
                 :
                 <Link to="/login">
-                    <button>Login to add elements.</button>
+                    <button>Login to add elements</button>
                 </Link>
             }
 

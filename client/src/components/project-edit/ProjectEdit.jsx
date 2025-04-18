@@ -19,7 +19,7 @@ export default function ProjectEdit() {
     return (
         <div className="centered-container">
             <h2>Edit Project Details</h2>
-            <form className="add" action={formAction}>
+            <form className="formData" action={formAction}>
                 <div className="input-group">
                     <label htmlFor="name">Projektname</label>
                     <input type="text" id="name" name="name" defaultValue={project.name} required />

@@ -37,7 +37,7 @@ export default function Basket() {
     const elementsToDisplay = elementsInBasket.elements
 
     return (
-        <div className="main-content">
+        <div className="centered-container">
             <div className="elements-table">
                 <h2>You have {elementsToDisplay.length} elements in your basket: </h2>
                 <table >

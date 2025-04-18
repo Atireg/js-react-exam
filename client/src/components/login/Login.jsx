@@ -33,7 +33,7 @@ export default function Login() {
     return (
         <div className="centered-container">
             <h2>Login</h2>
-            <form action={loginAction}>
+            <form className="formAuth" action={loginAction}>
                 <div className="input-group">
                     <label htmlFor="email">Email</label>
                     <input type="email" id="email" name="email" required />

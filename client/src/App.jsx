@@ -28,7 +28,7 @@ function App() {
 	return (
 		<UserProvider>
 			<BasketProvider>
-			<div>
+			<>
 				<Header />
 				<Routes>
 					<Route path='/' element={<Home />} />
@@ -49,7 +49,7 @@ function App() {
 
 				<Footer />
 				<ToastContainer />
-			</div>
+			</>
 			</BasketProvider>
 		</UserProvider>
 	)

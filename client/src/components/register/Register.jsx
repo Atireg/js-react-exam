@@ -37,7 +37,7 @@ export default function Register() {
         <div className="centered-container">
             <h2>Register</h2>
             {/* <form action={registerAction}> */}
-            <form action={registerHandler}>
+            <form className="formAuth" action={registerHandler}>
                 <div className="input-group">
                     <label htmlFor="email">Email:</label>
                     <input type="email" id="email" name="email" required />
