@@ -9,37 +9,37 @@ export default function Header() {
     const { _id: userId } = useContext(UserContext);
     const { basketElements } = useContext(BasketContext);
     const [itemCount, setItemCount] = useState(basketElements.length);
-    const [hasChanged, setHasChanged] = useState(false); 
+    const [hasChanged, setHasChanged] = useState(false);
 
     useEffect(() => {
         if (basketElements.length !== itemCount) {
-          setItemCount(basketElements.length);
-          setHasChanged(true); 
-          setTimeout(() => setHasChanged(false), 1000); 
+            setItemCount(basketElements.length);
+            setHasChanged(true);
+            setTimeout(() => setHasChanged(false), 1000);
         }
-      }, [basketElements, itemCount]);
-    
+    }, [basketElements, itemCount]);
+
     return (
         <header className="site-header">
             <h1>
-                <Link to="/">kh ReUse </Link>
+                <Link to="/">kh ReUse</Link>
             </h1>
             <nav className="navigation">
                 <ul>
                     <li>
-                        <Link to="/projects">ReUse Projects</Link>
+                        <Link to="/projects">Projekte</Link>
                     </li>
                     <li>
-                        <Link to="/elements">ReUse Elements </Link>
+                        <Link to="/elements">Bauelemente</Link>
                     </li>
                     {isAuthenticated ?
                         (
                             <div id="user">
                                 <li>
-                                    <Link to={`/baskets/${userId}`} className={`basket-indicator ${hasChanged ? 'updated' : ''}`}>My ReUse Basket ({itemCount}) </Link>
+                                    <Link to={`/baskets/${userId}`} className={`basket-indicator ${hasChanged ? 'updated' : ''}`}>Warenkorb ({itemCount}) </Link>
                                 </li>
                                 <li>
-                                    <Link to="/logout">Logout </Link>
+                                    <Link to="/logout">Abmelden </Link>
                                     {email}
                                 </li>
                             </div>
@@ -48,10 +48,10 @@ export default function Header() {
                         (
                             <div id="guest">
                                 <li>
-                                    <Link to="/login">Login</Link>
+                                    <Link to="/login">Anmelden</Link>
                                 </li>
                                 <li>
-                                    <Link to="/register">Register</Link>
+                                    <Link to="/register">Registrieren</Link>
                                 </li>
                             </div>
                         )
@@ -59,6 +59,13 @@ export default function Header() {
                     {/* <li>
                         <Link to="/about">About</Link>
                     </li> */}
+
+                    <div class="hamburger" onclick="document.querySelector('.navigation').classList.toggle('open')">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+
                 </ul>
             </nav>
         </header>

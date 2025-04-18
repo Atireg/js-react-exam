@@ -597,10 +597,10 @@ tbody tr:first-child td.arrow-cell {
     border: none;
     width: 100%;
     padding: 1em;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 
     button {
-        
+        width: 80%
     }
 }
 
@@ -726,6 +726,23 @@ tbody tr:first-child td.arrow-cell {
 
     .content-container {
         flex-direction: column;
+    }
+
+    .navigation ul {
+        display: flex;
+        align-items: center;
+        font-size: 0.8em;
+    
+        li {
+            display: block;
+            text-align: center;
+            /* padding-left: 0.5em; */
+    
+            a {
+                text-decoration: none;
+                color: #E4481F;
+            }
+        }
     }
 
     .project-info {

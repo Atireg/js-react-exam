@@ -25,14 +25,21 @@ export default function ProjectEdit() {
             <div className='formSection'>
                 <div className="input-group">
                     <label htmlFor="name">Projektname</label>
-                    <input type="text" id="name" name="name" defaultValue={project.name} required={!project.name} />
+                    <input type="text" id="name" name="name" defaultValue={project.name}
+                    required={!project.name}
+                    />
                 </div>
 
                 <div className="input-group">
                     <label htmlFor="construction">Baujahr</label>
-                    <input type="number" id="construction" name="construction" defaultValue={project.construction} min="1700" max="2040" required />
+                    <input type="number" id="construction" name="construction" defaultValue={project.construction} min="1700" max="2040" required={!project.construction}  />
                 </div>
                 
+                <div className="input-group">
+                    <label htmlFor="demolition">Abrissdatum</label>
+                    <input type="date" id="demolition" name="demolition" required={!project.demolition} />
+                </div>
+
                 <div className="input-group">
                     <label htmlFor="type">Gebäudeart</label>
                     <select id="type" name="type" required={!project.type}>
@@ -58,10 +65,6 @@ export default function ProjectEdit() {
                     <textarea id="location" name="location" defaultValue={project.location} required={!project.location} />
                 </div>
 
-                <div className="input-group">
-                    <label htmlFor="demolition">Abrissdatum</label>
-                    <input type="date" id="demolition" name="demolition" required={!project.demolition} />
-                </div>
 
                 <div className="input-group">
                     <label htmlFor="constructionType">Bauweise</label>

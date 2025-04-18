@@ -33,6 +33,11 @@ export default function ProjectAdd() {
                     </div>
 
                     <div className="input-group">
+                        <label htmlFor="demolition">Abrissdatum</label>
+                        <input type="date" id="demolition" name="demolition" required />
+                    </div>
+                    
+                    <div className="input-group">
                         <label htmlFor="type">Gebäudeart</label>
                         <select id="type" name="type" required>
                             <option value="">Bitte wählen</option>
@@ -57,10 +62,6 @@ export default function ProjectAdd() {
                         <textarea id="location" name="location" required />
                     </div>
 
-                    <div className="input-group">
-                        <label htmlFor="demolition">Abrissdatum</label>
-                        <input type="date" id="demolition" name="demolition" required />
-                    </div>
 
                     <div className="input-group">
                         <label htmlFor="constructionType">Bauweise</label>

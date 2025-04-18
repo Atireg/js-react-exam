@@ -147,13 +147,12 @@ export default function ProjectDetails() {
                                 <p>{project.descriptionConstruction}</p>
                                 {isOwner &&
                                     <section className="buttons">
-                                        <Link to={`/projects/${projectId}/edit`} className="button">
+                                        {/* <Link to={`/projects/${projectId}/edit`} className="button">
                                             <button
                                                 className="button">
-                                                {/* Edit Project */}
                                                 Projekt bearbeiten
                                             </button>
-                                        </Link>
+                                        </Link> */}
                                         <button
                                             onClick={projectDeleteClickHandler}
                                             className="button">
