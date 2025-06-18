@@ -5,16 +5,17 @@ import { useUserBasket } from "../../hooks/useUserBasket";
 import ElementItem from "../elements-catalog/element-item/ElementItem";
 
 export default function Basket() {
-    const { userBasket } = useUserBasket();
-    const { elements } = useGetAllInBasket(userBasket?._id);
+    const { userBasket, error: basketError } = useUserBasket();
+    const { elements, loading, error: elementsError } = useGetAllInBasket(userBasket?._id);
     // const { deleteFromBasket } = useDeleteFromBasket(userBasket?._id);
     const [elementsInBasket, setElementsInBasket] = useState([]);
 
     useEffect(() => {
         if (elements) {
+            console.log('Setting basket elements:', elements);
             setElementsInBasket(elements);
         }
-    }, [elements])
+    }, [elements]);
 
     // const onDeleteHandler = async (elementId) => {
     //     const hasConfirm = confirm(`Are you sure you want to delete Element #${elementId}?`);
@@ -30,45 +31,57 @@ export default function Basket() {
     //     }
     // }
 
-    if (!userBasket || elementsInBasket.length === 0) {
-        return <p>Loading your basket...</p>;
+    if (loading) {
+        return <div className="centered-container">Loading your basket...</div>;
     }
 
-    const elementsToDisplay = elementsInBasket.elements
+    if (basketError) {
+        return <div className="centered-container">Error loading your basket: {basketError.message}</div>;
+    }
+
+    if (elementsError) {
+        return <div className="centered-container">Error loading basket elements: {elementsError.message}</div>;
+    }
+
+    if (!userBasket) {
+        return <div className="centered-container">No basket found. Please try refreshing the page.</div>;
+    }
+
+    const elementsToDisplay = elementsInBasket.elements || [];
 
     return (
         <div className="centered-container">
-            {elementsToDisplay?.length > 0 &&
+            {elementsToDisplay.length > 0 ? (
                 <>
-                        {/* <h3>You have {elementsToDisplay.length} elements in your basket: </h3> */}
-                        <h3>Sie haben {elementsToDisplay.length} Elemente in Ihrem Warenkorb: </h3>
-                        <section className='elements-category'>
-                            <ul>
-                                {elementsToDisplay.map(item =>
-                                    <ElementItem
-                                        key={item._id}
-                                        id={item._id}
-                                        projectId={item.projectId}
-                                        material={item.material}
-                                        profileType={item.profileType}
-                                        profile={item.profile}
-                                        length={item.element.length}
-                                        condition={item.element.condition}
-                                        details={item.element}
-                                        tag = 'basket'
-                                    />
-                                )}
-                            </ul>
-                        </section>
-                </>}
-            {elementsToDisplay?.length == 0 &&
+                    {/* <h3>You have {elementsToDisplay.length} elements in your basket: </h3> */}
+                    <h3>Sie haben {elementsToDisplay.length} Elemente in Ihrem Warenkorb: </h3>
+                    <section className='elements-category'>
+                        <ul>
+                            {elementsToDisplay.map(item =>
+                                <ElementItem
+                                    key={item._id}
+                                    id={item._id}
+                                    projectId={item.projectId}
+                                    material={item.material}
+                                    profileType={item.profileType}
+                                    profile={item.profile}
+                                    length={item.element.length}
+                                    condition={item.element.condition}
+                                    details={item.element}
+                                    tag='basket'
+                                />
+                            )}
+                        </ul>
+                    </section>
+                </>
+            ) : (
                 <>
                     <h3>Your basket is empty!</h3>
                     <Link to="/elements">
-                        <button>Go grabsome elements! </button>
+                        <button>Go grab some elements!</button>
                     </Link>
                 </>
-            }
+            )}
         </div>
-    )
+    );
 }
