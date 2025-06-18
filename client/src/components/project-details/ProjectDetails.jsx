@@ -1,9 +1,9 @@
-import { Link, useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import ReuseElementsInventory from "../reuse-elements-inventory/ReuseElementsInventory";
 import { useDeleteProject, useGetOneProject } from "../../api/projectsApi";
 import useAuth from "../../hooks/useAuth";
 import { useAddElement, useGetElements } from "../../api/elementsApi";
-import { useOptimistic } from "react";
+import { useCallback } from "react";
 import { v4 as uuid } from 'uuid'
 import ExcelToJson from "../reuse-elements-inventory/ExcelUpload";
 
@@ -11,11 +11,26 @@ export default function ProjectDetails() {
     const navigate = useNavigate();
     const { email, userId } = useAuth();
     const { projectId } = useParams();
-    const { project } = useGetOneProject(projectId);
+    const { project, isLoading, error } = useGetOneProject(projectId);
     const { remove } = useDeleteProject();
     const { add } = useAddElement();
-    const { elements, addElement } = useGetElements({ projectId });
-    const [optimisticElements, setOptimisticElements] = useOptimistic(elements, (state, newElement) => [...state, newElement]);
+    const { elements, addElement, removeElement } = useGetElements({ projectId });
+
+    const handleElementDelete = useCallback((elementId) => {
+        removeElement(elementId);
+    }, [removeElement]);
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error loading project: {error.message}</div>;
+    }
+
+    if (!project || !project._ownerId) {
+        return <div>Project not found</div>;
+    }
 
     const projectDeleteClickHandler = async () => {
         const hasConfirm = confirm(`Are you sure you want to delete ${project.name}?`);
@@ -33,10 +48,7 @@ export default function ProjectDetails() {
     };
 
     const elementsAddHandler = async (data) => {
-
         const element = Object.fromEntries(data);
-        console.log();
-
 
         const newOptimisticElement = {
             _id: uuid(),
@@ -56,34 +68,30 @@ export default function ProjectDetails() {
             }
         };
 
-        // OPTIMISTIC UPDATE
-        setOptimisticElements(newOptimisticElement);
+        // Add optimistically
+        addElement(newOptimisticElement);
 
-        // SERVER UPDATE
-        //TODO add try/catch
-        const newElementServer = await add(
-            projectId,
-            element.material,
-            element.elementType,
-            element.profileType,
-            element.profile,
-            element.condition,
-            element.quality,
-            element.specification,
-            element);
+        try {
+            const newElementServer = await add(
+                projectId,
+                element.material,
+                element.elementType,
+                element.profileType,
+                element.profile,
+                element.condition,
+                element.quality,
+                element.specification,
+                element);
 
-        console.log(newElementServer);
+            // Update with server response
+            addElement({ ...newElementServer, author: { email } });
+        } catch (error) {
+            console.error('Failed to add element:', error);
+            // Remove the optimistic element on error
+            removeElement(newOptimisticElement._id);
+        }
+    };
 
-        // ACTUAL UPDATE
-        addElement({ ...newElementServer, author: { email } });
-    }
-
-    // const elementsAddFromExcel = (data) => {
-    //     console.log(data);
-
-    // }
-
-    //TODO Check if this is working properly.
     const isOwner = userId === project._ownerId;
 
     return (
@@ -166,7 +174,13 @@ export default function ProjectDetails() {
                 </aside>
             </div>
 
-            <ReuseElementsInventory user={email} projectId={projectId} elements={optimisticElements} onAddElement={elementsAddHandler} />
+            <ReuseElementsInventory 
+                user={{ _id: userId, email }} 
+                projectId={projectId} 
+                elements={elements} 
+                onAddElement={elementsAddHandler}
+                onDeleteElement={handleElementDelete}
+            />
 
             {/* {email  &&
             <ExcelToJson onAddElement={elementsAddFromExcel}/>
