@@ -3,17 +3,19 @@ const request = async (method, url, data, options = {}) => {
         options.method = method;
     }
 
-    // const authData = JSON.parse(localStorage.getItem('auth'));
+    const authData = JSON.parse(localStorage.getItem('auth') || '{}');
+    console.log('Auth data from localStorage:', authData);
 
-    // if (authData.accessToken) {
-    //     options = {
-    //         ...options,
-    //         headers: {
-    //             'X-Authorization': authData.accessToken,
-    //             ...options.headers,
-    //         },
-    //     }
-    // }
+    if (authData.sessionId) {
+        console.log('Adding auth header with session:', authData.sessionId);
+        options = {
+            ...options,
+            headers: {
+                'X-Authorization': authData.sessionId,
+                ...options.headers,
+            },
+        }
+    }
 
     if (data) {
         options = {
@@ -26,31 +28,65 @@ const request = async (method, url, data, options = {}) => {
         }
     }
 
-    const response = await fetch(url, options);
+    console.log('Making request:', { method, url, options });
 
-    const responseContentType = response.headers.get('Content-Type');
+    try {
+        const response = await fetch(url, options);
+        const responseContentType = response.headers.get('Content-Type');
 
-    if (!responseContentType) {
-        return;
-    }
+        if (!responseContentType) {
+            return;
+        }
 
-    if (!response.ok){
         const result = await response.json();
 
-        throw result;
+        if (!response.ok) {
+            throw {
+                message: result.message || 'An error occurred',
+                status: response.status
+            };
+        }
+
+        // Ensure IDs are strings in the response
+        const processIds = (obj) => {
+            if (!obj) return obj;
+            
+            if (Array.isArray(obj)) {
+                return obj.map(item => processIds(item));
+            }
+            
+            if (typeof obj === 'object') {
+                const processed = { ...obj };
+                if (obj._id) {
+                    processed._id = String(obj._id);
+                }
+                if (obj._ownerId) {
+                    processed._ownerId = String(obj._ownerId);
+                }
+                if (obj.userId) {
+                    processed.userId = String(obj.userId);
+                }
+                
+                // Process nested objects
+                for (const key in processed) {
+                    if (typeof processed[key] === 'object' && processed[key] !== null) {
+                        processed[key] = processIds(processed[key]);
+                    }
+                }
+                
+                return processed;
+            }
+            
+            return obj;
+        };
+
+        const processedResult = processIds(result);
+        console.log('Response:', processedResult);
+        return processedResult;
+    } catch (error) {
+        console.error('Request failed:', { method, url, error });
+        throw error;
     }
-    
-    const result = await response.json();
-
-    return result;
-
 };
 
-export default {
-    get: request.bind(null, 'GET'),
-    // get: (...params) => request('GET', ...params)
-    post: request.bind(null, 'POST'),
-    put: request.bind(null, 'PUT'),
-    delete: request.bind(null, 'DELETE'),
-    baseRequest: request,
-}
+export default request;

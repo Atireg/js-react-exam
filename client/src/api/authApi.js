@@ -6,18 +6,27 @@ const baseUrl = `${import.meta.env.VITE_APP_SERVER_URL}/users`
 
 // THIS IS A "ON EVENT" HOOK
 export const useLogin = () => {
-    const abortRef = useRef(new AbortController()); // using useRef bcs it does not rerender
+    const abortRef = useRef(new AbortController());
 
-    const login = (email, password) => 
-        request.post(
-            `${baseUrl}/login`,
-            { email, password },
-            { signal: abortRef.current.signal }
-        );
+    const login = async (email, password) => {
+        try {
+            console.log('Attempting login for:', email);
+            const result = await request(
+                'POST',
+                `${baseUrl}/login`,
+                { email, password },
+                { signal: abortRef.current.signal }
+            );
+            console.log('Login successful:', result);
+            return result;
+        } catch (error) {
+            console.error('Login failed:', error);
+            throw error;
+        }
+    };
 
     useEffect(() => {
         const abortController = abortRef.current;
-
         return () => abortController.abort();
     }, []);
 
@@ -28,20 +37,21 @@ export const useLogin = () => {
 
 // THIS IS A "ON EVENT" HOOK
 export const useRegister = () => {
-    // const abortRef = useRef(new AbortController());
-
-    const  register = (email, password) =>
-        request.post(
-        `${baseUrl}/register`,
-        { email, password },
-        // { signal: abortRef.current.signal }
-    );
-
-    // useEffect(() => {
-    //     const abortController = abortRef.current;
-
-    //     return () => abortController.abort();
-    // }, []);
+    const register = async (email, password) => {
+        try {
+            console.log('Attempting registration for:', email);
+            const result = await request(
+                'POST',
+                `${baseUrl}/register`,
+                { email, password }
+            );
+            console.log('Registration successful:', result);
+            return result;
+        } catch (error) {
+            console.error('Registration failed:', error);
+            throw error;
+        }
+    };
 
     return {
         register,
@@ -50,25 +60,33 @@ export const useRegister = () => {
 
 // THIS IS !!!NOT!!! "ON EVENT" HOOK
 export const useLogout = () => {
-    const { accessToken, userLogoutHandler } = useContext(UserContext);
+    const { sessionId, userLogoutHandler } = useContext(UserContext);
     
     useEffect(() => {
-        if (!accessToken){
+        if (!sessionId) {
             return;
         }
 
         const options = {
             headers: {
-                'X-Authorization': accessToken,
+                'X-Authorization': sessionId,
             }
         }
 
-       request.get(`${baseUrl}/logout`, null,  options)
-            .finally(userLogoutHandler());
+        request('GET', `${baseUrl}/logout`, null, options)
+            .then(() => {
+                console.log('Logout successful');
+                userLogoutHandler();
+            })
+            .catch(error => {
+                console.error('Logout failed:', error);
+                // Still logout on client side even if server request fails
+                userLogoutHandler();
+            });
 
-    }, [accessToken, userLogoutHandler]);
+    }, [sessionId, userLogoutHandler]);
 
     return {
-        isLoggedOut: !!accessToken,
+        isLoggedOut: !!sessionId,
     }
-}
+};

@@ -7,15 +7,31 @@ export default function UserProvider({
     const [ authData, setAuthData ] = usePersistedState('auth', {});
 
     const userLoginHandler = (resultData) => {
-        setAuthData(resultData);		
+        // Ensure IDs are strings
+        const processedData = {
+            ...resultData,
+            _id: String(resultData._id),
+            sessionId: String(resultData.sessionId)
+        };
+        console.log('Setting auth data:', processedData);
+        setAuthData(processedData);		
     };
 
     const userLogoutHandler = () => {
         setAuthData({});		
     };
 
+    // Ensure all IDs in context are strings
+    const contextValue = {
+        ...authData,
+        _id: authData._id ? String(authData._id) : '',
+        sessionId: authData.sessionId ? String(authData.sessionId) : '',
+        userLoginHandler,
+        userLogoutHandler
+    };
+
     return (
-        <UserContext.Provider value={{ ...authData, userLoginHandler, userLogoutHandler }}>
+        <UserContext.Provider value={contextValue}>
             { children }
         </UserContext.Provider>
     )
