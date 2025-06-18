@@ -1,6 +1,5 @@
 import { useEffect, useReducer, useState } from "react";
-import useAuth from "../hooks/useAuth";
-import request from "../utils/request";
+import baseRequest from "../utils/request";
 
 const baseUrl = `${import.meta.env.VITE_APP_SERVER_URL}/data/elements`;
 
@@ -9,14 +8,15 @@ function elementsReducer(state, action) {
         case 'GET_ALL':
             return action.payload;
         case 'ADD_ELEMENT':
-            return [...state, action.payload]
+            return [...state, action.payload];
+        case 'REMOVE_ELEMENT':
+            return state.filter(element => element._id !== action.payload);
         default:
             return state;
     }
 }
 
 export const useGetElements = ({ projectId, whereString } = {}) => {
-    const { request } = useAuth();
     const [elements, dispatch] = useReducer(elementsReducer, []);
 
     useEffect(() => {
@@ -24,13 +24,11 @@ export const useGetElements = ({ projectId, whereString } = {}) => {
 
         if (whereString) {
             searchParams.set('where', whereString);
-
         } else if (projectId) {
             searchParams.set('where', `projectId="${projectId}"`);
-            searchParams.set('load', `author=_ownerId:users`);
         }
 
-        request.get(`${baseUrl}?${searchParams.toString()}`)
+        baseRequest('GET', `${baseUrl}?${searchParams.toString()}`)
             .then(result => dispatch({ type: 'GET_ALL', payload: result }));
 
     }, [projectId, whereString]);
@@ -39,6 +37,8 @@ export const useGetElements = ({ projectId, whereString } = {}) => {
         elements,
         addElement: (elementData) =>
             dispatch({ type: 'ADD_ELEMENT', payload: elementData }),
+        removeElement: (elementId) =>
+            dispatch({ type: 'REMOVE_ELEMENT', payload: elementId }),
     };
 }
 
@@ -46,7 +46,7 @@ export const useGetOneElement = (elementId) => {
     const [element, setElement] = useState({});
 
     useEffect(() => {
-        request.get(`${baseUrl}/${elementId}`)
+        baseRequest('GET', `${baseUrl}/${elementId}`)
             .then(setElement)
     }, [elementId]);
 
@@ -57,8 +57,6 @@ export const useGetOneElement = (elementId) => {
 
 // THIS IS A "ON EVENT" HOOK
 export const useAddElement = () => {
-    const { request } = useAuth();
-
     const add = (
         projectId,
         material,
@@ -85,14 +83,45 @@ export const useAddElement = () => {
 
         console.log(elementData);
 
-
-        return request.post(baseUrl, elementData);
+        return baseRequest('POST', baseUrl, elementData);
     }
 
     return {
         add,
     }
 }
+
+export const useDeleteElement = () => {
+    const deleteElement = async (elementId) => {
+        try {
+            await baseRequest('DELETE', `${baseUrl}/${elementId}`);
+            return true;
+        } catch (error) {
+            console.error('Failed to delete element:', error);
+            throw error;
+        }
+    };
+
+    return {
+        deleteElement,
+    };
+};
+
+export const useEditElement = () => {
+    const editElement = async (elementId, elementData) => {
+        try {
+            const result = await baseRequest('PUT', `${baseUrl}/${elementId}`, elementData);
+            return result;
+        } catch (error) {
+            console.error('Failed to edit element:', error);
+            throw error;
+        }
+    };
+
+    return {
+        editElement,
+    };
+};
 
 
 
