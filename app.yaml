@@ -1,0 +1,4 @@
+runtime: nodejs16  # or whatever version you're using
+
+env_variables:
+  MONGO_DB_STRING: "mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<dbname>?retryWrites=true&w=majority" 
