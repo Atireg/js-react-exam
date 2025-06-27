@@ -37,11 +37,6 @@ node server
 ```
 
 # 👉 Live Demo: https://kh-reuse.web.app/
-A hard-coded login is ➡️
-
-email: admin@kh.com
-password: admin
-
 
 # 🛠️ Upcoming Improvements
  Add edit functionality for building elements
