@@ -762,20 +762,70 @@ td .delete-btn, td .edit-btn {
         flex-direction: column;
     }
 
-    .navigation ul {
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5em;
+    }
+
+    .navigation {
+        width: 100%;
+    }
+
+    .navigation ul,
+    .navigation ul div {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
-        font-size: 0.8em;
-    
+        gap: 0.5em 1.2em;
+
         li {
             display: block;
-            text-align: center;
-            /* padding-left: 0.5em; */
-    
+            padding-left: 0;
+            overflow-wrap: anywhere;
+
             a {
+                display: inline-block;
+                padding: 0.4em 0.4em 0.4em 0;
                 text-decoration: none;
                 color: #E4481F;
             }
+        }
+    }
+
+    .basket-indicator {
+        padding: 0.4em 0;
+    }
+
+    /* Wide tables scroll sideways inside their box instead of widening the page */
+    .inventory-table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .elements-table {
+        margin: 2em 0;
+    }
+
+    .basket-table {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .formData {
+        flex-direction: column;
+        gap: 0;
+        width: calc(100% - 2em);
+        box-sizing: border-box;
+        padding: 1em;
+        margin: 1em;
+
+        .formSection {
+            width: 100%;
+        }
+
+        label {
+            white-space: normal;
         }
     }
 
