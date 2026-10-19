@@ -196,7 +196,10 @@ class DatabaseOperations {
             }
         }
 
-        const result = await collection.updateOne(processedQuery, { $set: update });
+        // Clients send back the whole record; never overwrite identity/ownership fields
+        const { _id, _ownerId, _createdOn, ...changes } = update;
+
+        const result = await collection.updateOne(processedQuery, { $set: changes });
         if (result.modifiedCount > 0) {
             const updated = await this.findOne(collectionName, query);
             return updated;
@@ -411,15 +414,10 @@ async function put(context, tokens, query, body) {
 
         context.canAccess(existing, body);
 
-        // Clients send back the whole record; never overwrite identity/ownership fields
-        delete body._id;
-        delete body._ownerId;
-        delete body._createdOn;
-
         body._updatedOn = Date.now();
         const success = await dbOps.updateOne(context.params.collection, { _id: tokens[0] }, body);
         if (success) {
-            return { ...body, _id: tokens[0], _ownerId: existing._ownerId, _createdOn: existing._createdOn };
+            return { ...body, _id: tokens[0] };
         } else {
             throw new RequestError();
         }
