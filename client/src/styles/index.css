@@ -399,14 +399,14 @@ section.description p {
     }
 }
 
-/* Desktop: flow the long add-element form into two columns */
+/* Desktop: flow the long add-element form into columns (three from 1280px) */
 @media(min-width: 1025px) {
     .formAddElement {
         display: block;
         columns: 2;
-        column-gap: 4em;
+        column-gap: 3em;
         column-rule: 1px solid #eee;
-        max-width: 1100px;
+        max-width: 1400px;
 
         h4 {
             break-after: avoid;
@@ -427,6 +427,12 @@ section.description p {
             column-span: all;
             margin: 1.5em 0 0;
         }
+    }
+}
+
+@media(min-width: 1280px) {
+    .formAddElement {
+        columns: 3;
     }
 }
 
