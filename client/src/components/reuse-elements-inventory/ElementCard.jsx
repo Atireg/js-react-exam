@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import idSlicer from "../../utils/idSlicer";
+import GrabButton from "./GrabButton";
 
 // Same groups and labels as the arrow columns in the desktop table
 const GROUPS = [
@@ -109,6 +110,8 @@ export default function ElementCard({ item, isOwner, onDelete }) {
                 <p className="element-card-comment"><strong>Kommentar: </strong>{data.comment}</p>
             )}
             <p className="element-card-author">Hinzugefügt von {item.author?.email || 'Unknown'}</p>
+
+            <GrabButton item={item} className="element-card-grab" />
 
             {isOwner && (
                 <div className="action-buttons">

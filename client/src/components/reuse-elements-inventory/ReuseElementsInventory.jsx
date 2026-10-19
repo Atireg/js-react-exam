@@ -4,6 +4,7 @@ import ExcelToJson from "./ExcelUpload";
 import { useState } from "react";
 import VerticalArrowCell from "./VerticalArrowCell";
 import ElementCard from "./ElementCard";
+import GrabButton from "./GrabButton";
 import { useDeleteElement } from "../../api/elementsApi";
 
 export default function ReuseElementsInventory({
@@ -203,7 +204,7 @@ export default function ReuseElementsInventory({
 
                                         {index === 0 && (
                                             <VerticalArrowCell
-                                                label="Materialleigenschaften"
+                                                label="Materialeigenschaften"
                                                 onClick={() => toggleGroup('material')}
                                                 isOpen={isGroupOpen('material')}
                                                 rowSpan={elements.length}
@@ -283,7 +284,8 @@ export default function ReuseElementsInventory({
                                         )}
                                         <td>{item.element.comment}</td>
                                         <td>{item.author?.email || 'Unknown'}</td>
-                                        <td>
+                                        <td className="actions-cell">
+                                            <GrabButton item={item} className="table-grab" />
                                             {user && user._id === item._ownerId && !item.pending && (
                                                 <div className="action-buttons">
                                                     <Link to={`/elements/${item._id}/edit`} className="edit-btn">
