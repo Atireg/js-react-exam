@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
 import idSlicer from "../../utils/idSlicer";
-import BasketContext from "../../contexts/BasketContext";
-import useAddToBasketHandler from "../../hooks/useAddToBasketHandler";
-import useAuth from "../../hooks/useAuth";
+import GrabButton from "./GrabButton";
 
 // Same groups and labels as the arrow columns in the desktop table
 const GROUPS = [
@@ -92,15 +89,6 @@ function PropertyList({ data, fields }) {
 
 export default function ElementCard({ item, isOwner, onDelete }) {
     const data = item.element || {};
-    const { isAuthenticated } = useAuth();
-    const { basketId, basketElements, updateBasketElements } = useContext(BasketContext);
-    const { addToBasketHandler, isLoading } = useAddToBasketHandler(basketId, updateBasketElements);
-
-    const isAlreadyInBasket = basketElements.some(el => el._id === item._id);
-    const isBusy = isAlreadyInBasket || isLoading(item._id);
-
-    // Store the element itself, without the UI-only fields the inventory adds
-    const { author: _author, pending: _pending, ...basketElement } = item;
 
     return (
         <li className="element-card" style={{ color: item.pending ? 'lightgray' : '' }}>
@@ -123,31 +111,7 @@ export default function ElementCard({ item, isOwner, onDelete }) {
             )}
             <p className="element-card-author">Hinzugefügt von {item.author?.email || 'Unknown'}</p>
 
-            {!item.pending && (isAuthenticated ? (
-                <button
-                    onClick={() => addToBasketHandler(basketElement)}
-                    className="small-button element-card-grab"
-                    style={{
-                        backgroundColor: isBusy ? 'grey' : '#e98166cb',
-                        color: 'white',
-                        cursor: isBusy ? 'not-allowed' : 'pointer',
-                        opacity: isBusy ? 0.7 : 1
-                    }}
-                    disabled={isBusy}
-                >
-                    {isAlreadyInBasket
-                        ? 'Bereits Gegriffen'
-                        : isLoading(item._id)
-                            ? 'Greifen...'
-                            : 'Greif zu!'}
-                </button>
-            ) : (
-                <Link to='/login'>
-                    <button className="small-button element-card-grab">
-                        Einloggen, um zu schnappen!
-                    </button>
-                </Link>
-            ))}
+            <GrabButton item={item} className="element-card-grab" />
 
             {isOwner && (
                 <div className="action-buttons">

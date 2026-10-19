@@ -478,6 +478,20 @@ section.description p {
     width: 100%;
 }
 
+/* Basket button in the narrow Actions column of the desktop table */
+.small-button.table-grab {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.3em;
+    font-size: inherit;
+    white-space: normal;
+    line-height: 1.2;
+}
+
+.actions-cell .action-buttons {
+    margin-top: 0.3em;
+}
+
 .element-card .action-buttons {
     display: flex;
     gap: 0.5em;
