@@ -408,18 +408,28 @@ section.description p {
         column-rule: 1px solid #eee;
         max-width: 1400px;
 
-        h4 {
-            break-after: avoid;
-            margin: 0 0 1em;
-        }
-
-        h4:not(:first-child) {
-            margin-top: 1.5em;
-        }
-
+        /* Every heading and field is exactly one row tall, so column
+           breaks can only fall between rows and rows line up across columns */
+        h4,
         .input-group {
+            height: 5rem;
+            margin: 0;
+            box-sizing: border-box;
             break-inside: avoid;
-            margin-bottom: 1.2em;
+        }
+
+        h4 {
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 0.8rem;
+            break-after: avoid;
+        }
+
+        input,
+        textarea,
+        select {
+            height: 4rem;
+            box-sizing: border-box;
         }
 
         /* Submit button spans both columns at the bottom */
