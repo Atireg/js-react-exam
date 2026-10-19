@@ -204,7 +204,7 @@ export default function ReuseElementsInventory({
 
                                         {index === 0 && (
                                             <VerticalArrowCell
-                                                label="Materialleigenschaften"
+                                                label="Materialeigenschaften"
                                                 onClick={() => toggleGroup('material')}
                                                 isOpen={isGroupOpen('material')}
                                                 rowSpan={elements.length}
