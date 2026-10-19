@@ -729,6 +729,20 @@ initializeDatabase().then(() => {
                 // Set collection in context
                 context.params.collection = collection;
                 console.log('Data request:', { collection, id, queryParams });
+
+                // Only a record's owner may change or delete it
+                const assertOwner = async () => {
+                    if (!context.user) {
+                        throw new AuthorizationError('Authentication required');
+                    }
+                    const existing = await dbOps.findOne(collection, { _id: id });
+                    if (!existing) {
+                        throw new NotFoundError('Not found');
+                    }
+                    if (String(existing._ownerId) !== String(context.user._id)) {
+                        throw new CredentialError('You can only modify your own records');
+                    }
+                };
                 
                 if (req.method === 'GET') {
                     let result;
@@ -815,8 +829,9 @@ initializeDatabase().then(() => {
                     req.on('end', async () => {
                         try {
                             const data = JSON.parse(body);
+                            await assertOwner();
                             const result = await dbOps.updateOne(collection, { _id: id }, data);
-                            
+
                             if (!result) {
                                 res.writeHead(404, { 'Content-Type': 'application/json' });
                                 res.end(JSON.stringify({ message: 'Not found' }));
@@ -826,7 +841,7 @@ initializeDatabase().then(() => {
                             res.writeHead(200, { 'Content-Type': 'application/json' });
                             res.end(JSON.stringify(convertId(result)));
                         } catch (error) {
-                            res.writeHead(400, { 'Content-Type': 'application/json' });
+                            res.writeHead(error.status || 400, { 'Content-Type': 'application/json' });
                             res.end(JSON.stringify({ message: error.message }));
                         }
                     });
@@ -838,6 +853,7 @@ initializeDatabase().then(() => {
                     }
 
                     try {
+                        await assertOwner();
                         const result = await dbOps.deleteOne(collection, { _id: id });
                         if (!result) {
                             res.writeHead(404, { 'Content-Type': 'application/json' });
@@ -847,7 +863,7 @@ initializeDatabase().then(() => {
                         res.writeHead(200, { 'Content-Type': 'application/json' });
                         res.end(JSON.stringify(convertId(result)));
                     } catch (error) {
-                        res.writeHead(400, { 'Content-Type': 'application/json' });
+                        res.writeHead(error.status || 400, { 'Content-Type': 'application/json' });
                         res.end(JSON.stringify({ message: error.message }));
                     }
                 }
