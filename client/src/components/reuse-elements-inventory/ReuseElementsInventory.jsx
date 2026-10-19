@@ -3,6 +3,7 @@ import idSlicer from "../../utils/idSlicer";
 import ExcelToJson from "./ExcelUpload";
 import { useState } from "react";
 import VerticalArrowCell from "./VerticalArrowCell";
+import ElementCard from "./ElementCard";
 import { useDeleteElement } from "../../api/elementsApi";
 
 export default function ReuseElementsInventory({
@@ -308,6 +309,22 @@ export default function ReuseElementsInventory({
                     </tbody>
                 </table>
             </div>
+
+            {/* Phone layout: one card per element instead of the wide table */}
+            <ul className="inventory-cards">
+                {elements?.length > 0 ? (
+                    elements.map(item => (
+                        <ElementCard
+                            key={item._id}
+                            item={item}
+                            isOwner={user && user._id === item._ownerId && !item.pending}
+                            onDelete={() => handleDelete(item._id)}
+                        />
+                    ))
+                ) : (
+                    <li className="no-items">No data available</li>
+                )}
+            </ul>
 
             {user && user._id ? (
                 <div className="container-add-element">
