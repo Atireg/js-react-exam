@@ -399,6 +399,37 @@ section.description p {
     }
 }
 
+/* Desktop: flow the long add-element form into two columns */
+@media(min-width: 1025px) {
+    .formAddElement {
+        display: block;
+        columns: 2;
+        column-gap: 4em;
+        column-rule: 1px solid #eee;
+        max-width: 1100px;
+
+        h4 {
+            break-after: avoid;
+            margin: 0 0 1em;
+        }
+
+        h4:not(:first-child) {
+            margin-top: 1.5em;
+        }
+
+        .input-group {
+            break-inside: avoid;
+            margin-bottom: 1.2em;
+        }
+
+        /* Submit button spans both columns at the bottom */
+        .input-group:last-child {
+            column-span: all;
+            margin: 1.5em 0 0;
+        }
+    }
+}
+
 .elements-table {
     gap: 2em;
     margin: 2em 1em;
