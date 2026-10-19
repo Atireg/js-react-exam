@@ -432,10 +432,9 @@ section.description p {
             box-sizing: border-box;
         }
 
-        /* Submit button spans both columns at the bottom */
+        /* Submit button is the last row, directly below Kommentar */
         .input-group:last-child {
-            column-span: all;
-            margin: 1.5em 0 0;
+            break-before: avoid;
         }
     }
 }
