@@ -473,6 +473,11 @@ section.description p {
     font-size: 0.85em;
 }
 
+.element-card-grab {
+    margin-top: 1em;
+    width: 100%;
+}
+
 .element-card .action-buttons {
     display: flex;
     gap: 0.5em;
