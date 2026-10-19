@@ -818,6 +818,21 @@ td .delete-btn, td .edit-btn {
 
 /* RESPONSIVE SECTION */
 
+/* Phones and tablets: project elements are shown as cards instead of the wide table */
+@media(max-width: 1024px) {
+    .inventory-table-container {
+        display: none;
+    }
+
+    .inventory-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        padding: 0 1em;
+        list-style: none;
+    }
+}
+
 @media(max-width: 800px) {
     .body {
         overflow: hidden
@@ -860,19 +875,6 @@ td .delete-btn, td .edit-btn {
 
     .basket-indicator {
         padding: 0.4em 0;
-    }
-
-    /* Elements are shown as cards instead of the wide table */
-    .inventory-table-container {
-        display: none;
-    }
-
-    .inventory-cards {
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        padding: 0 1em;
-        list-style: none;
     }
 
     .elements-table {
