@@ -1,3 +1,25 @@
+/* SPACING SCALE: use these instead of one-off values */
+:root {
+    --gutter: 1rem;
+    --space-xs: 0.25rem;
+    --space-s: 0.5rem;
+    --space-m: 1rem;
+    --space-l: 1.5rem;
+    --space-xl: 2.5rem;
+}
+
+@media(min-width: 801px) {
+    :root {
+        --gutter: 2rem;
+    }
+}
+
+#root {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 /* HEADER */
 
 body {
@@ -8,7 +30,7 @@ body {
 }
 
 .site-header {
-    margin: 0.5em 1em;
+    margin: var(--space-s) var(--gutter);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -65,9 +87,9 @@ body {
 }
 
 .welcome-msg {
-    width: 50dvw;
-    margin: 3em;
-    line-height: 1.6em;
+    width: min(100%, 40rem);
+    margin: 0 auto var(--space-xl);
+    line-height: 1.6;
 }
 
 .welcome-msg h2 {
@@ -78,7 +100,7 @@ body {
 /*GENERAL CONTAINER TO CENTER FORMS/MESSAGES*/
 
 .main-content {
-    margin: 2em;
+    margin: var(--space-l) var(--gutter);
 }
 
 .centered-container {
@@ -87,9 +109,8 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 80vh;
     margin: 0;
-    padding: 2em;
+    padding: var(--space-xl) var(--gutter);
 }
 
 .buttons {
@@ -117,18 +138,17 @@ button:disabled {
 .formAuth {
     display: flex;
     flex-direction: column;
-    gap: 3em;
+    gap: var(--space-l);
     align-items: center;
     width: 100%;
     max-width: 400px;
-    margin: 2em;
-    padding: 2em;
+    margin: var(--space-l) 0 0;
+    padding: var(--space-xl) var(--space-l);
     border: 1px solid #ccc;
     background: white;
 
     .input-group {
         width: 100%;
-        height: 3em;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -161,11 +181,10 @@ button:disabled {
     gap: 2em;
     justify-content: center;
     max-width: 1200px;
-    padding: 2em;
-    margin: 2em auto;
+    padding: var(--space-l);
+    margin: var(--space-l) auto;
     border: 1px solid #ccc;
     background: white;
-    margin-bottom: 2em;
 
     .formSection {
         display: flex;
@@ -213,13 +232,11 @@ button:disabled {
 }
 
 .addElementForm {
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding-top: var(--space-s);
 }
 
 .register-link {
     text-align: center;
-    margin-top: 2em;
 }
 
 
@@ -229,7 +246,7 @@ button:disabled {
     max-width: 100dvw;
     display: flex;
     gap: 2em;
-    margin: 0 1em;
+    margin: 0;
     z-index: -10;
 }
 
@@ -340,10 +357,17 @@ section.description {
     gap: 2em;
 }
 
-section h2,
-h3,
+.centered-container > h1 {
+    margin-bottom: var(--space-l);
+}
+
+h2,
+h3 {
+    margin-bottom: var(--space-m);
+}
+
 h5 {
-    padding-bottom: 1em;
+    margin-bottom: var(--space-s);
 }
 
 section.description p {
@@ -363,35 +387,38 @@ section.description p {
 .formAddElement {
     display: flex;
     flex-direction: column;
-    gap: 2em;
+    gap: var(--space-m);
     align-items: left;
     max-width: 500px;
-    padding: 2em;
+    padding: var(--space-l);
     border: 1px solid #ccc;
     background: white;
 
     .input-group {
-        height: 3em;
         display: flex;
-        gap: 2em;
+        gap: var(--space-m);
         align-items: center;
     }
 
     input,
     textarea,
     select {
-        width: 80%;
-        padding: 1em;
-        height: 4em;
+        flex: 1 1 auto;
+        min-width: 0;
+        padding: 0 1em;
+        height: 3em;
         border: 1px solid #ccc;
         border-radius: 0.5em;
         resize: none;
     }
 
+    textarea {
+        padding-top: 0.75em;
+    }
+
     label {
         font-weight: bold;
-        margin-bottom: 0.5em;
-        flex: 0 1 100px
+        flex: 0 0 8.5rem;
     }
 
     button {
@@ -412,7 +439,7 @@ section.description p {
            breaks can only fall between rows and rows line up across columns */
         h4,
         .input-group {
-            height: 5rem;
+            height: 4.25rem;
             margin: 0;
             box-sizing: border-box;
             break-inside: avoid;
@@ -421,14 +448,14 @@ section.description p {
         h4 {
             display: flex;
             align-items: flex-end;
-            padding-bottom: 0.8rem;
+            padding-bottom: 0.6rem;
             break-after: avoid;
         }
 
         input,
         textarea,
         select {
-            height: 4rem;
+            height: 3rem;
             box-sizing: border-box;
         }
 
@@ -446,8 +473,7 @@ section.description p {
 }
 
 .elements-table {
-    gap: 2em;
-    margin: 2em 1em;
+    margin: var(--space-xl) 0 var(--space-l);
 }
 
 .basket-table {
@@ -457,7 +483,7 @@ section.description p {
 }
 
 .inventory-table-container {
-    margin-bottom: 2em;
+    margin-bottom: var(--space-l);
 }
 
 /* Card list replaces the elements table on phones (see responsive section) */
@@ -519,7 +545,7 @@ section.description p {
     font-size: 0.85em;
 }
 
-.element-card-grab {
+.small-button.element-card-grab {
     margin-top: 1em;
     width: 100%;
 }
@@ -527,6 +553,7 @@ section.description p {
 /* Basket button in the narrow Actions column of the desktop table */
 .small-button.table-grab {
     width: 100%;
+    min-width: 0;
     box-sizing: border-box;
     padding: 0.3em;
     font-size: inherit;
@@ -652,21 +679,19 @@ tbody tr:first-child td.arrow-cell {
     padding: 2em;
     flex: 0 0 28dvw;
     box-sizing: border-box;
-    margin: 1em;
 }
 
 .elements-category {
     display: flex;
     flex-direction: column;
     width: 80%;
-    padding: 1em;
-    margin-top: 1em;
+    padding: var(--space-m) 0;
 }
 
 .elements-category ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 3em;
+    gap: var(--space-l);
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -684,7 +709,6 @@ tbody tr:first-child td.arrow-cell {
     max-width: 200px;
     flex-direction: column;
     flex: 0 0 200px;
-    margin: 0.5em;
     padding: 1em;
     box-sizing: border-box;
     border: 1px solid #ccc;
@@ -712,7 +736,7 @@ tbody tr:first-child td.arrow-cell {
 }
 
 .search-box {
-    margin: 0 1em;
+    margin: 0;
     max-width: 700px;
     border: 1px solid #ccc;
     display: flex;
@@ -818,8 +842,9 @@ tbody tr:first-child td.arrow-cell {
 }
 
 .small-button {
-    width: 100px;
-    padding: 0.5em;
+    width: auto;
+    min-width: 100px;
+    padding: 0.5em 1em;
     background-color: #e98166cb;
 }
 
@@ -869,12 +894,12 @@ td .delete-btn, td .edit-btn {
 
 /* FOOTER SECTION */
 .site-footer {
-    margin: 0.5em 1em;
+    margin: auto var(--gutter) 0;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0.6;
-    padding: 1em;
+    padding: var(--space-l) 0;
 
     >* {
         padding: 0;
@@ -892,8 +917,7 @@ td .delete-btn, td .edit-btn {
     .inventory-cards {
         display: flex;
         flex-direction: column;
-        gap: 1em;
-        padding: 0 1em;
+        gap: var(--space-m);
         list-style: none;
     }
 }
@@ -942,10 +966,6 @@ td .delete-btn, td .edit-btn {
         padding: 0.4em 0;
     }
 
-    .elements-table {
-        margin: 2em 0;
-    }
-
     .basket-table {
         max-width: 100%;
         overflow-x: auto;
@@ -954,10 +974,10 @@ td .delete-btn, td .edit-btn {
     .formData {
         flex-direction: column;
         gap: 0;
-        width: calc(100% - 2em);
+        width: 100%;
         box-sizing: border-box;
-        padding: 1em;
-        margin: 1em;
+        padding: var(--space-m);
+        margin: var(--space-m) 0;
 
         .formSection {
             width: 100%;
@@ -1023,7 +1043,16 @@ td .delete-btn, td .edit-btn {
     }
 
     .elements-categories section {
-        width: 85dvw;
+        width: 100%;
+    }
+
+    .elements-category {
+        width: 100%;
+    }
+
+    .elements-item {
+        max-width: none;
+        flex-basis: 100%;
     }
 
     .respSearchForm {
